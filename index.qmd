@@ -1,0 +1,416 @@
+---
+title: "LQCD @ PASC23"
+author: "Sam Foreman"
+date: "2023-06-05"
+format:
+  revealjs:
+    preview-links: true
+    controls: false
+    logo: "https://raw.githubusercontent.com/saforem2/anl-job-talk/main/docs/assets/anl.svg"
+    history: false
+    theme: [dark, custom.scss]
+    css: [css/default.css]
+    self-contained: true
+    embed-resources: true
+    center: false
+    highlight-style: "atom-one"
+    default-image-extension: svg
+    code-line-numbers: true
+    code-overflow: scroll
+    execute:
+      freeze: auto
+    fig-align: center
+---
+
+---
+
+# {background-iframe="https://saforem2.github.io/grid-worms-animation/" loading="lazy" style="border-radius: 10px; padding:auto; text-align: center;"}
+
+::: {style="text-shadow: 0px 0px 10px RGBA(0, 0, 0, 0.45); background-color: rgba(22,22,22,0.88); border-radius: 10px; text-align:center; box-shadow:RGBA(0, 0, 0, 0.45) 0px 5px 15px;"}
+<span style="color:#939393; font-size:1.5em; font-weight: bold; padding: 1pt 0pt;">Generative Modeling \& Efficient Sampling</span>
+
+<span style="font-size:0.8em; color:#505050; padding:0px; margin:0px; text-align:center!important;">2023-06-29</span>
+<span style="font-size:0.8em; color:#505050; padding:0px; margin:0px; text-align:center!important;"> @ [PASC23](https://pasc23.pasc-conference.org/)</span>
+
+[{{< fa solid home >}}](https://samforeman.me) Sam Foreman  
+[{{< fa brands github >}} `saforem2/lqcd-pasc23`](https://github.com/saforem2/lqcd-pasc23)
+:::
+
+# Testing Callouts
+
+::: {.callout-note title="Note" icon=false}
+Testing callouts with `simple` appearance
+:::
+
+# Standard Model
+
+:::: {.columns}
+
+::: {.column width="60%"}
+- <span class="yellow">{{< fa solid bolt >}}</span> Electricity & Magnetism <span class="red">{{< fa solid magnet >}}</span>
+- <span class="purple">{{< fa solid atom >}}</span> Quantum Field Theory
+  - Nuclear interactions
+    - Strong + Weak Force
+    - Observed particles
+  - Quantum Chromodynamics (**QCD**):
+    - Quark / gluon interactions in the nuclueus
+    - Analytical progress is _difficult_...[^progress]
+      - <span class="green"> Lattice QCD </span> to the rescue! 🚀
+:::
+
+::: {.column width="40%"}
+<a href="https://github.com/saforem2/physicsSeminar/raw/main/assets/static/nucleus.svg"><img src="https://github.com/saforem2/physicsSeminar/raw/main/assets/static/nucleus.svg" width="50%" style="text-align:center;"></a>
+[![](https://github.com/saforem2/physicsSeminar/raw/main/assets/static/feynman.svg)](https://github.com/saforem2/physicsSeminar/raw/main/assets/static/feynman.svg)
+:::
+
+::::
+
+[^progress]: Completely stalled ?
+
+## {background-color="white"}
+
+![](https://upload.wikimedia.org/wikipedia/commons/0/00/Standard_Model_of_Elementary_Particles.svg)
+
+## {.centeredslide background-video="https://d2r55xnwy6nx47.cloudfront.net/uploads/2021/04/Muon_2560_Lede.mp4" background-video-loop="true" background-video-muted="true"}
+
+::: {style="text-shadow: 0px 0px 10px black; line-height:0.8em; background-color: rgba(22,22,22,0.33); border-radius: 10px; text-align:center; box-shadow:RGBA(0, 0, 0, 0.35) 0px 5px 15px; padding: 0px; padding-left: 1%; padding-right: 1%; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto;"}
+<span style="font-size: 1.75em; font-weight: bold;">Magnetic Moment of the Muon</span>
+
+::: {style="font-size: 1.5em; margin-top: 0pt; margin-bottom: 0pt; border:2px solid #00CCFF; border-radius:8px; margin-left:auto; margin-right:auto; min-width: max-content; max-width: min-content; padding-left: 1%; padding-right: 1%; background-color: rgba(22,22,22,0.5); "}
+$a_{\mu} = \frac{(g_{\mu} - 2)}{2}$
+:::
+
+Can Lattice QCD resolve this?  
+<span style="font-size:0.8em; color: var(--dim-color);">new physics??</span>  
+
+::: {.aside style="text-shadow: 0px 0px 10px black; text-align: center;"}
+$\left(\delta a_{\mu}\right)^{\mathrm{exp}}_{\mathrm{th}} = 5.02 \times 10^{-9}$
+
+1. [background](https://www.quantamagazine.org/last-hope-experiment-finds-evidence-for-unknown-particles-20210407/)
+:::
+
+:::
+
+## Muon $g-2$ { .centeredslide }
+
+::: {.panel-tabset}
+
+### In Transit
+
+![](./assets/muon-1.jpg)
+
+### Tab B
+
+![](./assets/muon-2.jpg) 
+
+### Tab C
+
+![](./assets/muon-3.jpg)
+
+:::
+
+::: {.aside}
+[Fermilab: Muon g-2](https://vms.fnal.gov/gallery/view?id=41)
+:::
+
+
+## Testing
+
+:::: {.columns}
+::: {.column width="33%"}
+![](./assets/muon-1.jpg)
+:::
+
+::: {.column width="33%"}
+![](./assets/muon-2.jpg) 
+:::
+
+::: {.column width="33%"}
+![](./assets/muon-3.jpg)
+:::
+::::
+
+
+# Hamiltonian Monte Carlo (HMC) { .centeredslide }
+
+- <span style="color:#66bb6a; font-weight: bold;">Idea</span>: We can evolve the $(\dot{x}, \dot{v})$ system to get new states $\\{x_{i}\\}$❗
+
+- Write the **Joint distribution** $p(x, v)$:
+  $$p(x, v) = p(x) p(v) \propto e^{-S[x]} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}$$
+
+:::: {.columns}
+
+::: {.column width="30%"}
+
+::: {style="border:1px solid #66BB6A; border-radius:8px; box-shadow: RGBA(0, 0, 0, 0.35) 0px 5px 15px; background-color:#202020;"}
+<span style="color: #66BB6A; font-weight: bold;">Hamiltonian Dynamics:</span>
+  $$\begin{align}
+  \dot{x} &= +\partial_{v} H\\
+  \dot{v} &= -\partial_{x} H
+  \end{align}$$
+:::
+
+:::
+
+::: {.column width="70%"}
+![](https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/hmc1.svg)
+:::
+
+::::
+
+
+# Overview
+
+```{python}
+#| code-fold: true
+#| echo: true
+import numpy as np
+x = np.random.rand()
+print(x)
+```
+
+::: {.notes}
+Speaker notes go here.
+:::
+
+# Columns
+
+:::: {.columns}
+
+::: {.column width="40%"}
+Left column
+:::
+
+::: {.column width="60%"}
+Right column
+:::
+
+::::
+
+# Python {.scrollable}
+
+For a demonstration of a line plot on a polar axis, see @fig-polar
+
+```{python}
+#| label: fig-polar
+#| fig-cap: "A line plot on a polar axis"
+#| echo: true
+#| code-fold: false
+#| output-location: slide
+import numpy as np
+import matplotlib.pyplot as plt
+
+plt.rcParams.update({
+    'axes.facecolor': 'none',
+    'figure.facecolor': 'none',
+    'savefig.facecolor': 'none',
+    'savefig.format': 'svg',
+    'axes.edgecolor': 'none',
+    'axes.grid': True,
+    'axes.labelcolor': '#666',
+    'axes.titlecolor': '#666',
+    'grid.color': '#666',
+    'text.color': '#666',
+    'grid.linestyle': '--',
+    'grid.linewidth': 0.5,
+    'grid.alpha': 0.4,
+    'xtick.color': 'none',
+    'ytick.color': 'none',
+    'xtick.labelcolor': '#666',
+    'legend.edgecolor': 'none',
+    'ytick.labelcolor': '#666',
+    'savefig.transparent': True,
+})
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fix, ax = plt.subplots(
+    subplot_kw = {'projection': 'polar'}
+)
+assert isinstance(ax, plt.PolarAxes)
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1., 1.5, 2.])
+ax.grid(True)
+plt.show()
+```
+
+# Figures with Subcaptions
+
+```{python}
+#| label: fig-charts
+#| echo: true
+#| fig-cap: "Charts"
+#| fig-subcap: 
+#|   - "First"
+#|   - "Second"
+#| layout-ncol: 2
+
+import matplotlib.pyplot as plt
+plt.plot([1,23,2,4])
+plt.show()
+
+plt.plot([8,65,23,90])
+plt.show()
+```
+
+# Mermaid Diagrams
+
+```{mermaid}
+flowchart TB
+  A --> C
+  A --> D
+  B --> C
+  B --> D
+```
+
+## Mermaid Example
+
+```{mermaid}
+flowchart LR
+  markdown["`This **is** _Markdown_`"]
+  newLines["`Line1
+  Line 2
+  Line 3`"]
+  markdown --> newLines
+```
+
+# Block Layout
+
+::: {layout-ncol=2}
+### List One
+
+- Item A
+- Item B
+- Item C
+
+### List Two
+
+- Item X
+- Item Y
+- Item Z
+:::
+
+# Placing Colorbars {.scrollable}
+
+Colorbars indicate the quantitative extent of image data.
+Placing in a figure is non-trivial because room needs to
+be made for them. The simplest case is just attaching a 
+colorbar to each axes:
+
+```{python}
+#| label: fig-colorbars
+#| echo: true
+#| output-location: slide
+import matplotlib.pyplot as plt
+import numpy as np
+
+fig, axs = plt.subplots(2, 2)
+assert isinstance(fig, plt.Figure)
+cmaps = ['RdBu_r', 'viridis']
+for col in range(2):
+    for row in range(2):
+        ax = axs[row, col]
+        pcm = ax.pcolormesh(
+          np.random.random((20, 20)) * (col + 1),
+          cmap=cmaps[col]
+        )
+        fig.colorbar(pcm, ax=ax)
+ax.grid(False)
+plt.show()
+```
+
+# Model Parallel Training: Example
+
+$$
+y = w_0 * x_0 + w_1 * x_1 + w_2 * x_2
+$$
+
+1. Compute $y_{0} = w_{0} * x_{0}$ and send to $\longrightarrow$ `GPU1`
+2. Compute $y_{1} = y_{0} + w_{1} * x_{1}$ and send to $\longrightarrow$ `GPU2`
+3. Compute $y = y_{1} * w_{2} * x_{2}$ ✅
+
+
+```{mermaid}
+flowchart LR
+  subgraph X0["GPU0"]
+    direction LR
+    a["w0"]
+  'end'
+  subgraph X1["GPU1"]
+    direction LR
+    b["w1"]
+  'end'
+  subgraph X2["GPU2"]
+    direction LR
+    c["w2"]
+  'end'
+  X1 & X0 <--> X2
+  X0 <--> X1
+  x["x0, x1, x2"] --> X0
+```
+
+# Extras
+
+:::: {.bs-callout .bs-callout-default}
+::: {.callout-title}
+Default
+:::
+Note that there are six types of callouts, including:
+`default`, `primary`, `success`, `info`, and `warning`, and `danger`
+::::
+
+:::: {.bs-callout .bs-callout-primary}
+::: {.callout-title}
+Primary
+:::
+::::
+
+:::: {.bs-callout .bs-callout-info}
+::: {.callout-title}
+Info
+:::
+::::
+
+
+::: {.bs-callout .bs-callout-success}
+::: {.callout-title}
+Success
+:::
+::::
+
+:::: {.bs-callout .bs-callout-warning}
+::: {.callout-title}
+Warning!
+:::
+::::
+
+:::: {.bs-callout .bs-callout-danger}
+::: {.callout-title}
+Danger!
+:::
+::::
+
+# Extras
+
+- Testing lists
+- Testing
+  - Testing
+  - Testing again
+    - triple Checkboxes
+  - Nested lists
+    - [ ] TODOs
+    - [x] Checkboxes ??
+
+# Links + References
+
+- [Fermilab Muon g-2](https://muon-g-2.fnal.gov/index.html)
+
+# Thank you!
+
+
+
+```{=html}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+```

@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "index.html#section-2",
+    "href": "index.html#section-2",
+    "title": "LQCD @ PASC23",
+    "section": "",
+    "text": "Magnetic Moment of the Muon\n\n\\(a_{\\mu} = \\frac{(g_{\\mu} - 2)}{2}\\)\n\nCan Lattice QCD resolve this?\nnew physics??\n\n\n\n\\(\\left(\\delta a_{\\mu}\\right)^{\\mathrm{exp}}_{\\mathrm{th}} = 5.02 \\times 10^{-9}\\)\n\nbackground"
+  },
+  {
+    "objectID": "index.html#muon-g-2",
+    "href": "index.html#muon-g-2",
+    "title": "LQCD @ PASC23",
+    "section": "Muon \\(g-2\\)",
+    "text": "Muon \\(g-2\\)\n\nIn TransitTab BTab C\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFermilab: Muon g-2"
+  },
+  {
+    "objectID": "index.html#testing",
+    "href": "index.html#testing",
+    "title": "LQCD @ PASC23",
+    "section": "Testing",
+    "text": "Testing"
+  },
+  {
+    "objectID": "index.html#mermaid-example",
+    "href": "index.html#mermaid-example",
+    "title": "LQCD @ PASC23",
+    "section": "Mermaid Example",
+    "text": "Mermaid Example\n\n\n\n\nflowchart LR\n  markdown[\"`This **is** _Markdown_`\"]\n  newLines[\"`Line1\n  Line 2\n  Line 3`\"]\n  markdown --&gt; newLines"
+  }
+]

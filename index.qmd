@@ -10,9 +10,9 @@ format:
     history: false
     theme: [dark, custom.scss]
     css: [css/default.css, css/callouts.css]
-    self-contained: true
+    self-contained: false
     embed-resources: true
-    self-contained-math: true
+    self-contained-math: false
     center: true
     highlight-style: "atom-one"
     default-image-extension: svg
@@ -256,6 +256,7 @@ $$\begin{align*}
 - [Fermilab Muon g-2](https://muon-g-2.fnal.gov/index.html)
 
 # Thank you!
+
 
 # Extras
 

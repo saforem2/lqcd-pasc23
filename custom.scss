@@ -2,7 +2,7 @@
 /*-- scss:defaults --*/
 
 // colors
-$dim-text:   #666666;
+$dim-text:   #777777;
 $dim-color:  #404040;
 $mygrey-000: #1c1c1c;
 $mygrey-010: #222222;
@@ -25,6 +25,9 @@ $myblue:   #00CCFF;
 $mypurple: #AE81FF;
 $mypink:   #FF67FF;
 
+$green-text: #66BB6A;
+$blue-text: #29B6F6;
+
 $body-bg: #1c1c1c;
 $dim-text: #666666;
 $body-color: #bdbdbd;
@@ -33,6 +36,12 @@ $heading-color: #9C9C9C;
 $link-color: #42affa;
 $italic-color: #89DDFF;
 $strong-color: #FFFFFF;
+
+$interactive-accent-hsl: #FFFF00;
+$text-selection: hsla(var($interactive-accent-hsl), 0.25);
+
+$selection-bg: rgba(255, 255, 0, 0.5);
+$selection-color: #1c1c1c;
 
 // fonts
 $font-family-sans-serif: "IBM Plex Sans", "Inter", "Source Sans Pro", Open Sans, Helvetica, sans-serif !default;
@@ -76,15 +85,15 @@ $presentation-font-size-root: 30px !default;
 $presentation-heading-color: $heading-color !default;
 
 // headings
-$presentation-heading-font: Bubblegum Sans, Inter, Open Sans, Helvetica, sans-serif, $font-family-sans-serif !default;
+$presentation-heading-font: Inter, Open Sans, Playfair Display, Helvetica, sans-serif, $font-family-sans-serif !default;
 $presentation-heading-color: $heading-color !default;
 // $presentation-heading-line-height: 1.0em !default;
 $presentation-heading-letter-spacing: normal !default;
 $presentation-heading-text-transform: none !default;
 $presentation-heading-text-shadow: none !default;
 $presentation-h1-text-shadow: none !default;
-$presentation-heading-font-weight: 600 !default;
-$presentation-h1-font-size: 1.75em !default;
+$presentation-heading-font-weight: 800 !default;
+$presentation-h1-font-size: 2.0em !default;
 $presentation-h2-font-size: 1.5em !default;
 $presentation-h3-font-size: 1.25em !default;
 $presentation-h4-font-size: 1em !default;
@@ -104,6 +113,7 @@ $presentation-h4-font-size: 1em !default;
 .reveal .slide div.aside {
     position: absolute;
     bottom: auto;
+    margin-bottom: 1em;
     font-size: 0.7em;
     color: $dim-text;
 }
@@ -125,10 +135,10 @@ $presentation-h4-font-size: 1em !default;
     margin-top: 0
 }
 
-.reveal strong,.reveal b {
-    font-weight: bold;
-    color: $strong-color;
-}
+// .reveal strong,.reveal b {
+//     font-weight: bold;
+//     // color: $strong-color;
+// }
 
 .reveal em {
     font-style: italic;
@@ -149,11 +159,66 @@ $presentation-h4-font-size: 1em !default;
     box-shadow: #000000 0px 0px 5px 10px;
 }
 
-.reveal .card{
+.reveal .rcard{
     text-shadow: 0px 0px 10px RGBA(0, 0, 0.45);
         background-color: rgba(22,22,22,0.33);
         border-radius: 10px;
         text-align: center;
         box-shadow: RGBA(0, 0, 0, 0.45) 0px 5px 15px;
         text-align: center;
+}
+
+.reveal .callout.callout-style-simple .callout-body,
+.reveal .callout.callout-style-default .callout-body,
+.reveal .callout.callout-style-simple div.callout-caption,
+.reveal .callout.callout-style-default div.callout-caption {
+  font-size: inherit;
+}
+
+.reveal .callout.callout-style-default .callout-icon::before,
+.reveal .callout.callout-style-simple .callout-icon::before {
+  height: 2rem;
+  width: 2rem;
+  background-size: 2rem 2rem;
+}
+
+.reveal .callout.callout-captioned .callout-caption p {
+  margin-top: 0.5em;
+}
+
+.reveal .callout.callout-captioned .callout-icon::before {
+  margin-top: 1rem;
+}
+
+.reveal
+  .callout.callout-captioned
+  .callout-body
+  > .callout-content
+  > :last-child {
+  margin-bottom: 1rem;
+}
+
+.reveal .callout.callout-titled .callout-icon::before {
+    margin-top: unset!important;
+}
+
+.reveal .green-text {
+    color: $green-text;
+}
+
+.reveal .dim-text {
+    color: $dim-text;
+}
+
+.reveal .note-green {
+    padding: 1pt 1pt 1pt 1pt;
+    border:1px solid #66BB6A;
+    border-radius:8px;
+    box-shadow: RGBA(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color:#202020;
+    max-width: min-content;
+    min-width: max-content;
+    text-align:left;
+    margin-left: auto;
+    margin-right: auto;
 }

@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:wght@700&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap');
 :root {
     --strong-color: #FF5252;
     --italic-color: #AE81FF;
@@ -29,17 +30,15 @@
     --r-main-font-size: 30px;
     --r-block-margin: 12px;
     --r-heading-margin: 0 0 12px 0;
-    --r-main-font: IBM Plex Sans, Inter, Open Sans, sans-serif;
-    --r-heading-font: Bubblegum Sans, Playfair Display, Inter, Open Sans, Helevetica, sans-serif;
+    --r-main-font: Inter, IBM Plex Sans, Open Sans, sans-serif;
     --r-monospace-font: 'agave Nerd Font', 'JuliaMono', 'Monaco', monospace;
     --r-code-font: 'agave Nerd Font', 'JuliaMono', 'Monaco', monospace;
-    --r-heading-color: #E6E6E6;
     --r-main-color:  #bdbdbd;
     --r-heading-line-height: 1.1;
     --r-heading-letter-spacing: normal;
     --r-heading-text-transform: none;
     --r-heading-text-shadow: none;
-    --r-heading-font-weight: 500;
+    --r-heading-font-weight: 800;
     --r-heading1-text-shadow: none;
     --r-heading1-size: 1.5em;
     --r-heading2-size: 1.25em;
@@ -202,6 +201,21 @@
   padding: auto;
   margin:auto;
 }
+
+#card {
+    border-radius:8px;
+    width: max-content;
+    text-align:center;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    background-color:#282828;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    box-shadow: RGBA(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
 .container{
   display: grid;
   grid-auto-flow: column;
@@ -324,4 +338,37 @@
         color: #63ff5b;
     }
 }
+.present .tracking-in-expand {
+    -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+            animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+@-webkit-keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
+/* h1 { */
+/*     color: #262626; */
+/*     -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) infinite both; */
+/*             animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) infinite both; */
+/* } */

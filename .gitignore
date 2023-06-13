@@ -1,2 +1,5 @@
+old/*
+_freeze/*
+venvs/*
 .DS_Store
 /.quarto/

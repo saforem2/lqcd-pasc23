@@ -3,3 +3,4 @@ _freeze/*
 venvs/*
 .DS_Store
 /.quarto/
+/_site/

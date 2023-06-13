@@ -18,8 +18,8 @@ format:
     default-image-extension: svg
     code-line-numbers: true
     code-overflow: scroll
-    fig-align: center
     html-math-method: katex
+    fig-align: center
     execute:
       freeze: auto
 ---
@@ -129,10 +129,10 @@ $\left(\delta a_{\mu}\right)^{\mathrm{exp}}_{\mathrm{th}} = 5.02 \times 10^{-9}$
 ::::
 
 If configurations are <span style="color:#00CCFF;">independent</span>, we can approximate[^approx]
-  $$\begin{equation*}
+  $$
   \left\langle\mathcal{O}\right\rangle \textcolor{#00CCFF}{\simeq} \frac{1}{N}\sum^{N}_{n=1}\mathcal{O}(x_{n})%
   \quad \textcolor{#00CCFF}{\Longrightarrow} \quad \sigma_{\mathcal{O}}^{2} = \frac{1}{N}\mathrm{Var}{\left[\mathcal{O} (x) \right]}%
-  \end{equation*}$$
+  $$
 
 [^target]: Here, $S(x)$ is the action (~ potential energy) of our physical system
 [^approx]: With error $\sigma_{\mathcal{O}}^{2}$
@@ -141,9 +141,9 @@ If configurations are <span style="color:#00CCFF;">independent</span>, we can ap
 
 - Want to (sequentially) construct a chain of states $\\{x_{i}\\}$,
   such that  as $N \rightarrow \infty$:
-  $$\begin{equation*}
+  $$\begin{equation}
   \left\{x_{0}, x_{1}, x_{2}, \cdots \right\} \longrightarrow p(x) \equiv {e^{-S(x)}} / {Z}
-  \end{equation*}$$
+  \end{equation}$$
 
 - [Trick:]{.green-text}
   - Introduce _fictitious_ momentum $v \sim \mathcal{N}(0, \mathbb{1})$

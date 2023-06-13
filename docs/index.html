@@ -530,18 +530,18 @@ Sam Foreman
 <p><img data-src="https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/normal_distribution.dark.svg"></p>
 </div>
 </div>
-<p>If configurations are <span style="color:#00CCFF;">independent</span>, we can approximate<sup>2</sup> <span class="math display">\begin{equation*}
+<p>If configurations are <span style="color:#00CCFF;">independent</span>, we can approximate<sup>2</sup> <span class="math display">
   \left\langle\mathcal{O}\right\rangle \textcolor{#00CCFF}{\simeq} \frac{1}{N}\sum^{N}_{n=1}\mathcal{O}(x_{n})%
   \quad \textcolor{#00CCFF}{\Longrightarrow} \quad \sigma_{\mathcal{O}}^{2} = \frac{1}{N}\mathrm{Var}{\left[\mathcal{O} (x) \right]}%
-  \end{equation*}</span></p>
+  </span></p>
 <aside><ol class="aside-footnotes"><li id="fn2"><p>Here, <span class="math inline">S(x)</span> is the action (~ potential energy) of our physical system</p></li><li id="fn3"><p>With error <span class="math inline">\sigma_{\mathcal{O}}^{2}</span></p></li></ol></aside></section>
 
 <section id="hamiltonian-monte-carlo-hmc" class="title-slide slide level1 centeredslide center">
 <h1>Hamiltonian Monte Carlo (HMC)</h1>
 <ul>
-<li><p>Want to (sequentially) construct a chain of states <span class="math inline">\\{x_{i}\\}</span>, such that as <span class="math inline">N \rightarrow \infty</span>: <span class="math display">\begin{equation*}
+<li><p>Want to (sequentially) construct a chain of states <span class="math inline">\\{x_{i}\\}</span>, such that as <span class="math inline">N \rightarrow \infty</span>: <span class="math display">\begin{equation}
 \left\{x_{0}, x_{1}, x_{2}, \cdots \right\} \longrightarrow p(x) \equiv {e^{-S(x)}} / {Z}
-\end{equation*}</span></p></li>
+\end{equation}</span></p></li>
 <li><p><span class="green-text">Trick:</span></p>
 <ul>
 <li>Introduce <em>fictitious</em> momentum <span class="math inline">v \sim \mathcal{N}(0, \mathbb{1})</span></li>
@@ -667,7 +667,7 @@ p(x)p(v) &amp;\propto e^{-S{(x)}} e^{-\frac{1}{2} v^{T}v}\\
 <span id="cb1-3"><a href="#cb1-3"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.7097683918189301</code></pre>
+<pre><code>0.25612748519935635</code></pre>
 </div>
 </div>
 <aside class="notes">

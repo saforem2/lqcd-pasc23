@@ -11,7 +11,7 @@ format:
     theme: [dark, custom.scss]
     css: [css/default.css, css/callouts.css]
     self-contained: false
-    embed-resources: true
+    embed-resources: false
     self-contained-math: false
     center: true
     highlight-style: "atom-one"

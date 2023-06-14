@@ -53,7 +53,6 @@
 }
 
 .callout.callout-titled .callout-title p {
-  /* margin-top: unset; */
   vertical-align: -webkit-baseline-middle;
 }
 .callout.callout-titled.callout-style-simple .callout-content p {
@@ -73,19 +72,8 @@
   border-bottom: none;
   font-weight: 600;
   opacity: 100%!important;
-  /* opacity: 85%; */
   font-size: 1.2em!important;
-  /* padding-left: 0.5em; */
-  /* padding-right: 0.5em; */
   letter-spacing: .05em;
-  /* font-variant-caps: all-small-caps; */
-  /* font-size: 1.25em!important; */
-  /* z-index: 200; */
-  /* padding: 0 0.5em; */
-  /*   padding-top: 0px; */
-  /*   padding-right: 0.5em; */
-  /*   padding-bottom: 0px; */
-  /*   padding-left: 0.5em; */
 }
 .callout.callout-style-default div.callout-content {
   padding-left: 2em;
@@ -111,7 +99,7 @@
   display: flex;
 }
 .callout-icon::before {
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   padding-right: 0.5rem;
   /* vertical-align: -webkit-baseline-middle; */
   vertical-align: -webkit-baseline-middle;

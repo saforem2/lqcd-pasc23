@@ -144,13 +144,13 @@ If configurations were <span style="color:#00CCFF;">independent</span>, we could
   \left\{x_{0}, x_{1}, x_{2}, \cdots, x_{N} \right\} \longrightarrow p(x) \propto e^{-S(x)}
   \end{equation*}$$
 
-::: {.callout-caution title="Trick" style="display:inline!important;"}
+::: {.callout-tip title="Trick" style="display:inline!important;"}
   - Introduce _fictitious_ momentum $v \sim \mathcal{N}(0, \mathbb{1})$
   - Normally distributed **independent** of $x$, i.e.
   $$\begin{align*}
-  	p(x)p(v) &\propto e^{-S{(x)}} e^{-\frac{1}{2} v^{T}v}\\
+    p(x, v) &= p(x)p(v) \propto e^{-S{(x)}} e^{-\frac{1}{2} v^{T}v}\\
    	&= e^{-\left[S(x) + \frac{1}{2} v^{T}{v}\right]} \\
-   	&\textcolor{#FD971F}{=} e^{-H(x, v)}
+   	&\textcolor{#02b875}{=} e^{-H(x, v)}
   \end{align*}$$
 :::
 
@@ -169,7 +169,7 @@ If configurations were <span style="color:#00CCFF;">independent</span>, we could
 
 ::: {.column width="45%"}
 
-::: {.callout-tip title="Hamiltonian Dynamics"}
+::: {.callout-important title="Hamiltonian Dynamics"}
 $H = S[x] + \frac{1}{2} v^{T} v \Longrightarrow$
 $$\dot{x} = +\partial_{v} H,
 \hspace{20pt} \dot{v} = -\partial_{x} H$$
@@ -197,13 +197,13 @@ $\left(\dot{x}, \dot{v}\right) = \left(\partial_{v} H, -\partial_{x} H\right)$
 
 <!-- 1. $v_{0} \sim {\mathcal{N}(0, \mathbb{1})}\hspace{76px}$ [\# resample $v$]{.dim-text style="font-family:monospace"} -->
 <!-- 1. [update $\textcolor{#B2F2BB}{v}\quad$]{style="font-family:monospace"} -->
-$v_{1} := \textcolor{#FFD8A8}{\Gamma}(x_{0}; v_{0}) = v_{0} - \frac{\varepsilon}{2} \partial_{x} S(x_{0})\hspace{3px}$
+$v_{1} := \textcolor{#e8590c}{\Gamma}(x_{0}; v_{0}) = v_{0} - \frac{\varepsilon}{2} \partial_{x} S(x_{0})\hspace{3px}$
 
 <!-- 2. [update $\textcolor{#D0BFFF}{x}$]{style="font-family:monospace"} -->
-$x' := \textcolor{#99E9F2}{\Lambda}(x_{0}; v_{1}) = x_{0} + \varepsilon \, v_{1}\hspace{29px}$
+$x' := \textcolor{#0c8599}{\Lambda}(x_{0}; v_{1}) = x_{0} + \varepsilon \, v_{1}\hspace{29px}$
 
 <!-- 3. [update $\textcolor{#B2F2BB}{v}$]{style="font-family:monospace"} -->
-$v' := \textcolor{#FFD8A8}{\Gamma}(x'; v_{1}) = v_{1} - \frac{\varepsilon}{2} \partial_{x} S(x')\hspace{8px}$ 
+$v' := \textcolor{#e8590c}{\Gamma}(x'; v_{1}) = v_{1} - \frac{\varepsilon}{2} \partial_{x} S(x')\hspace{8px}$ 
 
 ::: {.callout-warning title="Warning!"}
 $v_{0} \sim \mathcal{N}(0, \mathbb{1})$ at the _beginning_ of each trajectory
@@ -214,7 +214,7 @@ $v_{0} \sim \mathcal{N}(0, \mathbb{1})$ at the _beginning_ of each trajectory
 :::
 
 ::: {.column width="49%"}
-![](./assets/hmc-vertical-light.svg)
+![](./assets/hmc-vertical-dark.svg)
 :::
 
 ::::
@@ -244,8 +244,8 @@ $v_{0} \sim \mathcal{N}(0, \mathbb{1})$ at the _beginning_ of each trajectory
 <!-- - Use $x'$ as our proposal in the Metropolis-Hastings accept / reject, $A(x'|x)$ -->
 
 $$\begin{align*}
-  \textcolor{#FFD8A8}{\Gamma}: (x, v) \textcolor{#FFD8A8}{\rightarrow} v' &:= v - \frac{\varepsilon}{2} \partial_{x} S(x) \\
-  \textcolor{#99E9F2}{\Lambda}: (x, v) \textcolor{#99E9F2}{\rightarrow} x' &:= x + \varepsilon v
+  \textcolor{#e8590c}{\Gamma}: (x, v) \textcolor{#e8590c}{\rightarrow} v' &:= v - \frac{\varepsilon}{2} \partial_{x} S(x) \\
+  \textcolor{#0c8599}{\Lambda}: (x, v) \textcolor{#0c8599}{\rightarrow} x' &:= x + \varepsilon v
 \end{align*}$$
 
 - We then accept / reject $x'$ using Metropolis-Hastings criteria,  
@@ -253,7 +253,7 @@ $$\begin{align*}
 :::
 
 ::: {.column width="34%"}
-![](./assets/hmc-vertical-light.svg)
+![](./assets/hmc-vertical-dark.svg)
 :::
 
 ::::
@@ -521,44 +521,3 @@ Testing important callout with `default` appearance
   - Nested lists
     - [ ] TODOs
     - [x] Checkboxes ??
-
-## Extras (+ other callouts)
-
-:::: {.bs-callout .bs-callout-default}
-::: {.callout-title}
-Default
-:::
-Note that there are six types of callouts, including:
-`default`, `primary`, `success`, `info`, and `warning`, and `danger`
-::::
-
-:::: {.bs-callout .bs-callout-primary}
-::: {.callout-title}
-Primary
-:::
-::::
-
-:::: {.bs-callout .bs-callout-info}
-::: {.callout-title}
-Info
-:::
-::::
-
-
-::: {.bs-callout .bs-callout-success}
-::: {.callout-title}
-Success
-:::
-::::
-
-:::: {.bs-callout .bs-callout-warning}
-::: {.callout-title}
-Warning!
-:::
-::::
-
-:::: {.bs-callout .bs-callout-danger}
-::: {.callout-title}
-Danger!
-:::
-::::

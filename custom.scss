@@ -218,5 +218,8 @@ $presentation-font-size-root: 30px !default;
 }
 
 .reveal .callout.callout-style-default div.callout-title{
-    font-size: 1.25em!important;
+    font-size: 1.0em!important;
+}
+.callout-title {
+    font-size:1.0em!important;
 }

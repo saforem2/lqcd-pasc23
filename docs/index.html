@@ -551,7 +551,7 @@ Sam Foreman
 \left\{x_{0}, x_{1}, x_{2}, \cdots, x_{N} \right\} \longrightarrow p(x) \propto e^{-S(x)}
 \end{equation*}</span></li>
 </ul>
-<div class="callout callout-caution callout-titled callout-style-default">
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
@@ -563,9 +563,9 @@ Sam Foreman
 <ul>
 <li>Introduce <em>fictitious</em> momentum <span class="math inline">v \sim \mathcal{N}(0, \mathbb{1})</span></li>
 <li>Normally distributed <strong>independent</strong> of <span class="math inline">x</span>, i.e. <span class="math display">\begin{align*}
-p(x)p(v) &amp;\propto e^{-S{(x)}} e^{-\frac{1}{2} v^{T}v}\\
+p(x, v) &amp;= p(x)p(v) \propto e^{-S{(x)}} e^{-\frac{1}{2} v^{T}v}\\
 &amp;= e^{-\left[S(x) + \frac{1}{2} v^{T}{v}\right]} \\
-&amp;\textcolor{#FD971F}{=} e^{-H(x, v)}
+&amp;\textcolor{#02b875}{=} e^{-H(x, v)}
   \end{align*}</span></li>
 </ul>
 </div>
@@ -584,7 +584,7 @@ p(x, v) \propto e^{-S[x]} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}
 </span></li>
 </ul>
 </div><div class="column" style="width:45%;">
-<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
@@ -632,11 +632,11 @@ p(x, v) \propto e^{-S[x]} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}
 <p><span class="dim-text" style="font-family:monospace;">input</span> <span class="math inline">\,\left(x_{0}, v_{0}\right) \rightarrow \left(x', v'\right)\,</span> <span class="dim-text" style="font-family:monospace;">output</span></p>
 <!-- 1. $v_{0} \sim {\mathcal{N}(0, \mathbb{1})}\hspace{76px}$ [\# resample $v$]{.dim-text style="font-family:monospace"} -->
 <!-- 1. [update $\textcolor{#B2F2BB}{v}\quad$]{style="font-family:monospace"} -->
-<p><span class="math inline">v_{1} := \textcolor{#FFD8A8}{\Gamma}(x_{0}; v_{0}) = v_{0} - \frac{\varepsilon}{2} \partial_{x} S(x_{0})\hspace{3px}</span></p>
+<p><span class="math inline">v_{1} := \textcolor{#e8590c}{\Gamma}(x_{0}; v_{0}) = v_{0} - \frac{\varepsilon}{2} \partial_{x} S(x_{0})\hspace{3px}</span></p>
 <!-- 2. [update $\textcolor{#D0BFFF}{x}$]{style="font-family:monospace"} -->
-<p><span class="math inline">x' := \textcolor{#99E9F2}{\Lambda}(x_{0}; v_{1}) = x_{0} + \varepsilon \, v_{1}\hspace{29px}</span></p>
+<p><span class="math inline">x' := \textcolor{#0c8599}{\Lambda}(x_{0}; v_{1}) = x_{0} + \varepsilon \, v_{1}\hspace{29px}</span></p>
 <!-- 3. [update $\textcolor{#B2F2BB}{v}$]{style="font-family:monospace"} -->
-<p><span class="math inline">v' := \textcolor{#FFD8A8}{\Gamma}(x'; v_{1}) = v_{1} - \frac{\varepsilon}{2} \partial_{x} S(x')\hspace{8px}</span></p>
+<p><span class="math inline">v' := \textcolor{#e8590c}{\Gamma}(x'; v_{1}) = v_{1} - \frac{\varepsilon}{2} \partial_{x} S(x')\hspace{8px}</span></p>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -654,7 +654,7 @@ p(x, v) \propto e^{-S[x]} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}
 </div>
 </div>
 </div><div class="column" style="width:49%;">
-<p><img data-src="./assets/hmc-vertical-light.svg"></p>
+<p><img data-src="./assets/hmc-vertical-dark.svg"></p>
 </div>
 </div>
 
@@ -675,15 +675,15 @@ p(x, v) \propto e^{-S[x]} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}
 <li><p>And propose <span class="math inline">x'</span> as the next state in our chain <!-- - which is _accepted_ (or rejected) via Metroplis-Hastings[^accept] --> <!-- - $x'$ is proposed with probability $A(x'|x)$[^accept] --> <!-- - Use $x'$ as our proposal in the Metropolis-Hastings accept / reject, $A(x'|x)$ --></p></li>
 </ul>
 <p><span class="math display">\begin{align*}
-  \textcolor{#FFD8A8}{\Gamma}: (x, v) \textcolor{#FFD8A8}{\rightarrow} v' &amp;:= v - \frac{\varepsilon}{2} \partial_{x} S(x) \\
-  \textcolor{#99E9F2}{\Lambda}: (x, v) \textcolor{#99E9F2}{\rightarrow} x' &amp;:= x + \varepsilon v
+  \textcolor{#e8590c}{\Gamma}: (x, v) \textcolor{#e8590c}{\rightarrow} v' &amp;:= v - \frac{\varepsilon}{2} \partial_{x} S(x) \\
+  \textcolor{#0c8599}{\Lambda}: (x, v) \textcolor{#0c8599}{\rightarrow} x' &amp;:= x + \varepsilon v
 \end{align*}</span></p>
 <ul>
 <li>We then accept / reject <span class="math inline">x'</span> using Metropolis-Hastings criteria,<br>
 <span class="math inline">A(x'|x) = \min\left\{1, \frac{p(x')}{p(x)}\left|\frac{\partial x'}{\partial x}\right|\right\}</span></li>
 </ul>
 </div><div class="column" style="width:34%;">
-<p><img data-src="./assets/hmc-vertical-light.svg"></p>
+<p><img data-src="./assets/hmc-vertical-dark.svg"></p>
 </div>
 </div>
 <aside><ol class="aside-footnotes"><li id="fn4"><p>We <strong>always</strong> start by resampling the momentum, <span class="math inline">v_{0} \sim \mathcal{N}(0, \mathbb{1})</span></p></li></ol></aside></section>
@@ -751,7 +751,7 @@ p(x, v) \propto e^{-S[x]} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}
 <span id="cb1-3"><a href="#cb1-3"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.3012661894610025</code></pre>
+<pre><code>0.38091928431186595</code></pre>
 </div>
 </div>
 <aside class="notes">
@@ -1056,7 +1056,6 @@ flowchart LR
 </div>
 </div>
 </section></section>
-<section>
 <section id="testing-markdown" class="title-slide slide level1 center">
 <h1>Testing Markdown</h1>
 <ul>
@@ -1075,46 +1074,13 @@ flowchart LR
 </ul></li>
 </ul></li>
 </ul>
-</section>
-<section id="extras-other-callouts" class="slide level2 center">
-<h2>Extras (+ other callouts)</h2>
-<div class="bs-callout bs-callout-default">
-<div class="callout-title">
-<p>Default</p>
-</div>
-<p>Note that there are six types of callouts, including: <code>default</code>, <code>primary</code>, <code>success</code>, <code>info</code>, and <code>warning</code>, and <code>danger</code></p>
-</div>
-<div class="bs-callout bs-callout-primary">
-<div class="callout-title">
-<p>Primary</p>
-</div>
-</div>
-<div class="bs-callout bs-callout-info">
-<div class="callout-title">
-<p>Info</p>
-</div>
-</div>
-<div class="bs-callout bs-callout-success">
-<div class="callout-title">
-<p>Success</p>
-</div>
-</div>
-<div class="bs-callout bs-callout-warning">
-<div class="callout-title">
-<p>Warning!</p>
-</div>
-</div>
-<div class="bs-callout bs-callout-danger">
-<div class="callout-title">
-<p>Danger!</p>
-</div>
-</div>
 
 
 <img src="https://raw.githubusercontent.com/saforem2/anl-job-talk/main/docs/assets/anl.svg" class="slide-logo r-stretch"><div class="footer footer-default">
 
 </div>
-</section></section>
+</section>
+
 
     </div>
   </div>

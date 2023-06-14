@@ -18,7 +18,7 @@
     "href": "index.html#python",
     "title": "LQCD @ PASC23",
     "section": "Python",
-    "text": "Python\n\n\nCode\nimport numpy as np\nx = np.random.rand()\nprint(x)\n\n\n0.3012661894610025\n\n\n\nSpeaker notes go here."
+    "text": "Python\n\n\nCode\nimport numpy as np\nx = np.random.rand()\nprint(x)\n\n\n0.38091928431186595\n\n\n\nSpeaker notes go here."
   },
   {
     "objectID": "index.html#columns",
@@ -96,12 +96,5 @@
     "title": "LQCD @ PASC23",
     "section": "Testing Callouts",
     "text": "Testing Callouts\n\n\n\n\n\n\nNote\n\n\nTesting note callouts with default appearance\n\n\n\n\n\n\n\n\n\nTip\n\n\nTesting tip callout with default appearance\n\n\n\n\n\n\n\n\n\nCaution\n\n\nTesting tip callout with default appearance\n\n\n\n\n\n\n\n\n\nWarning\n\n\nTesting warning callout with default appearance\n\n\n\n\n\n\n\n\n\nImportant\n\n\nTesting important callout with default appearance"
-  },
-  {
-    "objectID": "index.html#extras-other-callouts",
-    "href": "index.html#extras-other-callouts",
-    "title": "LQCD @ PASC23",
-    "section": "Extras (+ other callouts)",
-    "text": "Extras (+ other callouts)\n\n\nDefault\n\nNote that there are six types of callouts, including: default, primary, success, info, and warning, and danger\n\n\n\nPrimary\n\n\n\n\nInfo\n\n\n\n\nSuccess\n\n\n\n\nWarning!\n\n\n\n\nDanger!"
   }
 ]

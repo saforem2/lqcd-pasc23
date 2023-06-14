@@ -27,23 +27,23 @@
     --mypurple: #AE81FF;
     --mypink:   #FF67FF;
     --r-background-color: #1c1c1c;
-    --r-main-font-size: 30px;
-    --r-block-margin: 12px;
-    --r-heading-margin: 0 0 12px 0;
-    --r-main-font: Inter, IBM Plex Sans, Open Sans, sans-serif;
-    --r-monospace-font: 'agave Nerd Font', 'JuliaMono', 'Monaco', monospace;
-    --r-code-font: 'agave Nerd Font', 'JuliaMono', 'Monaco', monospace;
-    --r-main-color:  #bdbdbd;
-    --r-heading-line-height: 1.1;
-    --r-heading-letter-spacing: normal;
-    --r-heading-text-transform: none;
-    --r-heading-text-shadow: none;
-    --r-heading-font-weight: 800;
-    --r-heading1-text-shadow: none;
-    --r-heading1-size: 1.5em;
-    --r-heading2-size: 1.25em;
-    --r-heading3-size: 1.2em;
-    --r-heading4-size: 1.1em;
+    /* --r-main-font-size: 30px; */
+    /* --r-block-margin: 12px; */
+    /* --r-heading-margin: 0 0 12px 0; */
+    /* --r-main-font: Inter, IBM Plex Sans, Open Sans, sans-serif; */
+    /* --r-monospace-font: 'agave Nerd Font', 'JuliaMono', 'Monaco', monospace; */
+    /* --r-code-font: 'agave Nerd Font', 'JuliaMono', 'Monaco', monospace; */
+    /* --r-main-color:  #bdbdbd; */
+    /* --r-heading-line-height: 1.1; */
+    /* --r-heading-letter-spacing: normal; */
+    /* --r-heading-text-transform: none; */
+    /* --r-heading-text-shadow: none; */
+    /* --r-heading-font-weight: 800; */
+    /* --r-heading1-text-shadow: none; */
+    /* --r-heading1-size: 1.5em; */
+    /* --r-heading2-size: 1.25em; */
+    /* --r-heading3-size: 1.2em; */
+    /* --r-heading4-size: 1.1em; */
     --r-link-color: #2094F3;
     --r-link-color-dark: #38ADFF;
     --r-link-color-hover: #F92672;
@@ -368,6 +368,9 @@
 }
 
 /* h1 { */
+/*     letter-spacing: -2pt!important; */
+/*     font-family: 'IBMPlexSans', Open Sans, Helvetica, Arial, sans-serif; */
+/* } */
 /*     color: #262626; */
 /*     -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) infinite both; */
 /*             animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) infinite both; */

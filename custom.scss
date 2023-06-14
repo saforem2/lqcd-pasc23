@@ -31,7 +31,6 @@ $blue-text: #29B6F6;
 $body-bg: #1c1c1c;
 $dim-text: #666666;
 $body-color: #bdbdbd;
-$heading-color: #9C9C9C;
 
 $link-color: #42affa;
 $italic-color: #89DDFF;
@@ -44,22 +43,31 @@ $selection-bg: rgba(255, 255, 0, 0.5);
 $selection-color: #1c1c1c;
 
 // fonts
-$font-family-sans-serif: "IBM Plex Sans", "Inter", "Source Sans Pro", Open Sans, Helvetica, sans-serif !default;
+$font-family-sans-serif: "IBM Plex Sans", "Source Sans Pro", "Inter", Open Sans, Helvetica, sans-serif !default;
 $font-family-monospace: "agave Nerd Font", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 
 
 // line height
 $presentation-font-family-line-height: 1.0em !default;
-$presentation-line-height: 1.1em !default;
+$presentation-line-height: 1.0em !default;
 
 // headings
-$presentation-h1-font-size: 1.75em !default;
-$presentation-h2-font-size: 1.5em !default;
+$heading-color: #efefef;
+$presentation-h1-font-size: 1.5em !default;
+$presentation-h2-font-size: 1.33em !default;
 $presentation-h3-font-size: 1.25em !default;
 $presentation-h4-font-size: 1.1em !default;
 $presentation-h5-font-size: 1.05em !default;
 $presentation-h6-font-size: 1.0em !default;
 $presentation-heading-color: $heading-color !default;
+// headings
+// $presentation-heading-line-height: 1.0em !default;
+$presentation-heading-font-weight: 600 !default;
+$presentation-h1-text-shadow: none !default;
+$presentation-heading-text-shadow: none !default;
+$presentation-heading-text-transform: none !default;
+$presentation-heading-letter-spacing: normal !default;
+$presentation-heading-font: IBM Plex Sans Condensed, Open Sans, Playfair Display, Helvetica, sans-serif, $font-family-sans-serif !default;
 
 // links
 $link-color: #42affa !default;
@@ -82,21 +90,7 @@ $code-bg: transparent !default;
 // $tabset-border-color: $code-block-border-color !default;
 
 $presentation-font-size-root: 30px !default;
-$presentation-heading-color: $heading-color !default;
 
-// headings
-$presentation-heading-font: Inter, Open Sans, Playfair Display, Helvetica, sans-serif, $font-family-sans-serif !default;
-$presentation-heading-color: $heading-color !default;
-// $presentation-heading-line-height: 1.0em !default;
-$presentation-heading-letter-spacing: normal !default;
-$presentation-heading-text-transform: none !default;
-$presentation-heading-text-shadow: none !default;
-$presentation-h1-text-shadow: none !default;
-$presentation-heading-font-weight: 800 !default;
-$presentation-h1-font-size: 2.0em !default;
-$presentation-h2-font-size: 1.5em !default;
-$presentation-h3-font-size: 1.25em !default;
-$presentation-h4-font-size: 1em !default;
 
 /*-- scss:rules --*/
 
@@ -221,4 +215,8 @@ $presentation-h4-font-size: 1em !default;
     text-align:left;
     margin-left: auto;
     margin-right: auto;
+}
+
+.reveal .callout.callout-style-default div.callout-title{
+    font-size: 1.25em!important;
 }

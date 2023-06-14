@@ -4,12 +4,14 @@ author: "Sam Foreman"
 date: "2023-06-05"
 format:
   revealjs:
+    slide-number: true
     preview-links: true
     controls: false
     logo: "https://raw.githubusercontent.com/saforem2/anl-job-talk/main/docs/assets/anl.svg"
     history: false
+    margin: 0.1
     theme: [dark, custom.scss]
-    css: [css/default.css, css/callouts.css]
+    css: [css/default.css, css/callouts.css, css/code-callout.css]
     self-contained: false
     embed-resources: false
     self-contained-math: false
@@ -62,10 +64,6 @@ format:
 [^progress]: Completely stalled ?
 <!-- [![](https://github.com/saforem2/physicsSeminar/raw/main/assets/static/feynman.svg)](https://github.com/saforem2/physicsSeminar/raw/main/assets/static/feynman.svg) -->
 <!-- <a href="https://github.com/saforem2/physicsSeminar/raw/main/assets/static/nucleus.svg"><img src="https://github.com/saforem2/physicsSeminar/raw/main/assets/static/nucleus.svg" width="50%" style="text-align:center;"></a>{.fragment .fade-down} -->
-
-## {.centeredslide background-color="white"}
-
-![](https://upload.wikimedia.org/wikipedia/commons/0/00/Standard_Model_of_Elementary_Particles.svg)
 
 ## {.centeredslide background-video="https://d2r55xnwy6nx47.cloudfront.net/uploads/2021/04/Muon_2560_Lede.mp4" background-video-loop="true" background-video-muted="true"}
 
@@ -136,7 +134,7 @@ If configurations were <span style="color:#00CCFF;">independent</span>, we could
 [^target]: Here, $S(x)$ is the action (~ potential energy) of our physical system
 [^approx]: Our variance on this estimator is then $\sigma_{\mathcal{O}}^{2}$
 
-# Hamiltonian Monte Carlo (HMC) {.centeredslide}
+# Hamiltonian Monte Carlo (HMC)[^hmc] {.centeredslide}
 
 - Want to (sequentially) construct a chain of states $\\{x_{i}\\}$,
   such that  as $N \rightarrow \infty$:
@@ -154,13 +152,17 @@ If configurations were <span style="color:#00CCFF;">independent</span>, we could
   \end{align*}$$
 :::
 
+[^hmc]: [Hybrid Monte Carlo, Duane et. al Phys.Lett.B 195 (1987)](https://www.sciencedirect.com/science/article/pii/037026938791197X?via=ihub)
+
+
 # Hamiltonian Monte Carlo (HMC) {.centeredslide}
 
 :::: {.columns}
 
 ::: {.column width="55%"}
 
-- <span style="color:#66bb6a; font-weight: bold;">Idea</span>: Evolve the $(\dot{x}, \dot{v})$ system to get new states $\{x_{i}\}$❗
+- [Idea]{.green-text}: Evolve the $(\dot{x}, \dot{v})$ system to get new states $\{x_{i}\}$❗
+
 - Write the **joint distribution** $p(x, v)$:
   $$
   p(x, v) \propto e^{-S[x]} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}
@@ -169,10 +171,10 @@ If configurations were <span style="color:#00CCFF;">independent</span>, we could
 
 ::: {.column width="45%"}
 
-::: {.callout-important title="Hamiltonian Dynamics"}
+::: {.callout-tip title="Hamiltonian Dynamics"}
 $H = S[x] + \frac{1}{2} v^{T} v \Longrightarrow$
 $$\dot{x} = +\partial_{v} H,
-\hspace{20pt} \dot{v} = -\partial_{x} H$$
+\,\,\dot{v} = -\partial_{x} H$$
 :::
 
 :::
@@ -181,40 +183,40 @@ $$\dot{x} = +\partial_{v} H,
 
 ![](https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/hmc1.svg)
 
-# Leapfrog Integrator (HMC)
+# Leapfrog Integrator (HMC) {.centeredslide}
 
 :::: {.columns}
 
-::: {.column width="50%" style="text-align: center;"}
+::: {.column width="50%" style="text-align: center; margin-left: 1%;"}
 
-::: {.callout-important title="Hamiltonian Dynamics"}
+::: {.callout-important title="Hamiltonian Dynamics" style="font-size:1.1em;"}
 $\left(\dot{x}, \dot{v}\right) = \left(\partial_{v} H, -\partial_{x} H\right)$
 :::
 
-::: {.callout-note title="Leapfrog Step"}
+::: {.callout-note title="Leapfrog Step" style="font-size:1.1em;"}
 
 [input]{.dim-text style="font-family:monospace;"} $\,\left(x_{0}, v_{0}\right) \rightarrow \left(x', v'\right)\,$ [output]{.dim-text style="font-family:monospace;"}
 
 <!-- 1. $v_{0} \sim {\mathcal{N}(0, \mathbb{1})}\hspace{76px}$ [\# resample $v$]{.dim-text style="font-family:monospace"} -->
 <!-- 1. [update $\textcolor{#B2F2BB}{v}\quad$]{style="font-family:monospace"} -->
-$v_{1} := \textcolor{#e8590c}{\Gamma}(x_{0}; v_{0}) = v_{0} - \frac{\varepsilon}{2} \partial_{x} S(x_{0})\hspace{3px}$
+$v_{1} := \textcolor{#EC407A}{\Gamma}(x_{0}; v_{0}) = v_{0} - \frac{\varepsilon}{2} \partial_{x} S(x_{0})\hspace{3px}$
 
 <!-- 2. [update $\textcolor{#D0BFFF}{x}$]{style="font-family:monospace"} -->
-$x' := \textcolor{#0c8599}{\Lambda}(x_{0}; v_{1}) = x_{0} + \varepsilon \, v_{1}\hspace{29px}$
+$x' := \textcolor{#FD971F}{\Lambda}(x_{0}; v_{1}) = x_{0} + \varepsilon \, v_{1}\hspace{29px}$
 
 <!-- 3. [update $\textcolor{#B2F2BB}{v}$]{style="font-family:monospace"} -->
-$v' := \textcolor{#e8590c}{\Gamma}(x'; v_{1}) = v_{1} - \frac{\varepsilon}{2} \partial_{x} S(x')\hspace{8px}$ 
+$v' := \textcolor{#EC407A}{\Gamma}(x'; v_{1}) = v_{1} - \frac{\varepsilon}{2} \partial_{x} S(x')\hspace{8px}$ 
 
-::: {.callout-warning title="Warning!"}
-$v_{0} \sim \mathcal{N}(0, \mathbb{1})$ at the _beginning_ of each trajectory
 :::
 
+::: {.callout-warning title="Warning!"}
+$v_{0} \sim \mathcal{N}(0, \mathbb{1})$ at the [beginning]{.yellow-text} of each trajectory
 :::
 
 :::
 
 ::: {.column width="49%"}
-![](./assets/hmc-vertical-dark.svg)
+![](./assets/hmc/hmc-update-dark.svg){width=66%}
 :::
 
 ::::
@@ -244,8 +246,8 @@ $v_{0} \sim \mathcal{N}(0, \mathbb{1})$ at the _beginning_ of each trajectory
 <!-- - Use $x'$ as our proposal in the Metropolis-Hastings accept / reject, $A(x'|x)$ -->
 
 $$\begin{align*}
-  \textcolor{#e8590c}{\Gamma}: (x, v) \textcolor{#e8590c}{\rightarrow} v' &:= v - \frac{\varepsilon}{2} \partial_{x} S(x) \\
-  \textcolor{#0c8599}{\Lambda}: (x, v) \textcolor{#0c8599}{\rightarrow} x' &:= x + \varepsilon v
+  \textcolor{#ec407a}{\Gamma}: (x, v) \textcolor{#ec407a}{\rightarrow} v' &:= v - \frac{\varepsilon}{2} \partial_{x} S(x) \\
+  \textcolor{#FD971F}{\Lambda}: (x, v) \textcolor{#FD971F}{\rightarrow} x' &:= x + \varepsilon v
 \end{align*}$$
 
 - We then accept / reject $x'$ using Metropolis-Hastings criteria,  
@@ -253,7 +255,7 @@ $$\begin{align*}
 :::
 
 ::: {.column width="34%"}
-![](./assets/hmc-vertical-dark.svg)
+![](./assets/hmc/hmc-update-dark.svg)
 :::
 
 ::::
@@ -284,6 +286,200 @@ $$\begin{align*}
 ![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/hmc_traj_eps05.svg)
 :::
 
+<!-- # L2HMC: Leapfrog Layer -->
+<!-- <img src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/update_steps.svg" style="width:31%;align:left; margin:auto[[]];"> -->
+<!-- <img src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/leapfrog_layer_dark2.svg" style="width:64%;align:right;"> -->
+
+# L2HMC: Leapfrog Layer {.centeredslide}
+
+:::: {.columns}
+
+::: {.column width="35%"}
+![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/update_steps.svg)
+:::
+
+::: {.column width="64%"}
+![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/leapfrog_layer_dark2.svg){width="100%"}
+:::
+::::
+
+![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/network_functions.svg){width="90%"}
+<!-- style="width:90%;align:center;"> -->
+
+# {.centeredslide style="font-size:0.9em;"}
+
+::: {.callout-caution title="L2HMC Update"}
+
+1. Initialization:  
+    - Resample: ${\mathbf{v} \sim \mathcal{N}(0, \mathbb{1})}$, ${d\sim\mathcal{U}(+, -)}$
+    - Construct $\textcolor{#00CCFF}{\xi} =(\mathbf{x}, {\mathbf{v}}, {\pm})$
+
+2. Generate [proposal]{.purple-text} $\xi^{\ast}$ by [initial $\xi$]{.blue-text} through $N_{\mathrm{LF}}$ leapfrog layers:  
+  $$
+  \textcolor{#00CCFF} \xi \hspace{1pt}\xrightarrow[]{\tiny{\mathrm{LF} \text{ layer}}}\xi_{1} \longrightarrow\cdots \longrightarrow \xi_{N_{\mathrm{LF}}} = \textcolor{#AE81FF}{\xi^{\ast}}
+  $$
+4. Compute the Metropolis-Hastings (MH) acceptance (with Jacobian $\mathcal{J}$)
+  $$
+  A({\textcolor{#AE81FF}{\xi^{\ast}}}|{\textcolor{#00CCFF}{\xi}})=
+  \mathrm{min}\left\{1,
+  \frac{p(\textcolor{#AE81FF}{\xi^{\ast}})}{p(\textcolor{#00CCFF}{\xi})}\mathcal{J}\left(\textcolor{#AE81FF}{\xi^{\ast}},\textcolor{#00CCFF}{\xi}\right)\right\}
+  $$
+5. `if training`:  
+    - Evaluate the **loss function**[^loss] $\mathcal{L}\gets \mathcal{L}_{\theta}(\textcolor{#AE81FF}{\xi^{\ast}}, \textcolor{#00CCFF}{\xi})$ and backprop
+6. Evaluate MH criteria and assign the next state in the chain according to
+  $$
+  \mathbf{x}_{i+1}\gets
+  \begin{cases}
+    \textcolor{#AE81FF}{\mathbf{x}^{\ast}} \small{\text{ w/ prob }} A(\textcolor{#AE81FF}{\xi^{\ast}}|\textcolor{#00CCFF}{\xi}) \hspace{29pt}✅ \\
+    \textcolor{#00CCFF}{\mathbf{x}} \hspace{14px}\small{\text{ w/ prob }} 1 - A(\textcolor{#AE81FF}{\xi^{\ast}}|{\textcolor{#00CCFF}{\xi}}) \hspace{10pt}❌
+  \end{cases}
+  $$
+:::
+
+[^loss]: 
+    For simple $\mathbf{x} \in \mathbb{R}^{2}$ example, $\mathcal{L}_{\theta} =
+    A(\xi^{\ast}|\xi)\cdot \left(\mathbf{x}^{\ast} - \mathbf{x}\right)^{2}$
+
+# Toy Example: GMM $\in \mathbb{R}^{2}$ {.centeredslide}
+
+![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/iso_gmm_chains.svg){#fig-gmm width="100%"}
+
+# Lattice Gauge Theory {.centeredslide}
+
+::: {layout-ncol=2}
+
+::: {style="text-align:left;"}
+
+::: {.callout-note title="Link (gauge) Variables"}
+[$$U_{\mu}(n) = e^{i x_{\mu}(n)},$$]{style="font-size: 1.2em;"}
+[$$x_{\mu}(n) \in [-\pi,\pi)$$]{style="font-size: 1.2em;"}
+:::
+
+::: {.callout-important title="Wilson Action"}
+[$$\begin{align*}
+S_{\beta}(x) &= \beta\sum_{P} \cos \textcolor{#00CCFF}{x_{P}}, \text{ with } \\
+\textcolor{#00CCFF}{x_{P}} &= \big\{x_{\mu}(n) + x_{\nu}(n+\hat{\mu}) \\
+&\hspace{20pt}- x_{\mu}(n+\hat{\nu})-x_{\nu}(n)\big\}
+\end{align*}$$]{style="font-size:1.2em;"}
+:::
+
+:::
+![](https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/u1lattice.dark.svg){width="45%"}
+:::
+
+::: {.aside}
+**Note:** $\textcolor{#00CCFF}{x_{P}}$ is the product of links around
+$1\times 1$ square, called a "plaquette"
+:::
+
+# Physical Quantities {}
+
+- To estimate physical quantities, we:
+  - calculate physical observables at **increasing** spatial resolution
+  - perform extrapolation to continuum limit
+
+![](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/static/continuum.svg){.r-stretch}
+
+
+# Topological Freezing {.centeredslide}
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+$$Q = \frac{1}{2\pi}\sum_{P}\left\lfloor x_{P}\right\rfloor  \in \mathbb{Z}$$
+
+::: {.callout-important title="Critical Slowing Down" style="text-align:left;"}
+- $Q$ gets stuck!
+    - as $\beta\longrightarrow \infty$:
+        - $Q \longrightarrow \text{const.}$
+        - $\delta Q = \left(Q^{\ast} - Q\right) \rightarrow 0 \textcolor{#FF5252}{\Longrightarrow}$
+    - \# configs required to estimate errors  
+    **grows exponentially**:
+    [$\tau_{\mathrm{int}}^{Q} \longrightarrow \infty$]{.red-text}
+:::
+
+::: {.aside}
+**Note:**
+$\left\lfloor x_{P} \right\rfloor = x_{P} - 2\pi \left\lfloor\frac{x_{P} + \pi}{2\pi}\right\rfloor$
+:::
+
+:::
+
+::: {.column width="45%"}
+![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/critical_slowing_down.svg){width=85%}
+:::
+
+::::
+
+
+# Integrated Autocorrelation time: $\tau_{\mathrm{int}}$ {.centeredslide}
+
+:::: {.columns}
+
+::: {.column width="33%" style="text-align:left; padding-top: 5%;"}
+::: {.callout-important title="Comparison" style="text-align:left!important;"}
+We can measure the performance by comparing $\tau_{\mathrm{int}}^{Q}$ for the
+[**trained model**]{style="color:#FF2052;"} vs. [**HMC**]{style="color:#9F9F9F;"}.  
+  
+**Note**: [lower]{.red-text} is better
+:::
+:::
+
+::: {.column width=50% style="align:top;"}
+![](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/autocorr_new.svg){width="90%"}
+:::
+
+::::
+
+![](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/charge_histories.svg){.absolute top=400 left=0 width="100%" style="margin-bottom: 1em;margin-top: 1em;"}
+
+# 4D $SU(3)$ Model {.centeredslide}
+
+:::: {.columns}
+
+::: {.column width="45%"}
+- link variables: 
+    - $U_{\mu}(x) \in SU(3)$,
+- \+ conjugate momenta:
+    - $P_{\mu}(x) \in \mathfrak{su}(3)$
+- We maintain a batch of `Nb` lattices, all updated in parallel
+    - `lattice.shape`:
+        - [`[4, Nt, Nx, Ny, Nz, 3, 3]`]{style="font-size: 0.9em;"}
+    - `batch.shape`:
+        - [`[Nb, *lattice.shape]`]{style="font-size: 0.9em;"}
+:::
+
+::: {.column width="45%"}
+![](./assets/leapfrog-layer-minimal/leapfrog-layer-dark.svg)
+:::
+
+::::
+
+# 4D $SU(3)$ Model {.centeredslide}
+
+:::: {.columns}
+
+::: {.column width="45%"}
+- link variables: 
+    - $U_{\mu}(x) \in SU(3)$,
+- \+ conjugate momenta:
+    - $P_{\mu}(x) \in \mathfrak{su}(3)$
+- We maintain a batch of `Nb` lattices, all updated in parallel
+    - `lattice.shape`:
+        - [`[4, Nt, Nx, Ny, Nz, 3, 3]`]{style="font-size: 0.9em;"}
+    - `batch.shape`:
+        - [`[Nb, *lattice.shape]`]{style="font-size: 0.9em;"}
+:::
+
+::: {.column width="45%"}
+![](./assets/leapfrog-layer-default/leapfrog-layer-dark.svg)
+:::
+
+::::
+
+
+
 # Links + References
 
 - This talk: [{{< fa brands github >}} `saforem2/lqcd-pasc23`](https://github.com/saforem2/lqcd-pasc23)
@@ -296,8 +492,23 @@ $$\begin{align*}
 
 # Thank you!
 
+::: {style="text-align:left;"}
+[{{< fa solid home >}} `samforeman.me`](https://samforeman.me)
+$\hspace{15pt}$[{{< fa brands twitter >}} `@saforem2`](https://www.twitter.com/saforem2)
+$\hspace{15pt}$[{{< fa regular paper-plane >}} `foremans@anl.gov`](mailto:///foremans@anl.gov)
+:::
+
+::: {.callout-note title="Acknowledgements"}
+This research used resources of the Argonne Leadership Computing Facility,  
+which is a DOE Office of Science User Facility supported under Contract DE-AC02-06CH11357.
+:::
+
 
 # Extras
+
+## {.centeredslide background-color="white"}
+
+![](https://upload.wikimedia.org/wikipedia/commons/0/00/Standard_Model_of_Elementary_Particles.svg)
 
 ## Python
 
@@ -510,14 +721,3 @@ Testing warning callout with `default` appearance
 ::: {.callout-important title="Important"}
 Testing important callout with `default` appearance
 :::
-
-# Testing Markdown
-
-- Testing lists
-- Testing
-  - Testing
-  - Testing again
-    - triple Checkboxes
-  - Nested lists
-    - [ ] TODOs
-    - [x] Checkboxes ??

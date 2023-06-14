@@ -101,6 +101,7 @@
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto.css" id="theme">
   <link rel="stylesheet" href="css/default.css">
   <link rel="stylesheet" href="css/callouts.css">
+  <link rel="stylesheet" href="css/code-callout.css">
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
@@ -466,11 +467,7 @@ Sam Foreman
 </div>
 </div>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>Completely stalled ? <!-- [![](https://github.com/saforem2/physicsSeminar/raw/main/assets/static/feynman.svg)](https://github.com/saforem2/physicsSeminar/raw/main/assets/static/feynman.svg) --> <!-- <a href="https://github.com/saforem2/physicsSeminar/raw/main/assets/static/nucleus.svg"><img src="https://github.com/saforem2/physicsSeminar/raw/main/assets/static/nucleus.svg" width="50%" style="text-align:center;"></a>{.fragment .fade-down} --></p></li></ol></aside></section>
-<section id="section-1" class="slide level2 centeredslide center" data-background-color="white">
-<h2></h2>
-
-<img data-src="https://upload.wikimedia.org/wikipedia/commons/0/00/Standard_Model_of_Elementary_Particles.svg" class="r-stretch"></section>
-<section id="section-2" class="slide level2 centeredslide center" data-background-video="https://d2r55xnwy6nx47.cloudfront.net/uploads/2021/04/Muon_2560_Lede.mp4" data-background-video-loop="true" data-background-video-muted="true">
+<section id="section-1" class="slide level2 centeredslide center" data-background-video="https://d2r55xnwy6nx47.cloudfront.net/uploads/2021/04/Muon_2560_Lede.mp4" data-background-video-loop="true" data-background-video-muted="true">
 <h2></h2>
 <div style="text-shadow: 0px 0px 10px black; background-color: rgba(22,22,22,0.33); border-radius: 10px; text-align:center; box-shadow:RGBA(0, 0, 0, 0.35) 0px 5px 15px; padding: 0px; padding-left: 1%; padding-right: 1%; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 1em;">
 <p><span style="font-size: 1.75em; font-weight: bold;">Magnetic Moment of the Muon</span></p>
@@ -544,8 +541,8 @@ Sam Foreman
   </span></p>
 <aside><ol class="aside-footnotes"><li id="fn2"><p>Here, <span class="math inline">\sim</span> means “is distributed according to”</p></li><li id="fn3"><p>Our variance on this estimator is then <span class="math inline">\sigma_{\mathcal{O}}^{2}</span></p></li></ol></aside></section>
 
-<section id="hamiltonian-monte-carlo-hmc" class="title-slide slide level1 centeredslide center">
-<h1>Hamiltonian Monte Carlo (HMC)</h1>
+<section id="hamiltonian-monte-carlo-hmchmc" class="title-slide slide level1 centeredslide center">
+<h1>Hamiltonian Monte Carlo (HMC)<sup>1</sup></h1>
 <ul>
 <li>Want to (sequentially) construct a chain of states <span class="math inline">\\{x_{i}\\}</span>, such that as <span class="math inline">N \rightarrow \infty</span>: <span class="math display">\begin{equation*}
 \left\{x_{0}, x_{1}, x_{2}, \cdots, x_{N} \right\} \longrightarrow p(x) \propto e^{-S(x)}
@@ -571,20 +568,20 @@ p(x, v) &amp;= p(x)p(v) \propto e^{-S{(x)}} e^{-\frac{1}{2} v^{T}v}\\
 </div>
 </div>
 </div>
-</section>
+<aside><ol class="aside-footnotes"><li id="fn4"><p><a href="https://www.sciencedirect.com/science/article/pii/037026938791197X?via=ihub">Hybrid Monte Carlo, Duane et. al Phys.Lett.B 195 (1987)</a></p></li></ol></aside></section>
 
-<section id="hamiltonian-monte-carlo-hmc-1" class="title-slide slide level1 centeredslide center">
+<section id="hamiltonian-monte-carlo-hmc" class="title-slide slide level1 centeredslide center">
 <h1>Hamiltonian Monte Carlo (HMC)</h1>
 <div class="columns">
 <div class="column" style="width:55%;">
 <ul>
-<li><span style="color:#66bb6a; font-weight: bold;">Idea</span>: Evolve the <span class="math inline">(\dot{x}, \dot{v})</span> system to get new states <span class="math inline">\{x_{i}\}</span>❗</li>
-<li>Write the <strong>joint distribution</strong> <span class="math inline">p(x, v)</span>: <span class="math display">
+<li><p><span class="green-text">Idea</span>: Evolve the <span class="math inline">(\dot{x}, \dot{v})</span> system to get new states <span class="math inline">\{x_{i}\}</span>❗</p></li>
+<li><p>Write the <strong>joint distribution</strong> <span class="math inline">p(x, v)</span>: <span class="math display">
 p(x, v) \propto e^{-S[x]} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}
-</span></li>
+</span></p></li>
 </ul>
 </div><div class="column" style="width:45%;">
-<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
@@ -594,7 +591,7 @@ p(x, v) \propto e^{-S[x]} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}
 </div>
 <div class="callout-content">
 <p><span class="math inline">H = S[x] + \frac{1}{2} v^{T} v \Longrightarrow</span> <span class="math display">\dot{x} = +\partial_{v} H,
-\hspace{20pt} \dot{v} = -\partial_{x} H</span></p>
+\,\,\dot{v} = -\partial_{x} H</span></p>
 </div>
 </div>
 </div>
@@ -603,10 +600,10 @@ p(x, v) \propto e^{-S[x]} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}
 
 <img data-src="https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/hmc1.svg" class="r-stretch"></section>
 
-<section id="leapfrog-integrator-hmc" class="title-slide slide level1 center">
+<section id="leapfrog-integrator-hmc" class="title-slide slide level1 centeredslide center">
 <h1>Leapfrog Integrator (HMC)</h1>
 <div class="columns">
-<div class="column" style="text-align: center;">
+<div class="column" style="text-align: center; margin-left: 1%;">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -632,11 +629,14 @@ p(x, v) \propto e^{-S[x]} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}
 <p><span class="dim-text" style="font-family:monospace;">input</span> <span class="math inline">\,\left(x_{0}, v_{0}\right) \rightarrow \left(x', v'\right)\,</span> <span class="dim-text" style="font-family:monospace;">output</span></p>
 <!-- 1. $v_{0} \sim {\mathcal{N}(0, \mathbb{1})}\hspace{76px}$ [\# resample $v$]{.dim-text style="font-family:monospace"} -->
 <!-- 1. [update $\textcolor{#B2F2BB}{v}\quad$]{style="font-family:monospace"} -->
-<p><span class="math inline">v_{1} := \textcolor{#e8590c}{\Gamma}(x_{0}; v_{0}) = v_{0} - \frac{\varepsilon}{2} \partial_{x} S(x_{0})\hspace{3px}</span></p>
+<p><span class="math inline">v_{1} := \textcolor{#EC407A}{\Gamma}(x_{0}; v_{0}) = v_{0} - \frac{\varepsilon}{2} \partial_{x} S(x_{0})\hspace{3px}</span></p>
 <!-- 2. [update $\textcolor{#D0BFFF}{x}$]{style="font-family:monospace"} -->
-<p><span class="math inline">x' := \textcolor{#0c8599}{\Lambda}(x_{0}; v_{1}) = x_{0} + \varepsilon \, v_{1}\hspace{29px}</span></p>
+<p><span class="math inline">x' := \textcolor{#FD971F}{\Lambda}(x_{0}; v_{1}) = x_{0} + \varepsilon \, v_{1}\hspace{29px}</span></p>
 <!-- 3. [update $\textcolor{#B2F2BB}{v}$]{style="font-family:monospace"} -->
-<p><span class="math inline">v' := \textcolor{#e8590c}{\Gamma}(x'; v_{1}) = v_{1} - \frac{\varepsilon}{2} \partial_{x} S(x')\hspace{8px}</span></p>
+<p><span class="math inline">v' := \textcolor{#EC407A}{\Gamma}(x'; v_{1}) = v_{1} - \frac{\varepsilon}{2} \partial_{x} S(x')\hspace{8px}</span></p>
+</div>
+</div>
+</div>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -646,15 +646,12 @@ p(x, v) \propto e^{-S[x]} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}
 <p><strong>Warning!</strong></p>
 </div>
 <div class="callout-content">
-<p><span class="math inline">v_{0} \sim \mathcal{N}(0, \mathbb{1})</span> at the <em>beginning</em> of each trajectory</p>
-</div>
-</div>
-</div>
+<p><span class="math inline">v_{0} \sim \mathcal{N}(0, \mathbb{1})</span> at the <span class="yellow-text">beginning</span> of each trajectory</p>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:49%;">
-<p><img data-src="./assets/hmc-vertical-dark.svg"></p>
+<p><img data-src="./assets/hmc/hmc-update-dark.svg" style="width:66.0%"></p>
 </div>
 </div>
 
@@ -675,20 +672,20 @@ p(x, v) \propto e^{-S[x]} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}
 <li><p>And propose <span class="math inline">x'</span> as the next state in our chain <!-- - which is _accepted_ (or rejected) via Metroplis-Hastings[^accept] --> <!-- - $x'$ is proposed with probability $A(x'|x)$[^accept] --> <!-- - Use $x'$ as our proposal in the Metropolis-Hastings accept / reject, $A(x'|x)$ --></p></li>
 </ul>
 <p><span class="math display">\begin{align*}
-  \textcolor{#e8590c}{\Gamma}: (x, v) \textcolor{#e8590c}{\rightarrow} v' &amp;:= v - \frac{\varepsilon}{2} \partial_{x} S(x) \\
-  \textcolor{#0c8599}{\Lambda}: (x, v) \textcolor{#0c8599}{\rightarrow} x' &amp;:= x + \varepsilon v
+  \textcolor{#ec407a}{\Gamma}: (x, v) \textcolor{#ec407a}{\rightarrow} v' &amp;:= v - \frac{\varepsilon}{2} \partial_{x} S(x) \\
+  \textcolor{#FD971F}{\Lambda}: (x, v) \textcolor{#FD971F}{\rightarrow} x' &amp;:= x + \varepsilon v
 \end{align*}</span></p>
 <ul>
 <li>We then accept / reject <span class="math inline">x'</span> using Metropolis-Hastings criteria,<br>
 <span class="math inline">A(x'|x) = \min\left\{1, \frac{p(x')}{p(x)}\left|\frac{\partial x'}{\partial x}\right|\right\}</span></li>
 </ul>
 </div><div class="column" style="width:34%;">
-<p><img data-src="./assets/hmc-vertical-dark.svg"></p>
+<p><img data-src="./assets/hmc/hmc-update-dark.svg"></p>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn4"><p>We <strong>always</strong> start by resampling the momentum, <span class="math inline">v_{0} \sim \mathcal{N}(0, \mathbb{1})</span></p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn5"><p>We <strong>always</strong> start by resampling the momentum, <span class="math inline">v_{0} \sim \mathcal{N}(0, \mathbb{1})</span></p></li></ol></aside></section>
 
-<section id="section-3" class="title-slide slide level1 centeredslide center">
+<section id="section-2" class="title-slide slide level1 centeredslide center">
 <h1></h1>
 <section data-background-iframe="https://chi-feng.github.io/mcmc-demo/app.html" data-background-interactive="">
 </section>
@@ -718,6 +715,252 @@ p(x, v) \propto e^{-S[x]} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}
 </div>
 </div>
 </div>
+<!-- # L2HMC: Leapfrog Layer -->
+<!-- <img src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/update_steps.svg" style="width:31%;align:left; margin:auto[[]];"> -->
+<!-- <img src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/leapfrog_layer_dark2.svg" style="width:64%;align:right;"> -->
+</section>
+
+<section id="l2hmc-leapfrog-layer" class="title-slide slide level1 centeredslide center">
+<h1>L2HMC: Leapfrog Layer</h1>
+<div class="columns">
+<div class="column" style="width:35%;">
+<p><img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/update_steps.svg"></p>
+</div><div class="column" style="width:64%;">
+<p><img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/leapfrog_layer_dark2.svg" style="width:100.0%"></p>
+</div>
+</div>
+<p><img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/network_functions.svg" style="width:90.0%"> <!-- style="width:90%;align:center;"> --></p>
+</section>
+
+<section id="section-3" class="title-slide slide level1 centeredslide center" style="font-size:0.9em;">
+<h1></h1>
+<div class="callout callout-caution callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>L2HMC Update</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li>Initialization:
+<ul>
+<li>Resample: <span class="math inline">{\mathbf{v} \sim \mathcal{N}(0, \mathbb{1})}</span>, <span class="math inline">{d\sim\mathcal{U}(+, -)}</span></li>
+<li>Construct <span class="math inline">\textcolor{#00CCFF}{\xi} =(\mathbf{x}, {\mathbf{v}}, {\pm})</span></li>
+</ul></li>
+<li>Generate <span class="purple-text">proposal</span> <span class="math inline">\xi^{\ast}</span> by <span class="blue-text">initial <span class="math inline">\xi</span></span> through <span class="math inline">N_{\mathrm{LF}}</span> leapfrog layers:<br>
+<span class="math display">
+  \textcolor{#00CCFF} \xi \hspace{1pt}\xrightarrow[]{\tiny{\mathrm{LF} \text{ layer}}}\xi_{1} \longrightarrow\cdots \longrightarrow \xi_{N_{\mathrm{LF}}} = \textcolor{#AE81FF}{\xi^{\ast}}
+  </span></li>
+<li>Compute the Metropolis-Hastings (MH) acceptance (with Jacobian <span class="math inline">\mathcal{J}</span>) <span class="math display">
+  A({\textcolor{#AE81FF}{\xi^{\ast}}}|{\textcolor{#00CCFF}{\xi}})=
+  \mathrm{min}\left\{1,
+  \frac{p(\textcolor{#AE81FF}{\xi^{\ast}})}{p(\textcolor{#00CCFF}{\xi})}\mathcal{J}\left(\textcolor{#AE81FF}{\xi^{\ast}},\textcolor{#00CCFF}{\xi}\right)\right\}
+  </span></li>
+<li><code>if training</code>:
+<ul>
+<li>Evaluate the <strong>loss function</strong><sup>1</sup> <span class="math inline">\mathcal{L}\gets \mathcal{L}_{\theta}(\textcolor{#AE81FF}{\xi^{\ast}}, \textcolor{#00CCFF}{\xi})</span> and backprop</li>
+</ul></li>
+<li>Evaluate MH criteria and assign the next state in the chain according to <span class="math display">
+  \mathbf{x}_{i+1}\gets
+  \begin{cases}
+\textcolor{#AE81FF}{\mathbf{x}^{\ast}} \small{\text{ w/ prob }} A(\textcolor{#AE81FF}{\xi^{\ast}}|\textcolor{#00CCFF}{\xi}) \hspace{29pt}✅ \\
+\textcolor{#00CCFF}{\mathbf{x}} \hspace{14px}\small{\text{ w/ prob }} 1 - A(\textcolor{#AE81FF}{\xi^{\ast}}|{\textcolor{#00CCFF}{\xi}}) \hspace{10pt}❌
+  \end{cases}
+  </span></li>
+</ol>
+</div>
+</div>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn6"><p>For simple <span class="math inline">\mathbf{x} \in \mathbb{R}^{2}</span> example, <span class="math inline">\mathcal{L}_{\theta} = A(\xi^{\ast}|\xi)\cdot \left(\mathbf{x}^{\ast} - \mathbf{x}\right)^{2}</span></p></li></ol></aside></section>
+
+<section id="toy-example-gmm-in-mathbbr2" class="title-slide slide level1 centeredslide center">
+<h1>Toy Example: GMM <span class="math inline">\in \mathbb{R}^{2}</span></h1>
+
+<img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/iso_gmm_chains.svg" id="fig-gmm" style="width:100.0%" class="r-stretch"></section>
+
+<section id="lattice-gauge-theory" class="title-slide slide level1 centeredslide center">
+<h1>Lattice Gauge Theory</h1>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Link (gauge) Variables</strong></p>
+</div>
+<div class="callout-content">
+<p><span style="font-size: 1.2em;"><span class="math display">U_{\mu}(n) = e^{i x_{\mu}(n)},</span></span> <span style="font-size: 1.2em;"><span class="math display">x_{\mu}(n) \in [-\pi,\pi)</span></span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Wilson Action</strong></p>
+</div>
+<div class="callout-content">
+<p><span style="font-size:1.2em;"><span class="math display">\begin{align*}
+S_{\beta}(x) &amp;= \beta\sum_{P} \cos \textcolor{#00CCFF}{x_{P}}, \text{ with } \\
+\textcolor{#00CCFF}{x_{P}} &amp;= \big\{x_{\mu}(n) + x_{\nu}(n+\hat{\mu}) \\
+&amp;\hspace{20pt}- x_{\mu}(n+\hat{\nu})-x_{\nu}(n)\big\}
+\end{align*}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/u1lattice.dark.svg"></p>
+</div>
+</div>
+</div>
+
+<aside><div>
+<p><strong>Note:</strong> <span class="math inline">\textcolor{#00CCFF}{x_{P}}</span> is the product of links around <span class="math inline">1\times 1</span> square, called a “plaquette”</p>
+</div></aside></section>
+
+<section id="physical-quantities" class="title-slide slide level1 center">
+<h1>Physical Quantities</h1>
+<ul>
+<li>To estimate physical quantities, we:
+<ul>
+<li>calculate physical observables at <strong>increasing</strong> spatial resolution</li>
+<li>perform extrapolation to continuum limit</li>
+</ul></li>
+</ul>
+<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/static/continuum.svg" class="r-stretch">
+</section>
+
+<section id="topological-freezing" class="title-slide slide level1 centeredslide center">
+<h1>Topological Freezing</h1>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p><span class="math display">Q = \frac{1}{2\pi}\sum_{P}\left\lfloor x_{P}\right\rfloor  \in \mathbb{Z}</span></p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Critical Slowing Down</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><span class="math inline">Q</span> gets stuck!
+<ul>
+<li>as <span class="math inline">\beta\longrightarrow \infty</span>:
+<ul>
+<li><span class="math inline">Q \longrightarrow \text{const.}</span></li>
+<li><span class="math inline">\delta Q = \left(Q^{\ast} - Q\right) \rightarrow 0 \textcolor{#FF5252}{\Longrightarrow}</span></li>
+</ul></li>
+<li># configs required to estimate errors<br>
+<strong>grows exponentially</strong>: <span class="red-text"><span class="math inline">\tau_{\mathrm{int}}^{Q} \longrightarrow \infty</span></span></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+</div><div class="column" style="width:45%;">
+<p><img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/critical_slowing_down.svg" style="width:85.0%"></p>
+</div>
+</div>
+<aside><div>
+<p><strong>Note:</strong> <span class="math inline">\left\lfloor x_{P} \right\rfloor = x_{P} - 2\pi \left\lfloor\frac{x_{P} + \pi}{2\pi}\right\rfloor</span></p>
+</div></aside></section>
+
+<section id="integrated-autocorrelation-time-tau_mathrmint" class="title-slide slide level1 centeredslide center">
+<h1>Integrated Autocorrelation time: <span class="math inline">\tau_{\mathrm{int}}</span></h1>
+<div class="columns">
+<div class="column" style="text-align:left; padding-top: 5%;">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Comparison</strong></p>
+</div>
+<div class="callout-content">
+<p>We can measure the performance by comparing <span class="math inline">\tau_{\mathrm{int}}^{Q}</span> for the <span style="color:#FF2052;"><strong>trained model</strong></span> vs.&nbsp;<span style="color:#9F9F9F;"><strong>HMC</strong></span>.</p>
+<p><strong>Note</strong>: <span class="red-text">lower</span> is better</p>
+</div>
+</div>
+</div>
+</div><div class="column" style="align:top;">
+<p><img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/autocorr_new.svg" style="width:90.0%"></p>
+</div>
+</div>
+<p><img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/charge_histories.svg" class="absolute" style="margin-bottom: 1em;margin-top: 1em;top: 400px; left: 0px; width: 100%; "></p>
+</section>
+
+<section id="d-su3-model" class="title-slide slide level1 centeredslide center">
+<h1>4D <span class="math inline">SU(3)</span> Model</h1>
+<div class="columns">
+<div class="column" style="width:45%;">
+<ul>
+<li>link variables:
+<ul>
+<li><span class="math inline">U_{\mu}(x) \in SU(3)</span>,</li>
+</ul></li>
+<li>+ conjugate momenta:
+<ul>
+<li><span class="math inline">P_{\mu}(x) \in \mathfrak{su}(3)</span></li>
+</ul></li>
+<li>We maintain a batch of <code>Nb</code> lattices, all updated in parallel
+<ul>
+<li><code>lattice.shape</code>:
+<ul>
+<li><span style="font-size: 0.9em;"><code>[4, Nt, Nx, Ny, Nz, 3, 3]</code></span></li>
+</ul></li>
+<li><code>batch.shape</code>:
+<ul>
+<li><span style="font-size: 0.9em;"><code>[Nb, *lattice.shape]</code></span></li>
+</ul></li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:45%;">
+<p><img data-src="./assets/leapfrog-layer-minimal/leapfrog-layer-dark.svg"></p>
+</div>
+</div>
+</section>
+
+<section id="d-su3-model-1" class="title-slide slide level1 centeredslide center">
+<h1>4D <span class="math inline">SU(3)</span> Model</h1>
+<div class="columns">
+<div class="column" style="width:45%;">
+<ul>
+<li>link variables:
+<ul>
+<li><span class="math inline">U_{\mu}(x) \in SU(3)</span>,</li>
+</ul></li>
+<li>+ conjugate momenta:
+<ul>
+<li><span class="math inline">P_{\mu}(x) \in \mathfrak{su}(3)</span></li>
+</ul></li>
+<li>We maintain a batch of <code>Nb</code> lattices, all updated in parallel
+<ul>
+<li><code>lattice.shape</code>:
+<ul>
+<li><span style="font-size: 0.9em;"><code>[4, Nt, Nx, Ny, Nz, 3, 3]</code></span></li>
+</ul></li>
+<li><code>batch.shape</code>:
+<ul>
+<li><span style="font-size: 0.9em;"><code>[Nb, *lattice.shape]</code></span></li>
+</ul></li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:45%;">
+<p><img data-src="./assets/leapfrog-layer-default/leapfrog-layer-dark.svg"></p>
+</div>
+</div>
 </section>
 
 <section id="links-references" class="title-slide slide level1 center">
@@ -733,7 +976,23 @@ p(x, v) \propto e^{-S[x]} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}
 
 <section id="thank-you" class="title-slide slide level1 center">
 <h1>Thank you!</h1>
-
+<div style="text-align:left;">
+<p><a href="https://samforeman.me"><i class="fa-solid fa-home" aria-label="home"></i> <code>samforeman.me</code></a> <span class="math inline">\hspace{15pt}</span><a href="https://www.twitter.com/saforem2"><i class="fa-brands fa-twitter" aria-label="twitter"></i> <code>@saforem2</code></a> <span class="math inline">\hspace{15pt}</span><a href="mailto:///foremans@anl.gov"><i class="fa-regular fa-paper-plane" aria-label="paper-plane"></i> <code>foremans@anl.gov</code></a></p>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Acknowledgements</strong></p>
+</div>
+<div class="callout-content">
+<p>This research used resources of the Argonne Leadership Computing Facility,<br>
+which is a DOE Office of Science User Facility supported under Contract DE-AC02-06CH11357.</p>
+</div>
+</div>
+</div>
 </section>
 
 <section>
@@ -741,6 +1000,10 @@ p(x, v) \propto e^{-S[x]} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}
 <h1>Extras</h1>
 
 </section>
+<section id="section-4" class="slide level2 centeredslide center" data-background-color="white">
+<h2></h2>
+
+<img data-src="https://upload.wikimedia.org/wikipedia/commons/0/00/Standard_Model_of_Elementary_Particles.svg" class="r-stretch"></section>
 <section id="python" class="slide level2 center">
 <h2>Python</h2>
 <div class="cell" data-execution_count="1">
@@ -751,7 +1014,7 @@ p(x, v) \propto e^{-S[x]} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}
 <span id="cb1-3"><a href="#cb1-3"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.38091928431186595</code></pre>
+<pre><code>0.826620233132132</code></pre>
 </div>
 </div>
 <aside class="notes">
@@ -1055,32 +1318,12 @@ flowchart LR
 </div>
 </div>
 </div>
-</section></section>
-<section id="testing-markdown" class="title-slide slide level1 center">
-<h1>Testing Markdown</h1>
-<ul>
-<li>Testing lists</li>
-<li>Testing
-<ul>
-<li>Testing</li>
-<li>Testing again
-<ul>
-<li>triple Checkboxes</li>
-</ul></li>
-<li>Nested lists
-<ul class="task-list">
-<li><input type="checkbox">TODOs</li>
-<li><input type="checkbox" checked="">Checkboxes ??</li>
-</ul></li>
-</ul></li>
-</ul>
 
 
 <img src="https://raw.githubusercontent.com/saforem2/anl-job-talk/main/docs/assets/anl.svg" class="slide-logo r-stretch"><div class="footer footer-default">
 
 </div>
-</section>
-
+</section></section>
 
     </div>
   </div>
@@ -1133,7 +1376,7 @@ flowchart LR
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',

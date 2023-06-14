@@ -513,73 +513,113 @@ Sam Foreman
 </div>
 </div>
 </section></section>
-<section id="markov-chain-monte-carlo-mcmc" class="title-slide slide level1 centeredslide center" style="font-size: 0.9em;">
+<section id="markov-chain-monte-carlo-mcmc" class="title-slide slide level1 center">
 <h1>Markov Chain Monte Carlo (MCMC)</h1>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div style="padding-left: 1pt; border:1px solid #66BB6A; border-radius:8px; box-shadow: RGBA(0, 0, 0, 0.35) 0px 5px 15px; background-color:#202020">
-<p><span id="green-text">Goal</span>: Generate <strong>independent</strong> samples distributed according to <span class="math inline">\{x_{i}\} \sim p(x)</span></p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Goal</strong></p>
+</div>
+<div class="callout-content">
+<p>Generate <strong>independent</strong> samples <span class="math inline">\{x_{i}\}</span>, s.t.<sup>1</sup> <span class="math display">\{x_{i}\} \sim p(x) \propto e^{-S(x)}</span></p>
+</div>
+</div>
 </div>
 <ul>
-<li><p>Target distribution<sup>1</sup>:<br>
-<span class="math inline">p(x) \propto e^{-S(x)}</span></p></li>
-<li><p>Want to calculate observables <span class="math inline">\mathcal{O}</span>:<br>
-<span class="math inline">\left\langle \mathcal{O}\right\rangle \propto \int \left[\mathcal{D}x\right]\hspace{4pt} {\mathcal{O}(x) e^{-S[x]}}</span></p></li>
+<li>Want to calculate observables <span class="math inline">\mathcal{O}</span>:<br>
+<span class="math inline">\left\langle \mathcal{O}\right\rangle \propto \int \left[\mathcal{D}x\right]\hspace{4pt} {\mathcal{O}(x) e^{-S[x]}}</span></li>
 </ul>
 </div><div class="column" style="width:49%;">
 <p><img data-src="https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/normal_distribution.dark.svg"></p>
 </div>
 </div>
-<p>If configurations are <span style="color:#00CCFF;">independent</span>, we can approximate<sup>2</sup> <span class="math display">
+<p>If configurations were <span style="color:#00CCFF;">independent</span>, we could approximate<sup>2</sup> <span class="math display">
   \left\langle\mathcal{O}\right\rangle \textcolor{#00CCFF}{\simeq} \frac{1}{N}\sum^{N}_{n=1}\mathcal{O}(x_{n})%
   \quad \textcolor{#00CCFF}{\Longrightarrow} \quad \sigma_{\mathcal{O}}^{2} = \frac{1}{N}\mathrm{Var}{\left[\mathcal{O} (x) \right]}%
   </span></p>
-<aside><ol class="aside-footnotes"><li id="fn2"><p>Here, <span class="math inline">S(x)</span> is the action (~ potential energy) of our physical system</p></li><li id="fn3"><p>With error <span class="math inline">\sigma_{\mathcal{O}}^{2}</span></p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>Here, <span class="math inline">\sim</span> means “is distributed according to”</p></li><li id="fn3"><p>Our variance on this estimator is then <span class="math inline">\sigma_{\mathcal{O}}^{2}</span></p></li></ol></aside></section>
 
 <section id="hamiltonian-monte-carlo-hmc" class="title-slide slide level1 centeredslide center">
 <h1>Hamiltonian Monte Carlo (HMC)</h1>
 <ul>
-<li><p>Want to (sequentially) construct a chain of states <span class="math inline">\\{x_{i}\\}</span>, such that as <span class="math inline">N \rightarrow \infty</span>: <span class="math display">\begin{equation}
-\left\{x_{0}, x_{1}, x_{2}, \cdots \right\} \longrightarrow p(x) \equiv {e^{-S(x)}} / {Z}
-\end{equation}</span></p></li>
-<li><p><span class="green-text">Trick:</span></p>
+<li>Want to (sequentially) construct a chain of states <span class="math inline">\\{x_{i}\\}</span>, such that as <span class="math inline">N \rightarrow \infty</span>: <span class="math display">\begin{equation*}
+\left\{x_{0}, x_{1}, x_{2}, \cdots, x_{N} \right\} \longrightarrow p(x) \propto e^{-S(x)}
+\end{equation*}</span></li>
+</ul>
+<div class="callout callout-caution callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Trick</strong></p>
+</div>
+<div class="callout-content">
 <ul>
 <li>Introduce <em>fictitious</em> momentum <span class="math inline">v \sim \mathcal{N}(0, \mathbb{1})</span></li>
 <li>Normally distributed <strong>independent</strong> of <span class="math inline">x</span>, i.e. <span class="math display">\begin{align*}
 p(x)p(v) &amp;\propto e^{-S{(x)}} e^{-\frac{1}{2} v^{T}v}\\
 &amp;= e^{-\left[S(x) + \frac{1}{2} v^{T}{v}\right]} \\
-&amp;\textcolor{#63ff5b}{=} e^{-H(x, v)}
-\end{align*}</span></li>
-</ul></li>
+&amp;\textcolor{#FD971F}{=} e^{-H(x, v)}
+  \end{align*}</span></li>
 </ul>
+</div>
+</div>
+</div>
 </section>
 
-<section id="hamiltonian-monte-carlo-hmc-1" class="title-slide slide level1 center">
+<section id="hamiltonian-monte-carlo-hmc-1" class="title-slide slide level1 centeredslide center">
 <h1>Hamiltonian Monte Carlo (HMC)</h1>
-<ul>
-<li><span style="color:#66bb6a; font-weight: bold;">Idea</span>: Evolve the <span class="math inline">(\dot{x}, \dot{v})</span> system to get new states <span class="math inline">\\{x_{i}\\}</span>❗</li>
-<li>Write the <strong>joint distribution</strong> <span class="math inline">p(x, v)</span>: <span class="math display">p(x, v) = p(x) p(v) \propto e^{-S[x]} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}</span></li>
-</ul>
 <div class="columns">
-<div class="column" style="width:35%;">
-<div class="note-green">
-<p><span style="color: #66BB6A; font-weight: bold;">Hamiltonian Dynamics:</span> <span class="math display">\begin{align*}
-  \dot{x} &amp;= +\partial_{v} H\\
-  \dot{v} &amp;= -\partial_{x} H
-  \end{align*}</span></p>
+<div class="column" style="width:55%;">
+<ul>
+<li><span style="color:#66bb6a; font-weight: bold;">Idea</span>: Evolve the <span class="math inline">(\dot{x}, \dot{v})</span> system to get new states <span class="math inline">\{x_{i}\}</span>❗</li>
+<li>Write the <strong>joint distribution</strong> <span class="math inline">p(x, v)</span>: <span class="math display">
+p(x, v) \propto e^{-S[x]} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}
+</span></li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-</div><div class="column" style="width:65%;">
-<p><img data-src="https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/hmc1.svg"></p>
+<p><strong>Hamiltonian Dynamics</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math inline">H = S[x] + \frac{1}{2} v^{T} v \Longrightarrow</span> <span class="math display">\dot{x} = +\partial_{v} H,
+\hspace{20pt} \dot{v} = -\partial_{x} H</span></p>
 </div>
 </div>
-</section>
+</div>
+</div>
+</div>
+
+<img data-src="https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/hmc1.svg" class="r-stretch"></section>
 
 <section id="leapfrog-integrator-hmc" class="title-slide slide level1 center">
 <h1>Leapfrog Integrator (HMC)</h1>
-<ul>
-<li>Numerically integrate the <span class="math inline">(\dot{x}, \dot{v})</span> system<sup>1</sup>:<br>
-<span class="math inline">\dot{x} = \partial_{v} H \quad \dot{v} = - \partial_{x} H</span></li>
-</ul>
+<div class="columns">
+<div class="column" style="text-align: center;">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Hamiltonian Dynamics</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math inline">\left(\dot{x}, \dot{v}\right) = \left(\partial_{v} H, -\partial_{x} H\right)</span></p>
+</div>
+</div>
+</div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -589,20 +629,38 @@ p(x)p(v) &amp;\propto e^{-S{(x)}} e^{-\frac{1}{2} v^{T}v}\\
 <p><strong>Leapfrog Step</strong></p>
 </div>
 <div class="callout-content">
-<p>Testing note callouts with <code>default</code> appearance, no Icon <!-- [Leapfrog Step:]{.green-text}</b> </span> --> <span class="math inline">\hspace{10px}(x, v) \rightarrow (x', v')</span></p>
-<ol type="1">
-<li><span class="math inline">v_{0} \sim {\mathcal{N}(0, \mathbb{1})}\hspace{10px}</span> <span style="color:#666666;"> resample <span class="math inline">v\hspace{10pt}</span></span></li>
-<li><span class="math inline">v_{1} = v_{0} - \frac{\varepsilon}{2} \partial_{x} S(x_{0})\hspace{10px}</span> <span class="dim-text">update <span class="math inline">v</span></span></li>
-<li><span class="math inline">x' = x + \varepsilon v_{1}</span></li>
-<li><span class="math inline">v' = v_{1} - \frac{\varepsilon}{2} \partial_{x} S(x')</span></li>
-</ol>
+<p><span class="dim-text" style="font-family:monospace;">input</span> <span class="math inline">\,\left(x_{0}, v_{0}\right) \rightarrow \left(x', v'\right)\,</span> <span class="dim-text" style="font-family:monospace;">output</span></p>
+<!-- 1. $v_{0} \sim {\mathcal{N}(0, \mathbb{1})}\hspace{76px}$ [\# resample $v$]{.dim-text style="font-family:monospace"} -->
+<!-- 1. [update $\textcolor{#B2F2BB}{v}\quad$]{style="font-family:monospace"} -->
+<p><span class="math inline">v_{1} := \textcolor{#FFD8A8}{\Gamma}(x_{0}; v_{0}) = v_{0} - \frac{\varepsilon}{2} \partial_{x} S(x_{0})\hspace{3px}</span></p>
+<!-- 2. [update $\textcolor{#D0BFFF}{x}$]{style="font-family:monospace"} -->
+<p><span class="math inline">x' := \textcolor{#99E9F2}{\Lambda}(x_{0}; v_{1}) = x_{0} + \varepsilon \, v_{1}\hspace{29px}</span></p>
+<!-- 3. [update $\textcolor{#B2F2BB}{v}$]{style="font-family:monospace"} -->
+<p><span class="math inline">v' := \textcolor{#FFD8A8}{\Gamma}(x'; v_{1}) = v_{1} - \frac{\varepsilon}{2} \partial_{x} S(x')\hspace{8px}</span></p>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<p><strong>Warning!</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math inline">v_{0} \sim \mathcal{N}(0, \mathbb{1})</span> at the <em>beginning</em> of each trajectory</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:49%;">
+<p><img data-src="./assets/hmc-vertical-light.svg"></p>
 </div>
 </div>
 
 <aside><div>
 <p><strong>Note</strong>: The gradient of the action, <span class="math inline">\partial_{x} S(x)</span> is called the <em>force</em></p>
-</div><ol class="aside-footnotes"><li id="fn4"><p>Here, <span class="math inline">\varepsilon</span> is a chosen fixed step-size</p></li></ol></aside></section>
+</div></aside></section>
 
 <section id="hmc-update" class="title-slide slide level1 center">
 <h1>HMC Update</h1>
@@ -628,12 +686,38 @@ p(x)p(v) &amp;\propto e^{-S{(x)}} e^{-\frac{1}{2} v^{T}v}\\
 <p><img data-src="./assets/hmc-vertical-light.svg"></p>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn5"><p>We <strong>always</strong> start by resampling the momentum, <span class="math inline">v_{0} \sim \mathcal{N}(0, \mathbb{1})</span></p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn4"><p>We <strong>always</strong> start by resampling the momentum, <span class="math inline">v_{0} \sim \mathcal{N}(0, \mathbb{1})</span></p></li></ol></aside></section>
 
 <section id="section-3" class="title-slide slide level1 centeredslide center">
 <h1></h1>
 <section data-background-iframe="https://chi-feng.github.io/mcmc-demo/app.html" data-background-interactive="">
 </section>
+</section>
+
+<section id="issues-with-hmc" class="title-slide slide level1 center">
+<h1>Issues with HMC</h1>
+<ul>
+<li>What do we want in a good sampler?
+<ul>
+<li><strong>Fast mixing</strong> (small autocorrelations)</li>
+<li><strong>Fast burn-in</strong> (quick convergence)</li>
+</ul></li>
+<li>Problems with HMC:
+<ul>
+<li>Energy levels selected randomly <span class="math inline">\rightarrow</span> <strong>slow mixing</strong></li>
+<li>Cannot easily traverse low-density zones <span class="math inline">\rightarrow</span> <strong>slow convergence</strong></li>
+</ul></li>
+</ul>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/hmc_traj_eps025.svg"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/hmc_traj_eps05.svg"></p>
+</div>
+</div>
+</div>
 </section>
 
 <section id="links-references" class="title-slide slide level1 center">
@@ -667,7 +751,7 @@ p(x)p(v) &amp;\propto e^{-S{(x)}} e^{-\frac{1}{2} v^{T}v}\\
 <span id="cb1-3"><a href="#cb1-3"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.25612748519935635</code></pre>
+<pre><code>0.3012661894610025</code></pre>
 </div>
 </div>
 <aside class="notes">
@@ -915,7 +999,7 @@ flowchart LR
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>Testing note callouts with <code>default</code> appearance, no Icon</p>
+<p>Testing note callouts with <code>default</code> appearance</p>
 </div>
 </div>
 </div>
@@ -928,7 +1012,20 @@ flowchart LR
 <p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
-<p>Testing tip callout with <code>default</code> appearance, no icon</p>
+<p>Testing tip callout with <code>default</code> appearance</p>
+</div>
+</div>
+</div>
+<div class="callout callout-caution callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Caution</strong></p>
+</div>
+<div class="callout-content">
+<p>Testing tip callout with <code>default</code> appearance</p>
 </div>
 </div>
 </div>
@@ -941,7 +1038,7 @@ flowchart LR
 <p><strong>Warning</strong></p>
 </div>
 <div class="callout-content">
-<p>Testing warning callout with <code>default</code> appearance, no icon</p>
+<p>Testing warning callout with <code>default</code> appearance</p>
 </div>
 </div>
 </div>
@@ -954,10 +1051,14 @@ flowchart LR
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<p>Testing important callout with <code>default</code> appearance, no icon</p>
+<p>Testing important callout with <code>default</code> appearance</p>
 </div>
 </div>
 </div>
+</section></section>
+<section>
+<section id="testing-markdown" class="title-slide slide level1 center">
+<h1>Testing Markdown</h1>
 <ul>
 <li>Testing lists</li>
 <li>Testing

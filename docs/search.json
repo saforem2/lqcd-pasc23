@@ -18,7 +18,7 @@
     "href": "index.html#python",
     "title": "LQCD @ PASC23",
     "section": "Python",
-    "text": "Python\n\n\nCode\nimport numpy as np\nx = np.random.rand()\nprint(x)\n\n\n0.25612748519935635\n\n\n\nSpeaker notes go here."
+    "text": "Python\n\n\nCode\nimport numpy as np\nx = np.random.rand()\nprint(x)\n\n\n0.3012661894610025\n\n\n\nSpeaker notes go here."
   },
   {
     "objectID": "index.html#columns",
@@ -95,7 +95,7 @@
     "href": "index.html#testing-callouts",
     "title": "LQCD @ PASC23",
     "section": "Testing Callouts",
-    "text": "Testing Callouts\n\n\n\n\n\n\nNote\n\n\nTesting note callouts with default appearance, no Icon\n\n\n\n\n\n\n\n\n\nTip\n\n\nTesting tip callout with default appearance, no icon\n\n\n\n\n\n\n\n\n\nWarning\n\n\nTesting warning callout with default appearance, no icon\n\n\n\n\n\n\n\n\n\nImportant\n\n\nTesting important callout with default appearance, no icon\n\n\n\n\nTesting lists\nTesting\n\nTesting\nTesting again\n\ntriple Checkboxes\n\nNested lists\n\nTODOs\nCheckboxes ??"
+    "text": "Testing Callouts\n\n\n\n\n\n\nNote\n\n\nTesting note callouts with default appearance\n\n\n\n\n\n\n\n\n\nTip\n\n\nTesting tip callout with default appearance\n\n\n\n\n\n\n\n\n\nCaution\n\n\nTesting tip callout with default appearance\n\n\n\n\n\n\n\n\n\nWarning\n\n\nTesting warning callout with default appearance\n\n\n\n\n\n\n\n\n\nImportant\n\n\nTesting important callout with default appearance"
   },
   {
     "objectID": "index.html#extras-other-callouts",

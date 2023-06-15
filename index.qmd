@@ -24,6 +24,8 @@ format:
     fig-align: center
     execute:
       freeze: auto
+    mermaid:
+      theme: neutral
 ---
 
 # {.centeredslide background-iframe="https://saforem2.github.io/grid-worms-animation/" loading="lazy"}
@@ -197,15 +199,11 @@ $\left(\dot{x}, \dot{v}\right) = \left(\partial_{v} H, -\partial_{x} H\right)$
 
 [input]{.dim-text style="font-family:monospace;"} $\,\left(x_{0}, v_{0}\right) \rightarrow \left(x', v'\right)\,$ [output]{.dim-text style="font-family:monospace;"}
 
-<!-- 1. $v_{0} \sim {\mathcal{N}(0, \mathbb{1})}\hspace{76px}$ [\# resample $v$]{.dim-text style="font-family:monospace"} -->
-<!-- 1. [update $\textcolor{#B2F2BB}{v}\quad$]{style="font-family:monospace"} -->
-$v_{1} := \textcolor{#EC407A}{\Gamma}(x_{0}; v_{0}) = v_{0} - \frac{\varepsilon}{2} \partial_{x} S(x_{0})\hspace{3px}$
+$v_{1} := \textcolor{#FB6896}{\Gamma}(x_{0}; v_{0}) = v_{0} - \frac{\varepsilon}{2} \partial_{x} S(x_{0})\hspace{3px}$
 
-<!-- 2. [update $\textcolor{#D0BFFF}{x}$]{style="font-family:monospace"} -->
 $x' := \textcolor{#FD971F}{\Lambda}(x_{0}; v_{1}) = x_{0} + \varepsilon \, v_{1}\hspace{29px}$
 
-<!-- 3. [update $\textcolor{#B2F2BB}{v}$]{style="font-family:monospace"} -->
-$v' := \textcolor{#EC407A}{\Gamma}(x'; v_{1}) = v_{1} - \frac{\varepsilon}{2} \partial_{x} S(x')\hspace{8px}$ 
+$v' := \textcolor{#FB6896}{\Gamma}(x'; v_{1}) = v_{1} - \frac{\varepsilon}{2} \partial_{x} S(x')\hspace{8px}$ 
 
 :::
 
@@ -216,7 +214,7 @@ $v_{0} \sim \mathcal{N}(0, \mathbb{1})$ at the [beginning]{.yellow-text} of each
 :::
 
 ::: {.column width="49%"}
-![](./assets/hmc/hmc-update-dark.svg){width=66%}
+![](./assets/hmc/hmc-update-dark.svg){width=60%}
 :::
 
 ::::
@@ -364,7 +362,7 @@ S_{\beta}(x) &= \beta\sum_{P} \cos \textcolor{#00CCFF}{x_{P}}, \text{ with } \\
 :::
 
 :::
-![](https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/u1lattice.dark.svg){width="45%"}
+![](https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/u1lattice.dark.svg){width="35%"}
 :::
 
 ::: {.aside}
@@ -635,7 +633,13 @@ $$y = w_0 * x_0 + w_1 * x_1 + w_2 * x_2$$
 
 
 ```{mermaid}
-%%{init: { "theme": "dark", "fontFamily": "monospace", "logLevel": "debug", "deterministicIds": true, "flowchart": { "htmlLabels": true}, "sequence": { "mirrorActors": true } } }%%
+%%| theme: dark
+%%| fontFamily: monospace
+%%| determinsticIds: true
+%%| flowchart:
+%%|   htmlLabels: true
+%%| sequence:
+%%|   mirrorActors: true
 flowchart LR
   subgraph X0["GPU0"]
     direction LR

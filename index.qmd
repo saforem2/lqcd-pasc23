@@ -2,6 +2,7 @@
 title: "LQCD @ PASC23"
 author: "Sam Foreman"
 date: "2023-06-05"
+bibliography: references.bib
 format:
   revealjs:
     slide-number: true
@@ -45,7 +46,7 @@ format:
 :::: {.columns}
 
 ::: {.column width="60%"}
-- <span class="yellow">{{< fa solid bolt >}}</span> Electricity & Magnetism <span class="red">{{< fa solid magnet >}}</span>
+- [{{< fa solid bolt >}}]{.yellow-text} Electricity & Magnetism [{{< fa solid magnet >}}]{.red-text}
 - <span class="purple">{{< fa solid atom >}}</span> Quantum Field Theory
   - Nuclear interactions
     - Strong + Weak Force
@@ -76,13 +77,17 @@ format:
 $a_{\mu} = \frac{(g_{\mu} - 2)}{2}$
 :::
 
-Can Lattice QCD resolve this?  
-<span style="font-size:0.8em; color: var(--dim-color); padding-bottom: 1em;">new physics??</span>  
+[$a_{\mu}^{\mathrm{exp}} - a_{\mu}^{\mathrm{SM}} = \left(25.1 \pm 5.9\right)\cdot 10^{-10}$]{.dim-text}
 
-::: {.aside style="text-shadow: 0px 0px 10px black; text-align: center;"}
-$\left(\delta a_{\mu}\right)^{\mathrm{exp}}_{\mathrm{th}} = 5.02 \times 10^{-9}$
+<!-- <span style="font-size:0.8em; color: var(--dim-color); padding-bottom: 1em;">new physics??</span>   -->
+[Can Lattice QCD resolve this?]{.dim-text}  
+[@wittig2023progress]
 
-:::
+<!-- ::: {.aside style="text-shadow: 0px 0px 10px black; text-align: center;"} -->
+<!-- From [@wittig2023progress],   -->
+<!-- Obviously, an independent cross-check of the BMW lattice result for   -->
+<!-- > $a_{\mu}^{\mathrm{hvp, LO}}$ with sub-percent precision is badly needed. -->
+<!-- ::: -->
 
 :::
 
@@ -136,13 +141,11 @@ If configurations were <span style="color:#00CCFF;">independent</span>, we could
 [^target]: Here, $S(x)$ is the action (~ potential energy) of our physical system
 [^approx]: Our variance on this estimator is then $\sigma_{\mathcal{O}}^{2}$
 
-# Hamiltonian Monte Carlo (HMC)[^hmc] {.centeredslide}
+# Hamiltonian Monte Carlo (HMC)[^hmc]
 
-- Want to (sequentially) construct a chain of states $\\{x_{i}\\}$,
-  such that  as $N \rightarrow \infty$:
-  $$\begin{equation*}
-  \left\{x_{0}, x_{1}, x_{2}, \cdots, x_{N} \right\} \longrightarrow p(x) \propto e^{-S(x)}
-  \end{equation*}$$
+- Want to (sequentially) construct a chain of states $x_{0} \rightarrow x_{1} \rightarrow \cdots \rightarrow x_{N}$  
+  such that, as $N \rightarrow \infty$: $$\left\{x_{i}, x_{i+1}, x_{i+2}, \cdots, x_{N} \right\}
+  \longrightarrow p(x) \propto e^{-S(x)}$$
 
 ::: {.callout-tip title="Trick" style="display:inline!important;"}
   - Introduce _fictitious_ momentum $v \sim \mathcal{N}(0, \mathbb{1})$
@@ -154,7 +157,8 @@ If configurations were <span style="color:#00CCFF;">independent</span>, we could
   \end{align*}$$
 :::
 
-[^hmc]: [Hybrid Monte Carlo, Duane et. al Phys.Lett.B 195 (1987)](https://www.sciencedirect.com/science/article/pii/037026938791197X?via=ihub)
+[^hmc]: Fun fact: HMC was _originally_ invented for LQCD! [@Duane:1987de]
+<!-- [Hybrid Monte Carlo, Duane et. al Phys.Lett.B 195 (1987)](https://www.sciencedirect.com/science/article/pii/037026938791197X?via=ihub) -->
 
 
 # Hamiltonian Monte Carlo (HMC) {.centeredslide}
@@ -185,35 +189,37 @@ $$\dot{x} = +\partial_{v} H,
 
 ![](https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/hmc1.svg)
 
-# Leapfrog Integrator (HMC) {.centeredslide}
+# Leapfrog Integrator (HMC)
 
-:::: {.columns}
+:::: {.columns style="text-align:center;"}
 
-::: {.column width="50%" style="text-align: center; margin-left: 1%;"}
+::: {.column width="50%" style="text-align: left!important;"}
 
-::: {.callout-important title="Hamiltonian Dynamics" style="font-size:1.1em;"}
+::: {.callout-tip title="Hamiltonian Dynamics" style="font-size:1.1em;"}
 $\left(\dot{x}, \dot{v}\right) = \left(\partial_{v} H, -\partial_{x} H\right)$
 :::
 
-::: {.callout-note title="Leapfrog Step" style="font-size:1.1em;"}
+::: {.callout-note title="Leapfrog Step"}
 
-[input]{.dim-text style="font-family:monospace;"} $\,\left(x_{0}, v_{0}\right) \rightarrow \left(x', v'\right)\,$ [output]{.dim-text style="font-family:monospace;"}
+[input]{.dim-text style="font-family:monospace;"} $\,\left(x, v\right) \rightarrow \left(x', v'\right)\,$ [output]{.dim-text style="font-family:monospace;"}
 
-$v_{1} := \textcolor{#FB6896}{\Gamma}(x_{0}; v_{0}) = v_{0} - \frac{\varepsilon}{2} \partial_{x} S(x_{0})\hspace{3px}$
-
-$x' := \textcolor{#FD971F}{\Lambda}(x_{0}; v_{1}) = x_{0} + \varepsilon \, v_{1}\hspace{29px}$
-
-$v' := \textcolor{#FB6896}{\Gamma}(x'; v_{1}) = v_{1} - \frac{\varepsilon}{2} \partial_{x} S(x')\hspace{8px}$ 
+$$\begin{align*}
+\tilde{v} &:= \textcolor{#FB6896}{\Gamma}(x; v)\hspace{2.2pt} = v - \frac{\varepsilon}{2} \partial_{x} S(x) \\
+x' &:= \textcolor{#A64F00}{\Lambda}(x; \tilde{v}) \, =  x + \varepsilon \, \tilde{v} \\
+v' &:= \textcolor{#FB6896}{\Gamma}(x'; \tilde{v}) = \tilde{v} - \frac{\varepsilon}{2} \partial_{x} S(x')
+\end{align*}$$
 
 :::
 
 ::: {.callout-warning title="Warning!"}
-$v_{0} \sim \mathcal{N}(0, \mathbb{1})$ at the [beginning]{.yellow-text} of each trajectory
-:::
+[Resample $v_{0} \sim \mathcal{N}(0, \mathbb{1})$]{style="text-align:left;"}  
+[at the [beginning]{.yellow-text} of each trajectory]{style="text-align:left;"}
 
 :::
 
-::: {.column width="49%"}
+:::
+
+::: {.column width="49%" style="text-align:left;"}
 ![](./assets/hmc/hmc-update-dark.svg){width=60%}
 :::
 
@@ -244,8 +250,8 @@ $v_{0} \sim \mathcal{N}(0, \mathbb{1})$ at the [beginning]{.yellow-text} of each
 <!-- - Use $x'$ as our proposal in the Metropolis-Hastings accept / reject, $A(x'|x)$ -->
 
 $$\begin{align*}
-  \textcolor{#ec407a}{\Gamma}: (x, v) \textcolor{#ec407a}{\rightarrow} v' &:= v - \frac{\varepsilon}{2} \partial_{x} S(x) \\
-  \textcolor{#FD971F}{\Lambda}: (x, v) \textcolor{#FD971F}{\rightarrow} x' &:= x + \varepsilon v
+  \textcolor{#FB6896}{\Gamma}: (x, v) \textcolor{#FB6896}{\rightarrow} v' &:= v - \frac{\varepsilon}{2} \partial_{x} S(x) \\
+  \textcolor{#A64F00}{\Lambda}: (x, v) \textcolor{#A64F00}{\rightarrow} x' &:= x + \varepsilon v
 \end{align*}$$
 
 - We then accept / reject $x'$ using Metropolis-Hastings criteria,  
@@ -328,8 +334,8 @@ $$\begin{align*}
   $$
   \mathbf{x}_{i+1}\gets
   \begin{cases}
-    \textcolor{#AE81FF}{\mathbf{x}^{\ast}} \small{\text{ w/ prob }} A(\textcolor{#AE81FF}{\xi^{\ast}}|\textcolor{#00CCFF}{\xi}) \hspace{29pt}✅ \\
-    \textcolor{#00CCFF}{\mathbf{x}} \hspace{14px}\small{\text{ w/ prob }} 1 - A(\textcolor{#AE81FF}{\xi^{\ast}}|{\textcolor{#00CCFF}{\xi}}) \hspace{10pt}❌
+  \textcolor{#AE81FF}{\mathbf{x}^{\ast}} \small{\text{ w/ prob }} A(\textcolor{#AE81FF}{\xi^{\ast}}|\textcolor{#00CCFF}{\xi}) \hspace{26pt} ✅ \\
+  \textcolor{#00CCFF}{\mathbf{x}} \hspace{5pt}\small{\text{ w/ prob }} 1 - A(\textcolor{#AE81FF}{\xi^{\ast}}|{\textcolor{#00CCFF}{\xi}}) \hspace{10pt} 🚫
   \end{cases}
   $$
 :::
@@ -356,8 +362,8 @@ $$\begin{align*}
 ::: {.callout-important title="Wilson Action"}
 [$$\begin{align*}
 S_{\beta}(x) &= \beta\sum_{P} \cos \textcolor{#00CCFF}{x_{P}}, \text{ with } \\
-\textcolor{#00CCFF}{x_{P}} &= \big\{x_{\mu}(n) + x_{\nu}(n+\hat{\mu}) \\
-&\hspace{20pt}- x_{\mu}(n+\hat{\nu})-x_{\nu}(n)\big\}
+\textcolor{#00CCFF}{x_{P}} &= \big[x_{\mu}(n) + x_{\nu}(n+\hat{\mu}) \\
+&\hspace{20pt}- x_{\mu}(n+\hat{\nu})-x_{\nu}(n)\big]
 \end{align*}$$]{style="font-size:1.2em;"}
 :::
 
@@ -410,6 +416,23 @@ $\left\lfloor x_{P} \right\rfloor = x_{P} - 2\pi \left\lfloor\frac{x_{P} + \pi}{
 
 ::::
 
+# Loss Function
+
+- Want to maximize the expected squared charge difference:
+
+  $$\begin{equation*}
+  \mathcal{L}(\theta) = \textcolor{#228BE6}{\mathbb{E}_{p(\xi)}}\big[-\textcolor{#FA5252}{{\delta Q}}^{2}_{\textcolor{#FA5252}{\mathbb{R}}}(\xi', \xi)\cdot A(\xi'|\xi)\big]
+  \end{equation*}$$
+  
+- Where $\delta Q_{\mathbb{R}}$ is the _tunneling rate_:
+  $$\begin{equation*}
+  \textcolor{#FA5252}{\delta Q_{\mathbb{R}}}(\xi',\xi)=\left|Q_{\mathbb{R}}(x') - Q_{\mathbb{R}}(x)\right|
+  \end{equation*}$$
+
+- $A(\xi'|\xi)$ is the probability of accepting the proposal $\xi'$:
+  $$\begin{equation*}
+  A(\xi'|\xi) = \mathrm{min}\left( 1, \frac{p(\xi')}{p(\xi)}\left|\frac{\partial \xi'}{\partial \xi^{T}}\right|\right)
+  \end{equation*}$$
 
 # Integrated Autocorrelation time: $\tau_{\mathrm{int}}$ {.centeredslide}
 
@@ -432,11 +455,108 @@ We can measure the performance by comparing $\tau_{\mathrm{int}}^{Q}$ for the
 
 ![](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/charge_histories.svg){.absolute top=400 left=0 width="100%" style="margin-bottom: 1em;margin-top: 1em;"}
 
+
+# Integrated Autocorrelation Time {.centeredslide}
+
+![](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/tint1.svg){width="100%"}
+
+
+# Interpretation {.centeredslide}
+
+:::: {.columns style="margin-left:1pt;"}
+
+::: {.column width="36%"}
+
+[Deviation in $x_{P}$]{.dim-text style="text-align:center; font-size:0.8em"}
+
+:::
+
+::: {.column width="30%"}
+
+[Topological charge mixing]{.dim-text style="text-align:right; font-size:0.8em"}
+
+:::
+
+::: {.column width="32%"}
+
+[Artificial influx of energy]{.dim-text style="text-align:right!important; font-size:0.8em;"}
+
+:::
+
+::::
+
+::: {#fig-interpretation}
+
+![Illustration of how different observables evolve over a
+single L2HMC trajectory.](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/ridgeplots.svg){width="100%"}
+
+:::
+
+
+# Interpretation {.centeredslide}
+
+
+::: {#fig-energy-ridgeplot layout-ncol=2 width="100%"}
+
+![Average plaquette: $\langle x_{P}\rangle$ vs LF step](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/plaqsf_ridgeplot.svg){width="100%"}
+
+![Average energy: $H - \sum\log|\mathcal{J}|$](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/Hf_ridgeplot.svg){width="100%"}
+
+The trained model artifically increases the energy towards
+the middle of the trajectory, allowing the sampler to tunnel between isolated
+sectors.
+:::
+
+# Plaquette analysis: $x_{P}$ {.centeredslide}
+
+:::: {.columns}
+
+::: {.column width="55%"}
+
+[Deviation from $V\rightarrow\infty$ limit,  $x_{P}^{\ast}$]{.dim-text style="text-align:center; font-size:0.9em;"}
+:::
+
+::: {.column width="45%"}
+
+[Average $\langle x_{P}\rangle$, with $x_{P}^{\ast}$ (dotted-lines)]{.dim-text style="text-align:right!important; font-size:0.9em;"}
+:::
+
+::::
+
+![](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/plaqsf_vs_lf_step1.svg){width="100%"}
+
+[<small><b>Fig.</b> Plot showing how **average plaquette**, $\left\langle
+x_{P}\right\rangle$ varies over a single trajectory for models trained at
+  different $\beta$, with varying trajectory lengths $N_{\mathrm{LF}}$</small>]{style="text-align:center;"}
+
+
+# 2D $U(1)$ Model {.centeredslide}
+
+:::: {.columns}
+
+::: {.column width="45%" style="font-size:0.9em;"}
+- `lattice.shape: [2, Nt, Nx]`
+- maintain buffer of `Nb` chains,  
+  updated in parallel
+    - `x.shape: [Nb, 2, Nt, Nx]`
+- to deal with $x \in \mathbb{C}$, stack as:  
+  `[x.cos(), x.sin()]`
+- final shapes:
+    - `v.shape: [Nb, 2, Nt, Nx]`
+    - `x.shape: [Nb, 2, 2, Nt, Nx]`
+:::
+
+::: {.column width="45%"}
+![](assets/leapfrog-layer-minimal/leapfrog-layer-dark.svg)
+:::
+
+::::
+
 # 4D $SU(3)$ Model {.centeredslide}
 
 :::: {.columns}
 
-::: {.column width="45%"}
+::: {.column width="45%" style="font-size:0.9em;"}
 - link variables: 
     - $U_{\mu}(x) \in SU(3)$,
 - \+ conjugate momenta:
@@ -477,6 +597,13 @@ We can measure the performance by comparing $\tau_{\mathrm{int}}^{Q}$ for the
 ::::
 
 
+# Notebook
+
+<iframe data-src="https://nbviewer.org/github/saforem2/l2hmc-qcd/blob/dev/src/l2hmc/notebooks/l2hmc-2dU1.ipynb" width="100%" height="600" title="l2hmc-qcd"></iframe>
+
+
+# {.centeredslide background-iframe="https://github.com/saforem2/l2hmc-qcd/blob/e5e0deeea35e56e37c19018d0fd950a85395fb24/src/l2hmc/notebooks/l2hmc-2dU1.ipynb" loading="lazy"}
+
 
 # Links + References
 
@@ -501,12 +628,59 @@ This research used resources of the Argonne Leadership Computing Facility,
 which is a DOE Office of Science User Facility supported under Contract DE-AC02-06CH11357.
 :::
 
+# Acknowledgements
+
+- Collaborators:
+ - Xiao-Yong Jin
+ - James C. Osborn
+
+- References:
+    - [Link to slides](https://saforem2.github.io/lqcd-pasc23/)
+        - [link to github with slides](https://github.com/saforem2/lqcd-pasc23)
+   - [Link to github](https://github.com/saforem2/l2hmc-qcd)
+   - [reach out!](mailto://foremans@anl.gov)
+   - [Link to HMC demo](https://chi-feng.github.io/mcmc-demo/app.html)
+   - [arXiv:2105.03418](https://arxiv.org/abs/2002.02428)
+   - [arXiv:2002.02428](https://arxiv.org/abs/2002.02428)
+
+- Huge thank you to:
+   - Yannick Meurice
+   - Norman Christ
+   - Akio Tomiya
+   - Luchang Jin
+   - Chulwoo Jung
+   - Peter Boyle
+   - Taku Izubuchi
+   - ECP-CSD group
+   - ALCF Staff + Datascience Group
 
 # Extras
 
 ## {.centeredslide background-color="white"}
 
 ![](https://upload.wikimedia.org/wikipedia/commons/0/00/Standard_Model_of_Elementary_Particles.svg)
+
+# HMC 
+
+```{mermaid}
+flowchart TD
+  v("𝒗") --> G1{"𝜞"}
+  x("𝒙") -. "∂𝑆/∂𝒙" -.-> G1{"𝜞"}
+  x --> L{"𝜦"}
+  G1 -.-> L{"𝜦"}
+  G1 --> G2{"𝜞"}
+  L -.-> G2
+  L ---> x'("𝒙'")
+  G2 --> v'("𝒗'")
+  style x  color:#805AC1
+  style x' color:#805AC1
+  style v' color:#308E40
+  style v color:#308E40
+  style L color:#A64F00
+  style G1 color:#ec407a
+  style G2 color:#ec407a
+  classDef default fill:#1c1c1c%%,stroke:#2c2c2c,stroke-width:1px;
+```
 
 ## Python
 
@@ -610,6 +784,20 @@ flowchart TB
   A --> D
   B --> C
   B --> D
+```
+
+## HMC Mermaid
+
+```{mermaid}
+flowchart TB
+  v --> G1
+  x -.-> G1
+  x --> L
+  G1 -.-> L
+  G1 -.-> G2
+  L -.-> G2
+  L --> x'
+  G2 --> v'
 ```
 
 ## Mermaid Example

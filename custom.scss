@@ -25,7 +25,8 @@ $myblue:   #00CCFF;
 $mypurple: #AE81FF;
 $mypink:   #FF67FF;
 
-$green-text: #66BB6A;
+// $green-text: #66BB6A;
+$green-text: #07B875;
 $red-text: #FF5252;
 $blue-text: #29B6F6;
 
@@ -269,3 +270,26 @@ $algbg: #1c1c1c !default;
     display: inline-block
 }
 
+
+.reveal .callout.callout-titled .callout-icon::before {
+    height: -webkit-fill-available!important;
+}
+
+.reveal .callout.callout-style-default .callout-icon::before,
+.reveal .callout.callout-style-simple .callout-icon::before {
+    width: 1em!important;
+    height: 1em!important;
+    background-size: 1em 1em!important;
+}
+
+.reveal .callout.callout-style-default div.callout-title {
+    font-size: 1.0em !important;
+}
+
+.reveal small * {
+    vertical-align: baseline!important;
+}
+
+// .msupsub {
+//     vertical-align: baseline;
+// }

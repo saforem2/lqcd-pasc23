@@ -603,9 +603,6 @@ x_{P}\right\rangle$ varies over a single trajectory for models trained at
 <iframe data-src="https://nbviewer.org/github/saforem2/l2hmc-qcd/blob/dev/src/l2hmc/notebooks/l2hmc-2dU1.ipynb" width="100%" height="600" title="l2hmc-qcd"></iframe>
 
 
-# {.centeredslide background-iframe="https://github.com/saforem2/l2hmc-qcd/blob/e5e0deeea35e56e37c19018d0fd950a85395fb24/src/l2hmc/notebooks/l2hmc-2dU1.ipynb" loading="lazy"}
-
-
 # Links + References
 
 - This talk: [{{< fa brands github >}} `saforem2/lqcd-pasc23`](https://github.com/saforem2/lqcd-pasc23)
@@ -631,18 +628,29 @@ which is a DOE Office of Science User Facility supported under Contract DE-AC02-
 
 # Acknowledgements
 
+:::: {.columns}
+
+
+::: {.column width="50%"}
+
 - Collaborators:
- - Xiao-Yong Jin
- - James C. Osborn
+   - Xiao-Yong Jin
+   - James C. Osborn
 
 - References:
-    - [Link to slides](https://saforem2.github.io/lqcd-pasc23/)
-        - [link to github with slides](https://github.com/saforem2/lqcd-pasc23)
-   - [Link to github](https://github.com/saforem2/l2hmc-qcd)
-   - [reach out!](mailto://foremans@anl.gov)
    - [Link to HMC demo](https://chi-feng.github.io/mcmc-demo/app.html)
-   - [arXiv:2105.03418](https://arxiv.org/abs/2002.02428)
-   - [arXiv:2002.02428](https://arxiv.org/abs/2002.02428)
+    - [Link to slides](https://saforem2.github.io/lqcd-pasc23/)
+        - [{{< fa brands github >}} link to github with slides](https://github.com/saforem2/lqcd-pasc23)
+   - [{{< fa brands github >}} Link to github](https://github.com/saforem2/l2hmc-qcd)
+   - [{{< fa solid paper-plane >}} reach out!](mailto:foremans@anl.gov)
+   - {{< fa solid book >}} [@Foreman:2021ljl]
+   - {{< fa solid book >}} [@Foreman:2021rhs]
+   - {{< fa solid book >}} [@Boyda:2022nmh]
+   - {{< fa solid book >}} [@Shanahan:2022ifi]
+
+:::
+
+::: {.column width="50%"}
 
 - Huge thank you to:
    - Yannick Meurice
@@ -654,6 +662,10 @@ which is a DOE Office of Science User Facility supported under Contract DE-AC02-
    - Taku Izubuchi
    - ECP-CSD group
    - ALCF Staff + Datascience Group
+
+:::
+
+::::
 
 # Extras
 
@@ -696,20 +708,6 @@ print(x)
 ::: {.notes}
 Speaker notes go here.
 :::
-
-## Columns
-
-:::: {.columns}
-
-::: {.column width="40%"}
-Left column
-:::
-
-::: {.column width="60%"}
-Right column
-:::
-
-::::
 
 ## Python {.scrollable}
 
@@ -777,16 +775,6 @@ plt.plot([8,65,23,90])
 plt.show()
 ```
 
-## Mermaid Diagrams
-
-```{mermaid}
-flowchart TB
-  A --> C
-  A --> D
-  B --> C
-  B --> D
-```
-
 ## HMC Mermaid
 
 ```{mermaid}
@@ -799,98 +787,6 @@ flowchart TB
   L -.-> G2
   L --> x'
   G2 --> v'
-```
-
-## Mermaid Example
-
-```{mermaid}
-flowchart LR
-  markdown["`This **is** _Markdown_`"]
-  newLines["`Line1
-  Line 2
-  Line 3`"]
-  markdown --> newLines
-```
-
-## Model Parallel Training: Example
-
-$$y = w_0 * x_0 + w_1 * x_1 + w_2 * x_2$$
-
-1. Compute $y_{0} = w_{0} * x_{0}$ and send to $\longrightarrow$ `GPU1`
-2. Compute $y_{1} = y_{0} + w_{1} * x_{1}$ and send to $\longrightarrow$ `GPU2`
-3. Compute $y = y_{1} * w_{2} * x_{2}$ ✅
-
-
-```{mermaid}
-%%| theme: dark
-%%| fontFamily: monospace
-%%| determinsticIds: true
-%%| flowchart:
-%%|   htmlLabels: true
-%%| sequence:
-%%|   mirrorActors: true
-flowchart LR
-  subgraph X0["GPU0"]
-    direction LR
-    a["w0"]
-  end
-  subgraph X1["GPU1"]
-    direction LR
-    b["w1"]
-  end
-  subgraph X2["GPU2"]
-    direction LR
-    c["w2"]
-  end
-  X1 & X0 <--> X2
-  X0 <--> X1
-  x["x0, x1, x2"] --> X0
-```
-
-
-## Block Layout
-
-::: {layout-ncol=2}
-### List One
-
-- Item A
-- Item B
-- Item C
-
-### List Two
-
-- Item X
-- Item Y
-- Item Z
-:::
-
-## Placing Colorbars {.scrollable}
-
-Colorbars indicate the quantitative extent of image data.
-Placing in a figure is non-trivial because room needs to
-be made for them. The simplest case is just attaching a 
-colorbar to each axes:
-
-```{python}
-#| label: fig-colorbars
-#| echo: true
-#| output-location: slide
-import matplotlib.pyplot as plt
-import numpy as np
-
-fig, axs = plt.subplots(2, 2)
-assert isinstance(fig, plt.Figure)
-cmaps = ['RdBu_r', 'viridis']
-for col in range(2):
-    for row in range(2):
-        ax = axs[row, col]
-        pcm = ax.pcolormesh(
-          np.random.random((20, 20)) * (col + 1),
-          cmap=cmaps[col]
-        )
-        fig.colorbar(pcm, ax=ax)
-ax.grid(False)
-plt.show()
 ```
 
 ## Testing Callouts
@@ -914,3 +810,5 @@ Testing warning callout with `default` appearance
 ::: {.callout-important title="Important"}
 Testing important callout with `default` appearance
 :::
+
+# References {style="line-height:1.2em;"}

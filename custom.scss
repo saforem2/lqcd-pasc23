@@ -343,3 +343,9 @@ $algbg: #1c1c1c !default;
 //     margin-top: 0.2em!important;
 //     margin-bottom: 0.1em!important;
 // }
+
+.hanging-indent div.csl-entry {
+    font-size: 0.9em;
+    margin-left: 2em;
+    text-indent: -2em!Important;
+}

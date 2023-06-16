@@ -18,7 +18,7 @@
     "href": "index.html#python",
     "title": "LQCD @ PASC23",
     "section": "Python",
-    "text": "Python\n\n\nCode\nimport numpy as np\nx = np.random.rand()\nprint(x)\n\n\n0.1560040426065692\n\n\n\nSpeaker notes go here."
+    "text": "Python\n\n\nCode\nimport numpy as np\nx = np.random.rand()\nprint(x)\n\n\n0.093699671032904\n\n\n\nSpeaker notes go here."
   },
   {
     "objectID": "index.html#columns",
@@ -95,7 +95,7 @@
     "href": "index.html#testing-callouts",
     "title": "LQCD @ PASC23",
     "section": "Testing Callouts",
-    "text": "Testing Callouts\n\n\n\n\n\n\nNote\n\n\nTesting note callouts with default appearance\n\n\n\n\n\n\n\n\n\nTip\n\n\nTesting tip callout with default appearance\n\n\n\n\n\n\n\n\n\nCaution\n\n\nTesting tip callout with default appearance\n\n\n\n\n\n\n\n\n\nWarning\n\n\nTesting warning callout with default appearance\n\n\n\n\n\n\n\n\n\nImportant\n\n\nTesting important callout with default appearance\n\n\n\n\n\n\n\n\n\n\nDuane, S., A. D. Kennedy, B. J. Pendleton, and D. Roweth. 1987. “Hybrid Monte Carlo.” Phys. Lett. B 195: 216–22. https://doi.org/10.1016/0370-2693(87)91197-X.\n\n\nWittig, Hartmut. 2023. “Progress on (g-2)_\\mu from Lattice QCD.” https://arxiv.org/abs/2306.04165."
+    "text": "Testing Callouts\n\n\n\n\n\n\nNote\n\n\nTesting note callouts with default appearance\n\n\n\n\n\n\n\n\n\nTip\n\n\nTesting tip callout with default appearance\n\n\n\n\n\n\n\n\n\nCaution\n\n\nTesting tip callout with default appearance\n\n\n\n\n\n\n\n\n\nWarning\n\n\nTesting warning callout with default appearance\n\n\n\n\n\n\n\n\n\nImportant\n\n\nTesting important callout with default appearance"
   },
   {
     "objectID": "assets/leapfrog-layer-vertical.html",

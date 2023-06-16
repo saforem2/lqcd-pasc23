@@ -58,15 +58,22 @@ format:
 :::
 
 ::: {.column width="40%"}
-![](https://github.com/saforem2/physicsSeminar/raw/main/assets/static/nucleus.svg){.fragment .fade-down width="50%"}
-![](https://github.com/saforem2/physicsSeminar/raw/main/assets/static/feynman.svg){.fragment .fade-up width="100%"}
+
+<!-- ![](https://github.com/saforem2/physicsSeminar/raw/main/assets/static/nucleus.svg){width="40%" style="text-align:right; margin-left:22%;"} -->
+
+![$e^{+} + e^{-} \rightarrow 2\gamma$](https://github.com/saforem2/physicsSeminar/raw/main/assets/static/feynman.svg){width="100%"}
+
+::: {style="font-size:0.8em"}
+> Obviously, an independent cross-check of the BMW lattice result for
+> $a_{\mu}^{\mathrm{hvp, LO}}$ with sub-percent precision is badly needed  
+> --- [@wittig2023progress]
+:::
+
 :::
 
 ::::
 
 [^progress]: Completely stalled ?
-<!-- [![](https://github.com/saforem2/physicsSeminar/raw/main/assets/static/feynman.svg)](https://github.com/saforem2/physicsSeminar/raw/main/assets/static/feynman.svg) -->
-<!-- <a href="https://github.com/saforem2/physicsSeminar/raw/main/assets/static/nucleus.svg"><img src="https://github.com/saforem2/physicsSeminar/raw/main/assets/static/nucleus.svg" width="50%" style="text-align:center;"></a>{.fragment .fade-down} -->
 
 ## {.centeredslide background-video="https://d2r55xnwy6nx47.cloudfront.net/uploads/2021/04/Muon_2560_Lede.mp4" background-video-loop="true" background-video-muted="true"}
 
@@ -79,15 +86,7 @@ $a_{\mu} = \frac{(g_{\mu} - 2)}{2}$
 
 [$a_{\mu}^{\mathrm{exp}} - a_{\mu}^{\mathrm{SM}} = \left(25.1 \pm 5.9\right)\cdot 10^{-10}$]{.dim-text}
 
-<!-- <span style="font-size:0.8em; color: var(--dim-color); padding-bottom: 1em;">new physics??</span>   -->
-[Can Lattice QCD resolve this?]{.dim-text}  
-[@wittig2023progress]
-
-<!-- ::: {.aside style="text-shadow: 0px 0px 10px black; text-align: center;"} -->
-<!-- From [@wittig2023progress],   -->
-<!-- Obviously, an independent cross-check of the BMW lattice result for   -->
-<!-- > $a_{\mu}^{\mathrm{hvp, LO}}$ with sub-percent precision is badly needed. -->
-<!-- ::: -->
+[Can Lattice QCD resolve this?]{.dim-text}
 
 :::
 
@@ -99,7 +98,11 @@ $a_{\mu} = \frac{(g_{\mu} - 2)}{2}$
 
 ![](https://mod.fnal.gov/mod/stillphotos/2017/0100/17-0188-17.hr.jpg){width="80%" fig-align="center"}
 
-### In Transit
+### In transit
+
+![](https://mod.fnal.gov/mod/stillphotos/2013/0200/13-0232-09D.hr.jpg){width="80%" fig-align="center"}
+
+### Almost Home
 
 ![](https://mod.fnal.gov/mod/stillphotos/2013/0200/13-0235-18D.hr.jpg){width="80%" fig-align="center"}
 
@@ -141,19 +144,22 @@ If configurations were <span style="color:#00CCFF;">independent</span>, we could
 [^target]: Here, $S(x)$ is the action (~ potential energy) of our physical system
 [^approx]: Our variance on this estimator is then $\sigma_{\mathcal{O}}^{2}$
 
-# Hamiltonian Monte Carlo (HMC)[^hmc]
+# Hamiltonian Monte Carlo (HMC)[^hmc] {.centeredslide}
 
-- Want to (sequentially) construct a chain of states $x_{0} \rightarrow x_{1} \rightarrow \cdots \rightarrow x_{N}$  
-  such that, as $N \rightarrow \infty$: $$\left\{x_{i}, x_{i+1}, x_{i+2}, \cdots, x_{N} \right\}
-  \longrightarrow p(x) \propto e^{-S(x)}$$
+- Want to (sequentially) construct a chain of states:
+  $$x_{0} \rightarrow x_{1} \rightarrow \cdots \rightarrow x_{N}\hspace{10pt}$$
+
+  such that, as $N \rightarrow \infty$:
+  $$\left\{x_{i}, x_{i+1}, x_{i+2}, \cdots, x_{N} \right\} \xrightarrow[]{N\rightarrow\infty} p(x)
+  \propto e^{-S(x)}$$
 
 ::: {.callout-tip title="Trick" style="display:inline!important;"}
   - Introduce _fictitious_ momentum $v \sim \mathcal{N}(0, \mathbb{1})$
   - Normally distributed **independent** of $x$, i.e.
   $$\begin{align*}
-    p(x, v) &= p(x)p(v) \propto e^{-S{(x)}} e^{-\frac{1}{2} v^{T}v}\\
-   	&= e^{-\left[S(x) + \frac{1}{2} v^{T}{v}\right]} \\
-   	&\textcolor{#02b875}{=} e^{-H(x, v)}
+    p(x, v) &= p(x)p(v) \propto e^{-S{(x)}} e^{-\frac{1}{2} v^{T}v}
+   	= e^{-\left[S(x) + \frac{1}{2} v^{T}{v}\right]}
+   	\textcolor{#02b875}{=} e^{-H(x, v)}
   \end{align*}$$
 :::
 
@@ -167,7 +173,7 @@ If configurations were <span style="color:#00CCFF;">independent</span>, we could
 
 ::: {.column width="55%"}
 
-- [Idea]{.green-text}: Evolve the $(\dot{x}, \dot{v})$ system to get new states $\{x_{i}\}$❗
+- [**Idea**]{.green-text}: Evolve the $(\dot{x}, \dot{v})$ system to get new states $\{x_{i}\}$❗
 
 - Write the **joint distribution** $p(x, v)$:
   $$
@@ -189,11 +195,11 @@ $$\dot{x} = +\partial_{v} H,
 
 ![](https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/hmc1.svg)
 
-# Leapfrog Integrator (HMC)
+# Leapfrog Integrator (HMC) {.centeredslide}
 
 :::: {.columns style="text-align:center;"}
 
-::: {.column width="50%" style="text-align: left!important;"}
+::: {.column width="50%"}
 
 ::: {.callout-tip title="Hamiltonian Dynamics" style="font-size:1.1em;"}
 $\left(\dot{x}, \dot{v}\right) = \left(\partial_{v} H, -\partial_{x} H\right)$
@@ -290,25 +296,20 @@ $$\begin{align*}
 ![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/hmc_traj_eps05.svg)
 :::
 
-<!-- # L2HMC: Leapfrog Layer -->
-<!-- <img src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/update_steps.svg" style="width:31%;align:left; margin:auto[[]];"> -->
-<!-- <img src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/leapfrog_layer_dark2.svg" style="width:64%;align:right;"> -->
-
 # L2HMC: Leapfrog Layer {.centeredslide}
 
 :::: {.columns}
 
 ::: {.column width="35%"}
-![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/update_steps.svg)
+![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/update_steps.svg){.absolute  top="30" width="40%"}
 :::
 
-::: {.column width="64%"}
+::: {.column width="65%"}
 ![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/leapfrog_layer_dark2.svg){width="100%"}
 :::
 ::::
 
-![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/network_functions.svg){width="90%"}
-<!-- style="width:90%;align:center;"> -->
+![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/network_functions.svg){.absolute top=440 width="100%"}
 
 # {.centeredslide style="font-size:0.9em;"}
 

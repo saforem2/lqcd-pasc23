@@ -293,3 +293,53 @@ $algbg: #1c1c1c !default;
 // .msupsub {
 //     vertical-align: baseline;
 // }
+
+.reveal blockquote {
+    border-radius: 4px!important;
+    display: block;
+    position: relative;
+    width: fit-content!important;
+    /* padding-left: 2pt; */
+    /* padding-right: 2pt; */
+    font-size: 0.8em;
+    font-style: italic;
+    color: $mygrey-080;
+    background-color: #1c1c1c;
+    border-left: 4px solid $mygrey-080!important;
+    // border: 1px solid $mygrey-060!important;
+    box-shadow: RGBA(0, 0, 0, 0.85) 0px 5px 15px!important;
+    // margin: var(--r-block-margin) auto;
+    // padding: 5px;
+    /* max-width: min-content + 20px; */
+    /* min-width: max-content; */
+    // margin-left: 5pt!important;
+    margin-right: revert!important;
+    padding: 0em 0.1em 0em 0.3em;
+    // display: -webkit-inline-box;
+}
+
+.reveal .slide figure>figcaption {
+    text-align:center;
+}
+
+.reveal figure>figcaption {
+    margin-top: 0.2em;
+}
+
+.reveal boxed {
+    border-radius: 6px!important;
+    display: block;
+    position: relative;
+    width: fit-content!important;
+    font-size: 0.9em;
+    color: $mygrey-080;
+    background-color: #1c1c1c;
+    box-shadow: RGBA(0, 0, 0, 0.85) 0px 5px 15px!important;
+    margin-right: revert!important;
+    padding: 0em 0.1em 0em 0.3em;
+}
+
+// .reveal .slide ul li, .reveal .slide ol li {
+//     margin-top: 0.2em!important;
+//     margin-bottom: 0.1em!important;
+// }

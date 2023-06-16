@@ -4,21 +4,21 @@
     "href": "index.html#section-1",
     "title": "LQCD @ PASC23",
     "section": "",
-    "text": "Magnetic Moment of the Muon\n\na_{\\mu} = \\frac{(g_{\\mu} - 2)}{2}\n\na_{\\mu}^{\\mathrm{exp}} - a_{\\mu}^{\\mathrm{SM}} = \\left(25.1 \\pm 5.9\\right)\\cdot 10^{-10}\n\nCan Lattice QCD resolve this?\n(Wittig 2023)"
+    "text": "Magnetic Moment of the Muon\n\na_{\\mu} = \\frac{(g_{\\mu} - 2)}{2}\n\na_{\\mu}^{\\mathrm{exp}} - a_{\\mu}^{\\mathrm{SM}} = \\left(25.1 \\pm 5.9\\right)\\cdot 10^{-10}\nCan Lattice QCD resolve this?"
   },
   {
     "objectID": "index.html#fermilab-muon-g-2",
     "href": "index.html#fermilab-muon-g-2",
     "title": "LQCD @ PASC23",
     "section": "Fermilab: Muon g-2",
-    "text": "Fermilab: Muon g-2\n\nThe RingIn TransitArrival"
+    "text": "Fermilab: Muon g-2\n\nThe RingIn transitAlmost HomeArrival"
   },
   {
     "objectID": "index.html#python",
     "href": "index.html#python",
     "title": "LQCD @ PASC23",
     "section": "Python",
-    "text": "Python\n\n\nCode\nimport numpy as np\nx = np.random.rand()\nprint(x)\n\n\n0.019046594165027853\n\n\n\nSpeaker notes go here."
+    "text": "Python\n\n\nCode\nimport numpy as np\nx = np.random.rand()\nprint(x)\n\n\n0.1560040426065692\n\n\n\nSpeaker notes go here."
   },
   {
     "objectID": "index.html#columns",

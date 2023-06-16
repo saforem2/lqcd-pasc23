@@ -918,22 +918,6 @@ A(\xi'|\xi) = \mathrm{min}\left( 1, \frac{p(\xi')}{p(\xi)}\left|\frac{\partial \
 </ul>
 <aside><ol class="aside-footnotes"><li id="fn7"><p>Here, <span class="math inline">\xi^{\ast}</span> is the <em>proposed</em> configuration (prior to Accept / Reject)</p></li></ol></aside></section>
 
-<section id="loss-function-1" class="title-slide slide level1 center">
-<h1>Loss Function</h1>
-<ul>
-<li><p>Want to maximize the expected squared charge difference:</p>
-<p><span class="math display">\begin{equation*}
-\mathcal{L}(\theta) = \textcolor{#228BE6}{\mathbb{E}_{p(\xi)}}\big[-\textcolor{#FA5252}{{\delta Q}}^{2}_{\textcolor{#FA5252}{\mathbb{R}}}(\xi', \xi)\cdot A(\xi'|\xi)\big]
-\end{equation*}</span></p></li>
-<li><p>Where <span class="math inline">\delta Q_{\mathbb{R}}</span> is the <em>tunneling rate</em>: <span class="math display">\begin{equation*}
-\textcolor{#FA5252}{\delta Q_{\mathbb{R}}}(\xi',\xi)=\left|Q_{\mathbb{R}}(x') - Q_{\mathbb{R}}(x)\right|
-\end{equation*}</span></p></li>
-<li><p><span class="math inline">A(\xi'|\xi)</span> is the probability of accepting the proposal <span class="math inline">\xi'</span>: <span class="math display">\begin{equation*}
-A(\xi'|\xi) = \mathrm{min}\left( 1, \frac{p(\xi')}{p(\xi)}\left|\frac{\partial \xi'}{\partial \xi^{T}}\right|\right)
-\end{equation*}</span></p></li>
-</ul>
-</section>
-
 <section id="integrated-autocorrelation-time-tau_mathrmint" class="title-slide slide level1 centeredslide center">
 <h1>Integrated Autocorrelation time: <span class="math inline">\tau_{\mathrm{int}}</span></h1>
 <div class="columns">
@@ -1259,7 +1243,7 @@ Wittig, Hartmut. 2023. <span>“Progress on <span class="math inline">(g-2)_\mu<
 <span id="cb1-3"><a href="#cb1-3"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.14468779389575892</code></pre>
+<pre><code>0.9966362618808993</code></pre>
 </div>
 </div>
 <aside class="notes">

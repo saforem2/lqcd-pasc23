@@ -439,6 +439,10 @@ $\left\lfloor x_{P} \right\rfloor = x_{P} - 2\pi \left\lfloor\frac{x_{P} + \pi}{
 
 :::: {.columns}
 
+::: {.column width=50% style="align:top;"}
+![](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/autocorr_new.svg){width="90%"}
+:::
+
 ::: {.column width="33%" style="text-align:left; padding-top: 5%;"}
 ::: {.callout-important title="Comparison" style="text-align:left!important;"}
 We can measure the performance by comparing $\tau_{\mathrm{int}}^{Q}$ for the
@@ -446,10 +450,6 @@ We can measure the performance by comparing $\tau_{\mathrm{int}}^{Q}$ for the
   
 **Note**: [lower]{.red-text} is better
 :::
-:::
-
-::: {.column width=50% style="align:top;"}
-![](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/autocorr_new.svg){width="90%"}
 :::
 
 ::::

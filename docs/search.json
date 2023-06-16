@@ -18,7 +18,7 @@
     "href": "index.html#python",
     "title": "LQCD @ PASC23",
     "section": "Python",
-    "text": "Python\n\n\nCode\nimport numpy as np\nx = np.random.rand()\nprint(x)\n\n\n0.28721632339434544\n\n\n\nSpeaker notes go here."
+    "text": "Python\n\n\nCode\nimport numpy as np\nx = np.random.rand()\nprint(x)\n\n\n0.10944983614134807\n\n\n\nSpeaker notes go here."
   },
   {
     "objectID": "index.html#columns",
@@ -166,5 +166,12 @@
     "title": "LQCD @ PASC23",
     "section": "{.centeredslide background-color: #000000}",
     "text": "{.centeredslide background-color: #000000}\n\nMagnetic Moment of the Muon\n\na_{\\mu} = \\frac{(g_{\\mu} - 2)}{2}\n\na_{\\mu}^{\\mathrm{exp}} - a_{\\mu}^{\\mathrm{SM}} = \\left(25.1 \\pm 5.9\\right)\\cdot 10^{-10}\nCan Lattice QCD resolve this?"
+  },
+  {
+    "objectID": "index.html#hmc",
+    "href": "index.html#hmc",
+    "title": "LQCD @ PASC23",
+    "section": "HMC",
+    "text": "HMC\n\n\n\n\nflowchart TD\n  v(\"𝒗\") --&gt; G1{\"𝜞\"}\n  x(\"𝒙\") -. \"∂𝑆/∂𝒙\" -.-&gt; G1{\"𝜞\"}\n  x --&gt; L{\"𝜦\"}\n  G1 -.-&gt; L{\"𝜦\"}\n  G1 --&gt; G2{\"𝜞\"}\n  L -.-&gt; G2\n  L ---&gt; x'(\"𝒙'\")\n  G2 --&gt; v'(\"𝒗'\")\n  style x  color:#805AC1\n  style x' color:#805AC1\n  style v' color:#308E40\n  style v color:#308E40\n  style L color:#A64F00\n  style G1 color:#ec407a\n  style G2 color:#ec407a\n  classDef default fill:#1c1c1c%%,stroke:#2c2c2c,stroke-width:1px;"
   }
 ]

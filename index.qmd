@@ -282,11 +282,9 @@ $$\begin{align*}
     We **always** start by resampling the momentum,
     $v_{0} \sim \mathcal{N}(0, \mathbb{1})$
 
-# {.centeredslide}
+# HMC Demo {.centeredslide}
 
-<section data-background-iframe="https://chi-feng.github.io/mcmc-demo/app.html"
-          data-background-interactive>
-</section>
+<iframe data-src="https://chi-feng.github.io/mcmc-demo/app.html" width="100%" height="650" title="l2hmc-qcd"></iframe>
 
 # Issues with HMC
 
@@ -715,7 +713,7 @@ which is a DOE Office of Science User Facility supported under Contract DE-AC02-
 
 ![](https://upload.wikimedia.org/wikipedia/commons/0/00/Standard_Model_of_Elementary_Particles.svg)
 
-# HMC 
+## HMC 
 
 ```{mermaid}
 flowchart TD

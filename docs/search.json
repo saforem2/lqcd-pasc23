@@ -18,7 +18,7 @@
     "href": "index.html#python",
     "title": "LQCD @ PASC23",
     "section": "Python",
-    "text": "Python\n\n\nCode\nimport numpy as np\nx = np.random.rand()\nprint(x)\n\n\n0.10944983614134807\n\n\n\nSpeaker notes go here."
+    "text": "Python\n\n\nCode\nimport numpy as np\nx = np.random.rand()\nprint(x)\n\n\n0.14468779389575892\n\n\n\nSpeaker notes go here."
   },
   {
     "objectID": "index.html#columns",

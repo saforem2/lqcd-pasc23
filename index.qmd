@@ -34,7 +34,7 @@ format:
     execute:
       freeze: auto
     mermaid:
-      theme: neutral
+      theme: dark
 ---
 
 # {.title-slide .centeredslide background-iframe="https://saforem2.github.io/grid-worms-animation/" loading="lazy"}

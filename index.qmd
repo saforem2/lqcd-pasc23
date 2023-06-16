@@ -157,7 +157,7 @@ If configurations were <span style="color:#00CCFF;">independent</span>, we could
   - Introduce _fictitious_ momentum $v \sim \mathcal{N}(0, \mathbb{1})$
   - Normally distributed **independent** of $x$, i.e.
   $$\begin{align*}
-    p(x, v) &= p(x)p(v) \propto e^{-S{(x)}} e^{-\frac{1}{2} v^{T}v}
+    p(x, v) &\textcolor{#02b875}{=} p(x)p(v) \propto e^{-S{(x)}} e^{-\frac{1}{2} v^{T}v}
    	= e^{-\left[S(x) + \frac{1}{2} v^{T}{v}\right]}
    	\textcolor{#02b875}{=} e^{-H(x, v)}
   \end{align*}$$

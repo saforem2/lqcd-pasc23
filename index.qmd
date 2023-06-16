@@ -9,7 +9,7 @@ format:
     title-slide-style: pandoc
     chalkboard: true
     touch: true
-    loop: true
+    # loop: true
     pause: false
     # classoption: fleqn
     # fig-responsive: true
@@ -408,6 +408,9 @@ S_{\beta}(x) &= \beta\sum_{P} \cos \textcolor{#00CCFF}{x_{P}}, \text{ where } \\
 $$Q = \frac{1}{2\pi}\sum_{P}\left\lfloor x_{P}\right\rfloor  \in \mathbb{Z}$$
 :::
 
+[**note:** $\left\lfloor x_{P} \right\rfloor = x_{P} - 2\pi
+\left\lfloor\frac{x_{P} + \pi}{2\pi}\right\rfloor$]{.dim-text style="font-size:0.8em;"}
+
 ::: {.callout-important title="Critical Slowing Down" style="text-align:left;"}
 - $Q$ gets stuck!
     - as $\beta\longrightarrow \infty$:
@@ -418,16 +421,14 @@ $$Q = \frac{1}{2\pi}\sum_{P}\left\lfloor x_{P}\right\rfloor  \in \mathbb{Z}$$
     [$\tau_{\mathrm{int}}^{Q} \longrightarrow \infty$]{.red-text}
 :::
 
-
-::: {.aside}
-**Note:**
-$\left\lfloor x_{P} \right\rfloor = x_{P} - 2\pi \left\lfloor\frac{x_{P} + \pi}{2\pi}\right\rfloor$
-:::
-
 :::
 
 ::: {.column width="45%"}
-![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/critical_slowing_down.svg){width=85%}
+
+![Critical Slowing Down at increasing $\beta$](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/critical_slowing_down.svg){width="80%"}
+
+<!-- Illustration of critical slowing down at increasing $\beta$. Note at $\beta = 7$, $Q$ remains stuck for the entire run. -->
+
 :::
 
 ::::
@@ -436,18 +437,19 @@ $\left\lfloor x_{P} \right\rfloor = x_{P} - 2\pi \left\lfloor\frac{x_{P} + \pi}{
 
 - Want to maximize the _expected_ squared charge difference[^charge-diff]:
   $$\begin{equation*}
-  \mathcal{L}_{\theta}\left(\xi^{\ast}, \xi\right) = {\mathbb{E}_{p(\xi)}}\big[-\textcolor{#FA5252}{{\delta Q}}^{2} \left(\xi^{\ast}, \xi \right)\cdot A(\xi'|\xi)\big]
+  \mathcal{L}_{\theta}\left(\xi^{\ast}, \xi\right) = {\mathbb{E}_{p(\xi)}}\big[-\textcolor{#FA5252}{{\delta Q}}^{2} \left(\xi^{\ast}, \xi \right)\cdot A(\xi^{\ast}|\xi)\big]
   \end{equation*}$$
 
-- Where $\delta Q$ is the _tunneling rate_:
-  $$\begin{equation*}
-  \textcolor{#FA5252}{\delta Q}(\xi',\xi)=\left|Q' - Q\right|
-  \end{equation*}$$
+- Where:
+    - $\delta Q$ is the _tunneling rate_:
+      $$\begin{equation*}
+      \textcolor{#FA5252}{\delta Q}(\xi^{\ast},\xi)=\left|Q^{\ast} - Q\right|
+      \end{equation*}$$
 
-- $A(\xi'|\xi)$ is the probability of accepting the proposal $\xi'$:
-  $$\begin{equation*}
-  A(\xi'|\xi) = \mathrm{min}\left( 1, \frac{p(\xi')}{p(\xi)}\left|\frac{\partial \xi'}{\partial \xi^{T}}\right|\right)
-  \end{equation*}$$
+    - $A(\xi^{\ast}|\xi)$ is the probability of accepting the proposal $\xi^{\ast}$:
+      $$\begin{equation*}
+      A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1, \frac{p(\xi^{\ast})}{p(\xi)}\left|\frac{\partial \xi^{\ast}}{\partial \xi^{T}}\right|\right)
+      \end{equation*}$$
 
 [^charge-diff]: Here, $\xi^{\ast}$ is the _proposed_ configuration (prior to Accept / Reject)
 
@@ -475,8 +477,12 @@ We can measure the performance by comparing $\tau_{\mathrm{int}}^{Q}$ for the
 
 # Integrated Autocorrelation Time {.centeredslide}
 
+::: {#fig-iat}
 ![](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/tint1.svg){width="100%"}
 
+Plot of the integrated autocorrelation time for both the trained model
+(colored) and HMC (greyscale).
+:::
 
 # Interpretation {.centeredslide}
 
@@ -504,9 +510,10 @@ We can measure the performance by comparing $\tau_{\mathrm{int}}^{Q}$ for the
 
 ::: {#fig-interpretation}
 
-![Illustration of how different observables evolve over a
-single L2HMC trajectory.](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/ridgeplots.svg){width="100%"}
+![](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/ridgeplots.svg){width="100%"}
 
+Illustration of how different observables evolve over a single L2HMC
+trajectory.
 :::
 
 

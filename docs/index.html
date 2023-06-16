@@ -870,6 +870,7 @@ S_{\beta}(x) &amp;= \beta\sum_{P} \cos \textcolor{#00CCFF}{x_{P}}, \text{ where 
 <div style="text-align:left; font-size: 0.9em;">
 <p><strong>Topological Charge</strong>: <span class="math display">Q = \frac{1}{2\pi}\sum_{P}\left\lfloor x_{P}\right\rfloor  \in \mathbb{Z}</span></p>
 </div>
+<p><span class="dim-text" style="font-size:0.8em;"><strong>note:</strong> <span class="math inline">\left\lfloor x_{P} \right\rfloor = x_{P} - 2\pi \left\lfloor\frac{x_{P} + \pi}{2\pi}\right\rfloor</span></span></p>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -894,27 +895,33 @@ S_{\beta}(x) &amp;= \beta\sum_{P} \cos \textcolor{#00CCFF}{x_{P}}, \text{ where 
 </div>
 </div>
 </div>
-
 </div><div class="column" style="width:45%;">
-<p><img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/critical_slowing_down.svg" style="width:85.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/critical_slowing_down.svg" style="width:80.0%"></p>
+<figcaption>Critical Slowing Down at increasing <span class="math inline">\beta</span></figcaption>
+</figure>
+</div>
+<!-- Illustration of critical slowing down at increasing $\beta$. Note at $\beta = 7$, $Q$ remains stuck for the entire run. -->
 </div>
 </div>
-<aside><div>
-<p><strong>Note:</strong> <span class="math inline">\left\lfloor x_{P} \right\rfloor = x_{P} - 2\pi \left\lfloor\frac{x_{P} + \pi}{2\pi}\right\rfloor</span></p>
-</div></aside></section>
+</section>
 
 <section id="loss-function" class="title-slide slide level1 center">
 <h1>Loss Function</h1>
 <ul>
 <li><p>Want to maximize the <em>expected</em> squared charge difference<sup>1</sup>: <span class="math display">\begin{equation*}
-\mathcal{L}_{\theta}\left(\xi^{\ast}, \xi\right) = {\mathbb{E}_{p(\xi)}}\big[-\textcolor{#FA5252}{{\delta Q}}^{2} \left(\xi^{\ast}, \xi \right)\cdot A(\xi'|\xi)\big]
+\mathcal{L}_{\theta}\left(\xi^{\ast}, \xi\right) = {\mathbb{E}_{p(\xi)}}\big[-\textcolor{#FA5252}{{\delta Q}}^{2} \left(\xi^{\ast}, \xi \right)\cdot A(\xi^{\ast}|\xi)\big]
 \end{equation*}</span></p></li>
-<li><p>Where <span class="math inline">\delta Q</span> is the <em>tunneling rate</em>: <span class="math display">\begin{equation*}
-\textcolor{#FA5252}{\delta Q}(\xi',\xi)=\left|Q' - Q\right|
+<li><p>Where:</p>
+<ul>
+<li><p><span class="math inline">\delta Q</span> is the <em>tunneling rate</em>: <span class="math display">\begin{equation*}
+\textcolor{#FA5252}{\delta Q}(\xi^{\ast},\xi)=\left|Q^{\ast} - Q\right|
 \end{equation*}</span></p></li>
-<li><p><span class="math inline">A(\xi'|\xi)</span> is the probability of accepting the proposal <span class="math inline">\xi'</span>: <span class="math display">\begin{equation*}
-A(\xi'|\xi) = \mathrm{min}\left( 1, \frac{p(\xi')}{p(\xi)}\left|\frac{\partial \xi'}{\partial \xi^{T}}\right|\right)
+<li><p><span class="math inline">A(\xi^{\ast}|\xi)</span> is the probability of accepting the proposal <span class="math inline">\xi^{\ast}</span>: <span class="math display">\begin{equation*}
+A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1, \frac{p(\xi^{\ast})}{p(\xi)}\left|\frac{\partial \xi^{\ast}}{\partial \xi^{T}}\right|\right)
 \end{equation*}</span></p></li>
+</ul></li>
 </ul>
 <aside><ol class="aside-footnotes"><li id="fn7"><p>Here, <span class="math inline">\xi^{\ast}</span> is the <em>proposed</em> configuration (prior to Accept / Reject)</p></li></ol></aside></section>
 
@@ -946,7 +953,7 @@ A(\xi'|\xi) = \mathrm{min}\left( 1, \frac{p(\xi')}{p(\xi)}\left|\frac{\partial \
 <section id="integrated-autocorrelation-time" class="title-slide slide level1 centeredslide center">
 <h1>Integrated Autocorrelation Time</h1>
 
-<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/tint1.svg" style="width:100.0%" class="r-stretch"></section>
+<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/tint1.svg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;1: Plot of the integrated autocorrelation time for both the trained model (colored) and HMC (greyscale).</p></section>
 
 <section id="interpretation" class="title-slide slide level1 centeredslide center">
 <h1>Interpretation</h1>
@@ -960,7 +967,7 @@ A(\xi'|\xi) = \mathrm{min}\left( 1, \frac{p(\xi')}{p(\xi)}\left|\frac{\partial \
 </div>
 </div>
 
-<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/ridgeplots.svg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Illustration of how different observables evolve over a single L2HMC trajectory.</p></section>
+<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/ridgeplots.svg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;2: Illustration of how different observables evolve over a single L2HMC trajectory.</p></section>
 
 <section id="interpretation-1" class="title-slide slide level1 centeredslide center">
 <h1>Interpretation</h1>
@@ -984,7 +991,7 @@ A(\xi'|\xi) = \mathrm{min}\left( 1, \frac{p(\xi')}{p(\xi)}\left|\frac{\partial \
 </div>
 </div>
 </div>
-<p></p><figcaption>Figure&nbsp;2: The trained model artifically increases the energy towards the middle of the trajectory, allowing the sampler to tunnel between isolated sectors.</figcaption><p></p>
+<p></p><figcaption>Figure&nbsp;3: The trained model artifically increases the energy towards the middle of the trajectory, allowing the sampler to tunnel between isolated sectors.</figcaption><p></p>
 </figure>
 </div>
 </section>
@@ -1243,7 +1250,7 @@ Wittig, Hartmut. 2023. <span>“Progress on <span class="math inline">(g-2)_\mu<
 <span id="cb1-3"><a href="#cb1-3"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.9966362618808993</code></pre>
+<pre><code>0.07499699306718088</code></pre>
 </div>
 </div>
 <aside class="notes">
@@ -1262,7 +1269,7 @@ Wittig, Hartmut. 2023. <span>“Progress on <span class="math inline">(g-2)_\mu<
 </section>
 <section id="python-1" class="slide level2 scrollable center">
 <h2>Python</h2>
-<p>For a demonstration of a line plot on a polar axis, see <a href="#/python-1-output">Figure&nbsp;3</a></p>
+<p>For a demonstration of a line plot on a polar axis, see <a href="#/python-1-output">Figure&nbsp;4</a></p>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1307,7 +1314,7 @@ Wittig, Hartmut. 2023. <span>“Progress on <span class="math inline">(g-2)_\mu<
 <div id="fig-polar" class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="index_files/figure-revealjs/fig-polar-output-1.png" width="450" height="439"></p>
-<figcaption>Figure&nbsp;3: A line plot on a polar axis</figcaption>
+<figcaption>Figure&nbsp;4: A line plot on a polar axis</figcaption>
 </figure>
 </div>
 </div>
@@ -1340,7 +1347,7 @@ Wittig, Hartmut. 2023. <span>“Progress on <span class="math inline">(g-2)_\mu<
 </div>
 </div>
 </div>
-<p></p><figcaption>Figure&nbsp;4: Charts</figcaption><p></p>
+<p></p><figcaption>Figure&nbsp;5: Charts</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1528,7 +1535,7 @@ Wittig, Hartmut. 2023. <span>“Progress on <span class="math inline">(g-2)_\mu<
         touch: true,
 
         // Loop the presentation
-        loop: true,
+        loop: false,
 
         // Change the presentation direction to be RTL
         rtl: false,

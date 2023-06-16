@@ -6,6 +6,14 @@ bibliography: references.bib
 format:
   revealjs:
     slide-number: true
+    title-slide-style: pandoc
+    chalkboard: true
+    touch: true
+    loop: true
+    pause: false
+    # classoption: fleqn
+    # fig-responsive: true
+    footnotes-hover: true
     preview-links: true
     controls: false
     logo: "https://raw.githubusercontent.com/saforem2/anl-job-talk/main/docs/assets/anl.svg"
@@ -29,7 +37,7 @@ format:
       theme: neutral
 ---
 
-# {.centeredslide background-iframe="https://saforem2.github.io/grid-worms-animation/" loading="lazy"}
+# {.title-slide .centeredslide background-iframe="https://saforem2.github.io/grid-worms-animation/" loading="lazy"}
 
 ::: {style="text-shadow: 0px 0px 10px RGBA(0, 0, 0, 0.45); background-color: rgba(22,22,22,0.88); border-radius: 10px; text-align:center; box-shadow:RGBA(0, 0, 0, 0.45) 0px 5px 15px; padding-top: 1em; padding-bottom: 1em;"}
 <span style="color:#939393; font-size:1.5em; font-weight: bold; padding: 1pt 0pt;">Generative Modeling \& Efficient Sampling</span>

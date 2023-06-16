@@ -18,7 +18,7 @@
     "href": "index.html#python",
     "title": "LQCD @ PASC23",
     "section": "Python",
-    "text": "Python\n\n\nCode\nimport numpy as np\nx = np.random.rand()\nprint(x)\n\n\n0.7989796122081854\n\n\n\nSpeaker notes go here."
+    "text": "Python\n\n\nCode\nimport numpy as np\nx = np.random.rand()\nprint(x)\n\n\n0.8753353286434497\n\n\n\nSpeaker notes go here."
   },
   {
     "objectID": "index.html#columns",
@@ -152,5 +152,19 @@
     "title": "LQCD @ PASC23",
     "section": "HMC Mermaid",
     "text": "HMC Mermaid\n\n\n\n\nflowchart TB\n  v --&gt; G1\n  x -.-&gt; G1\n  x --&gt; L\n  G1 -.-&gt; L\n  G1 -.-&gt; G2\n  L -.-&gt; G2\n  L --&gt; x'\n  G2 --&gt; v'"
+  },
+  {
+    "objectID": "index.html#section-2",
+    "href": "index.html#section-2",
+    "title": "LQCD @ PASC23",
+    "section": "",
+    "text": "a_{\\mu} = \\frac{(g_{\\mu} - 2)}{2}\n\na_{\\mu}^{\\mathrm{exp}} - a_{\\mu}^{\\mathrm{SM}} = \\left(25.1 \\pm 5.9\\right)\\cdot 10^{-10}\nCan Lattice QCD resolve this?"
+  },
+  {
+    "objectID": "index.html#centeredslide-background-color-000000",
+    "href": "index.html#centeredslide-background-color-000000",
+    "title": "LQCD @ PASC23",
+    "section": "{.centeredslide background-color: #000000}",
+    "text": "{.centeredslide background-color: #000000}\n\nMagnetic Moment of the Muon\n\na_{\\mu} = \\frac{(g_{\\mu} - 2)}{2}\n\na_{\\mu}^{\\mathrm{exp}} - a_{\\mu}^{\\mathrm{SM}} = \\left(25.1 \\pm 5.9\\right)\\cdot 10^{-10}\nCan Lattice QCD resolve this?"
   }
 ]

@@ -77,16 +77,16 @@ format:
 
 ## {.centeredslide background-video="https://d2r55xnwy6nx47.cloudfront.net/uploads/2021/04/Muon_2560_Lede.mp4" background-video-loop="true" background-video-muted="true"}
 
-::: {style="text-shadow: 0px 0px 10px black; background-color: rgba(22,22,22,0.33); border-radius: 10px; text-align:center; box-shadow:RGBA(0, 0, 0, 0.35) 0px 5px 15px; padding: 0px; padding-left: 1%; padding-right: 1%; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 1em;"}
-<span style="font-size: 1.75em; font-weight: bold;">Magnetic Moment of the Muon</span>
+::: {style="text-shadow: 0px 0px 10px black; background-color: rgba(22,22,22,0.33); border-radius: 10px; text-align:center; box-shadow:RGBA(0, 0, 0, 0.7) 0px 5px 15px; padding: 0px; padding-left: 1%; padding-right: 1%; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 1em;"}
+[Magnetic Moment of the Muon]{style="font-size: 1.75em; font-weight: bold;"}
 
-::: {style="font-size: 1.5em; margin-top: 0pt; margin-bottom: 0pt; border:2px solid #00CCFF; border-radius:8px; margin-left:auto; margin-right:auto; min-width: max-content; max-width: min-content; padding-left: 1%; padding-right: 1%; background-color: rgba(22,22,22,0.5); "}
+::: {style="font-size: 1.5em; margin-top: 0pt; margin-bottom: 0pt; border:2px solid #00CCFF; border-radius:8px; margin-left:auto; margin-right:auto; min-width: max-content; max-width: min-content; padding-left: 1%; padding-right: 1%; background-color: rgba(22,22,22,0.75); "}
 $a_{\mu} = \frac{(g_{\mu} - 2)}{2}$
 :::
 
-[$a_{\mu}^{\mathrm{exp}} - a_{\mu}^{\mathrm{SM}} = \left(25.1 \pm 5.9\right)\cdot 10^{-10}$]{.dim-text}
+$a_{\mu}^{\mathrm{exp}} - a_{\mu}^{\mathrm{SM}} = \left(25.1 \pm 5.9\right)\cdot 10^{-10}$
 
-[Can Lattice QCD resolve this?]{.dim-text}
+**Can Lattice QCD resolve this?**  
 
 :::
 
@@ -349,33 +349,38 @@ $$\begin{align*}
 
 ![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/iso_gmm_chains.svg){#fig-gmm width="100%"}
 
-# Lattice Gauge Theory {.centeredslide}
+# Lattice Gauge Theory (2D $U(1)$) {.centeredslide}
 
-::: {layout-ncol=2}
+:::: {.columns}
 
-::: {style="text-align:left;"}
+::: {.column width="50%"}
 
-::: {.callout-note title="Link (gauge) Variables"}
-[$$U_{\mu}(n) = e^{i x_{\mu}(n)},$$]{style="font-size: 1.2em;"}
-[$$x_{\mu}(n) \in [-\pi,\pi)$$]{style="font-size: 1.2em;"}
+::: {style="text-align:center;"}
+
+::: {.callout-note title="Link Variables"}
+$$U_{\mu}(n) = e^{i x_{\mu}(n)}\in \mathbb{C},\quad \text{where}\quad$$
+$$x_{\mu}(n) \in [-\pi,\pi)$$
 :::
 
 ::: {.callout-important title="Wilson Action"}
-[$$\begin{align*}
-S_{\beta}(x) &= \beta\sum_{P} \cos \textcolor{#00CCFF}{x_{P}}, \text{ with } \\
+$$\begin{align*}
+S_{\beta}(x) &= \beta\sum_{P} \cos \textcolor{#00CCFF}{x_{P}}, \text{ where } \\
 \textcolor{#00CCFF}{x_{P}} &= \big[x_{\mu}(n) + x_{\nu}(n+\hat{\mu}) \\
 &\hspace{20pt}- x_{\mu}(n+\hat{\nu})-x_{\nu}(n)\big]
-\end{align*}$$]{style="font-size:1.2em;"}
+\end{align*}$$
+:::
+
+> **Note**: $\textcolor{#00CCFF}{x_{P}}$ is the product of links around
+> $1\times 1$ square, called a ["plaquette"]{.blue-text}
 :::
 
 :::
-![](https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/u1lattice.dark.svg){width="35%"}
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/u1lattice.dark.svg){width="100%"}
 :::
 
-::: {.aside}
-**Note:** $\textcolor{#00CCFF}{x_{P}}$ is the product of links around
-$1\times 1$ square, called a "plaquette"
-:::
+::::
 
 # Physical Quantities {}
 
@@ -392,7 +397,10 @@ $1\times 1$ square, called a "plaquette"
 
 ::: {.column width="45%"}
 
+::: {style="text-align:left; font-size: 0.9em;"}
+**Topological Charge**:
 $$Q = \frac{1}{2\pi}\sum_{P}\left\lfloor x_{P}\right\rfloor  \in \mathbb{Z}$$
+:::
 
 ::: {.callout-important title="Critical Slowing Down" style="text-align:left;"}
 - $Q$ gets stuck!
@@ -403,6 +411,7 @@ $$Q = \frac{1}{2\pi}\sum_{P}\left\lfloor x_{P}\right\rfloor  \in \mathbb{Z}$$
     **grows exponentially**:
     [$\tau_{\mathrm{int}}^{Q} \longrightarrow \infty$]{.red-text}
 :::
+
 
 ::: {.aside}
 **Note:**
@@ -416,6 +425,25 @@ $\left\lfloor x_{P} \right\rfloor = x_{P} - 2\pi \left\lfloor\frac{x_{P} + \pi}{
 :::
 
 ::::
+
+# Loss Function
+
+- Want to maximize the _expected_ squared charge difference[^charge-diff]:
+  $$\begin{equation*}
+  \mathcal{L}_{\theta}\left(\xi^{\ast}, \xi\right) = {\mathbb{E}_{p(\xi)}}\big[-\textcolor{#FA5252}{{\delta Q}}^{2} \left(\xi^{\ast}, \xi \right)\cdot A(\xi'|\xi)\big]
+  \end{equation*}$$
+
+- Where $\delta Q$ is the _tunneling rate_:
+  $$\begin{equation*}
+  \textcolor{#FA5252}{\delta Q}(\xi',\xi)=\left|Q' - Q\right|
+  \end{equation*}$$
+
+- $A(\xi'|\xi)$ is the probability of accepting the proposal $\xi'$:
+  $$\begin{equation*}
+  A(\xi'|\xi) = \mathrm{min}\left( 1, \frac{p(\xi')}{p(\xi)}\left|\frac{\partial \xi'}{\partial \xi^{T}}\right|\right)
+  \end{equation*}$$
+
+[^charge-diff]: Here, $\xi^{\ast}$ is the _proposed_ configuration (prior to Accept / Reject)
 
 # Loss Function
 
@@ -531,7 +559,7 @@ x_{P}\right\rangle$ varies over a single trajectory for models trained at
   different $\beta$, with varying trajectory lengths $N_{\mathrm{LF}}$</small>]{style="text-align:center;"}
 
 
-# 2D $U(1)$ Model {.centeredslide}
+# 2D $U(1)$ Model {.centeredslide auto-animate="true"}
 
 :::: {.columns}
 
@@ -553,7 +581,7 @@ x_{P}\right\rangle$ varies over a single trajectory for models trained at
 
 ::::
 
-# 4D $SU(3)$ Model {.centeredslide}
+# 4D $SU(3)$ Model {.centeredslide auto-animate="true"}
 
 :::: {.columns}
 
@@ -598,9 +626,9 @@ x_{P}\right\rangle$ varies over a single trajectory for models trained at
 ::::
 
 
-# Notebook
+# {background-color="white"}
 
-<iframe data-src="https://nbviewer.org/github/saforem2/l2hmc-qcd/blob/dev/src/l2hmc/notebooks/l2hmc-2dU1.ipynb" width="100%" height="600" title="l2hmc-qcd"></iframe>
+<iframe data-src="https://nbviewer.org/github/saforem2/l2hmc-qcd/blob/dev/src/l2hmc/notebooks/l2hmc-2dU1.ipynb" width="100%" height="650" title="l2hmc-qcd"></iframe>
 
 
 # Links + References
@@ -666,6 +694,12 @@ which is a DOE Office of Science User Facility supported under Contract DE-AC02-
 :::
 
 ::::
+
+
+# References {style="line-height:1.2em;"}
+
+::: {#refs}
+:::
 
 # Extras
 
@@ -810,5 +844,3 @@ Testing warning callout with `default` appearance
 ::: {.callout-important title="Important"}
 Testing important callout with `default` appearance
 :::
-
-# References {style="line-height:1.2em;"}

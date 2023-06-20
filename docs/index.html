@@ -475,22 +475,21 @@
 </ul></li>
 </ul></li>
 </ul></li>
-<li><span class="red-text"><strong>incomplete!</strong></span></li>
+<li><span class="green-text"><strong>known to be incomplete!</strong></span></li>
 </ul>
 </div><div class="column" style="width:40%;">
 <!-- ![](https://github.com/saforem2/physicsSeminar/raw/main/assets/static/nucleus.svg){width="40%" style="text-align:right; margin-left:22%;"} -->
-<div class="quarto-figure quarto-figure-center">
+<div id="fig-feynman" class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="https://github.com/saforem2/physicsSeminar/raw/main/assets/static/feynman.svg" style="width:100.0%"></p>
-<figcaption><span class="math inline">e^{+} + e^{-} \rightarrow 2\gamma</span></figcaption>
+<figcaption>Figure&nbsp;1: Feynman diagram for <span class="math display">e^{+} + e^{-} \rightarrow 2\gamma</span></figcaption>
 </figure>
 </div>
-<div style="font-size:0.8em">
-<blockquote>
-<p>Obviously, an independent cross-check of the BMW lattice result for <span class="math inline">a_{\mu}^{\mathrm{hvp, LO}}</span> with sub-percent precision is badly needed<br>
-— <span class="citation" data-cites="wittig2023progress">(<a href="#/references" role="doc-biblioref" onclick="">Wittig 2023</a>)</span></p>
-</blockquote>
-</div>
+<!-- ::: {style="font-size:0.8em"} -->
+<!-- > Obviously, an independent cross-check of the BMW lattice result for -->
+<!-- > $a_{\mu}^{\mathrm{hvp, LO}}$ with sub-percent precision is badly needed   -->
+<!-- > --- [@wittig2023progress] -->
+<!-- ::: -->
 </div>
 </div>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>Completely stalled ?</p></li></ol></aside></section>
@@ -505,15 +504,20 @@
 <p><strong>can Lattice QCD resolve this?</strong></p>
 </div>
 </section>
-<section id="fermilab-muon-g-2" class="slide level2 center" style="top:0;">
+<section id="fermilab-muon-g-2" class="slide level2 center" style="top:0; font-size:0.75em;">
 <h2><a href="https://vms.fnal.gov/gallery/view?id=41">Fermilab: Muon g-2</a></h2>
 <div class="panel-tabset">
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">The Ring</a></li><li><a href="#tabset-1-2">In transit</a></li><li><a href="#tabset-1-3">Almost Home</a></li><li><a href="#tabset-1-4">Arrival</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
+<div id="fig-ring" class="quarto-figure quarto-figure-center">
+<figure>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="https://mod.fnal.gov/mod/stillphotos/2017/0100/17-0188-17.hr.jpg" style="width:80.0%"></p>
+<p><img data-src="https://mod.fnal.gov/mod/stillphotos/2017/0100/17-0188-17.hr.jpg" style="width:75.0%"></p>
+</figure>
+</div>
+<figcaption>Figure&nbsp;2: The Muon g-2 ring sits in its detector hall amidst electronics racks, the muon beamline, and other equipment. This impressive experiment operates at negative 450 degrees Fahrenheit and studies the precession (or wobble) of muons as they travel through the magnetic field.</figcaption>
 </figure>
 </div>
 </div>
@@ -540,9 +544,9 @@
 </div>
 </div>
 </div>
-</section></section>
-<section id="tension" class="title-slide slide level1 center">
-<h1>Tension</h1>
+</section>
+<section id="tension" class="slide level2 center">
+<h2>Tension</h2>
 <div style="font-size:0.75em; text-align: left; margin-left: inherit;">
 <blockquote>
 <p>Obviously, an independent cross-check of the BMW lattice result for <span class="math inline">a_{\mu}^{\mathrm{hvp, LO}}</span> with sub-percent precision is badly needed<br>
@@ -550,8 +554,7 @@
 </blockquote>
 </div>
 
-<img data-src="assets/tension.png" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;1: <a href="https://github.com/saforem2/lqcd-pasc23/blob/main/assets/mu2cartoon.png">Full cartoon</a></p></section>
-
+<img data-src="assets/tension.png" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;3: <a href="https://github.com/saforem2/lqcd-pasc23/blob/main/assets/mu2cartoon.png">Full cartoon</a></p></section></section>
 <section id="markov-chain-monte-carlo-mcmc" class="title-slide slide level1 center">
 <h1>Markov Chain Monte Carlo (MCMC)</h1>
 <div class="columns">
@@ -693,7 +696,7 @@ v' &amp;:= \textcolor{#FB6896}{\Gamma}(x'; \tilde{v}) = \tilde{v} - \frac{\varep
 </div>
 </div>
 </div>
-<div style="font-size:0.8em;">
+<div style="font-size:0.8em; margin-left:13%;">
 <blockquote>
 <p><strong>Note</strong>: <span class="math inline">\partial_{x} S(x)</span> is the <em>force</em></p>
 </blockquote>
@@ -778,12 +781,39 @@ v' &amp;:= \textcolor{#FB6896}{\Gamma}(x'; \tilde{v}) = \tilde{v} - \frac{\varep
 <p><img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/network_functions.svg" class="absolute" style="top: 440px; width: 100%; "></p>
 </section>
 
-<section id="l2hmc-update" class="title-slide slide level1 center" style="font-size:0.85em;">
+<section id="l2hmc-leapfrog-layer-alt." class="title-slide slide level1 center">
+<h1>L2HMC: Leapfrog Layer (alt.)</h1>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/update_steps.svg"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/leapfrog_layer_dark2.svg"></p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<p><img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/network_functions.svg"></p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<p>Leapfrog Layer</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="l2hmc-update" class="title-slide slide level1 center" style="font-size:0.8em;">
 <h1>L2HMC Update</h1>
 <!-- ::: {.callout-caution title="L2HMC Update"} -->
 <ol type="1">
-<li><p><code>init</code>: Resample <span class="math inline">{\mathbf{v} \sim \mathcal{N}(0, \mathbb{1})}</span>, <span class="math inline">{d\sim\mathcal{U}(+, -)}</span>, and construct <span class="math inline">\textcolor{#00CCFF}{\xi} =(\mathbf{x}, {\mathbf{v}}, {\pm})</span></p></li>
-<li><p><code>forward</code>:Generate <span class="purple-text">proposal <span class="math inline">\xi^{\ast}</span></span> by <span class="blue-text">initial <span class="math inline">\xi</span></span> through <span class="math inline">N_{\mathrm{LF}}</span> leapfrog layers:<br>
+<li><p><code>input</code>: <span class="math inline">\mathbf{x}</span></p>
+<ul>
+<li>Resample <span class="math inline">{\mathbf{v} \sim \mathcal{N}(0,  \mathbb{1})}</span>, <span class="math inline">{d\sim\mathcal{U}(+, -)}</span>, and construct <span class="math inline">\textcolor{#00CCFF}{\xi} =(\mathbf{x}, {\mathbf{v}}, {\pm})</span></li>
+</ul></li>
+<li><p><code>forward</code>: Generate <span class="purple-text">proposal <span class="math inline">\xi^{\ast}</span></span> by passing <span class="blue-text">initial <span class="math inline">\xi</span></span> through <span class="math inline">N_{\mathrm{LF}}</span> leapfrog layers<br>
 <span class="math display">\textcolor{#00CCFF} \xi \hspace{1pt}\xrightarrow[]{\tiny{\mathrm{LF} \text{ layer}}}\xi_{1} \longrightarrow\cdots \longrightarrow \xi_{N_{\mathrm{LF}}} = \textcolor{#AE81FF}{\xi^{\ast}}</span></p>
 <ul>
 <li>Compute the Metropolis-Hastings (MH) acceptance (with Jacobian <span class="math inline">\mathcal{J}</span>) <span class="math display">\begin{equation}
@@ -940,10 +970,12 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1, \frac{p(\xi^{\ast})}{p(\xi)}\left|\fra
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Comparison</strong></p>
+<p><strong>Improvement</strong></p>
 </div>
 <div class="callout-content">
-<p>We can measure the performance by comparing <span class="math inline">\tau_{\mathrm{int}}^{Q}</span> for the <span style="color:#FF2052;"><strong>trained model</strong></span> vs.&nbsp;<span style="color:#9F9F9F;"><strong>HMC</strong></span>.</p>
+<p>We can measure the performance<br>
+by comparing <span class="math inline">\tau_{\mathrm{int}}^{Q}</span> for the<br>
+<span style="color:#FF2052;"><strong>trained model</strong></span> vs. <span style="color:#9F9F9F;"><strong>HMC</strong></span>.</p>
 <p><strong>Note</strong>: <span class="red-text">lower</span> is better</p>
 </div>
 </div>
@@ -956,7 +988,7 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1, \frac{p(\xi^{\ast})}{p(\xi)}\left|\fra
 <section id="integrated-autocorrelation-time" class="title-slide slide level1 centeredslide center">
 <h1>Integrated Autocorrelation Time</h1>
 
-<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/tint1.svg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;2: Plot of the integrated autocorrelation time for both the trained model (colored) and HMC (greyscale).</p></section>
+<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/tint1.svg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;4: Plot of the integrated autocorrelation time for both the trained model (colored) and HMC (greyscale).</p></section>
 
 <section id="interpretation" class="title-slide slide level1 centeredslide center">
 <h1>Interpretation</h1>
@@ -970,7 +1002,7 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1, \frac{p(\xi^{\ast})}{p(\xi)}\left|\fra
 </div>
 </div>
 
-<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/ridgeplots.svg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;3: Illustration of how different observables evolve over a single L2HMC trajectory.</p></section>
+<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/ridgeplots.svg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;5: Illustration of how different observables evolve over a single L2HMC trajectory.</p></section>
 
 <section id="interpretation-1" class="title-slide slide level1 centeredslide center">
 <h1>Interpretation</h1>
@@ -994,7 +1026,7 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1, \frac{p(\xi^{\ast})}{p(\xi)}\left|\fra
 </div>
 </div>
 </div>
-<p></p><figcaption>Figure&nbsp;4: The trained model artifically increases the energy towards the middle of the trajectory, allowing the sampler to tunnel between isolated sectors.</figcaption><p></p>
+<p></p><figcaption>Figure&nbsp;6: The trained model artifically increases the energy towards the middle of the trajectory, allowing the sampler to tunnel between isolated sectors.</figcaption><p></p>
 </figure>
 </div>
 </section>
@@ -1010,6 +1042,33 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1, \frac{p(\xi^{\ast})}{p(\xi)}\left|\fra
 </div>
 
 <img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/plaqsf_vs_lf_step1.svg" style="width:100.0%" class="r-stretch"><p><span style="text-align:center;"><small><b>Fig.</b> Plot showing how <strong>average plaquette</strong>, <span class="math inline">\left\langle x_{P}\right\rangle</span> varies over a single trajectory for models trained at different <span class="math inline">\beta</span>, with varying trajectory lengths <span class="math inline">N_{\mathrm{LF}}</span></small></span></p>
+</section>
+
+<section id="comparison" class="title-slide slide level1 center">
+<h1>Comparison</h1>
+<div id="fig-comparison" class="quarto-layout-panel">
+<figure>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-eval" class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://saforem2.github.io/anl-job-talk/assets/dQint_eval.svg" data-ref-parent="fig-comparison"></p>
+<figcaption>(a) Eval</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-hmc" class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://saforem2.github.io/anl-job-talk/assets/dQint_hmc.svg" data-ref-parent="fig-comparison"></p>
+<figcaption>(b) HMC</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption>Figure&nbsp;7: Comparison of <span class="math inline">\delta Q</span> for the trained model <a href="#/comparison">Figure&nbsp;7 (a)</a> vs.&nbsp;HMC <a href="#/comparison">Figure&nbsp;7 (b)</a></figcaption><p></p>
+</figure>
+</div>
 </section>
 
 <section id="d-u1-model" class="title-slide slide level1 centeredslide center" data-auto-animate="true">
@@ -1101,8 +1160,13 @@ updated in parallel
 
 <section id="section-2" class="title-slide slide level1 center" data-background-color="white">
 <h1></h1>
+<div id="fig-notebook" class="quarto-figure quarto-figure-center">
+<figure>
 <iframe data-src="https://nbviewer.org/github/saforem2/l2hmc-qcd/blob/dev/src/l2hmc/notebooks/l2hmc-2dU1.ipynb" width="100%" height="650" title="l2hmc-qcd">
 </iframe>
+<figcaption>Figure&nbsp;8: Jupyter Notebook</figcaption>
+</figure>
+</div>
 </section>
 
 <section id="links-references" class="title-slide slide level1 center">
@@ -1210,6 +1274,13 @@ Wittig, Hartmut. 2023. <span>“Progress on <span class="math inline">(g-2)_\mu<
 <h1>Extras</h1>
 
 </section>
+<section id="lqcd-alcf-2008" class="slide level2 center">
+<h2>LQCD @ ALCF (2008)</h2>
+<blockquote>
+<p>The Blue Gene/P at the ALCF has tremendously accelerated the generation of the gauge configurations—in many cases, by a factor of 5 to 10 over what has been possible with other machines. Significant progress has been made in simulations with two different implementations of the quarks—domain wall and staggered<sup>1</sup><br>
+<br> &nbsp; — <span class="green-text">Mike Papka</span>, 2008</p>
+</blockquote>
+<aside><ol class="aside-footnotes"><li id="fn8"><p><a href="https://publications.anl.gov/anlpubs/2009/12/65724.pdf">Argonne Leadership Computing Facility • 2008 Annual Report</a></p></li></ol></aside></section>
 <section id="section-3" class="slide level2 centeredslide center" data-background-color="white">
 <h2></h2>
 
@@ -1253,7 +1324,7 @@ Wittig, Hartmut. 2023. <span>“Progress on <span class="math inline">(g-2)_\mu<
 <span id="cb1-3"><a href="#cb1-3"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.5674752464048409</code></pre>
+<pre><code>0.6604637788075446</code></pre>
 </div>
 </div>
 <aside class="notes">
@@ -1272,7 +1343,7 @@ Wittig, Hartmut. 2023. <span>“Progress on <span class="math inline">(g-2)_\mu<
 </section>
 <section id="python-1" class="slide level2 scrollable center">
 <h2>Python</h2>
-<p>For a demonstration of a line plot on a polar axis, see <a href="#/python-1-output">Figure&nbsp;5</a></p>
+<p>For a demonstration of a line plot on a polar axis, see <a href="#/python-1-output">Figure&nbsp;9</a></p>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1317,7 +1388,7 @@ Wittig, Hartmut. 2023. <span>“Progress on <span class="math inline">(g-2)_\mu<
 <div id="fig-polar" class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="index_files/figure-revealjs/fig-polar-output-1.png" width="450" height="439"></p>
-<figcaption>Figure&nbsp;5: A line plot on a polar axis</figcaption>
+<figcaption>Figure&nbsp;9: A line plot on a polar axis</figcaption>
 </figure>
 </div>
 </div>
@@ -1350,7 +1421,7 @@ Wittig, Hartmut. 2023. <span>“Progress on <span class="math inline">(g-2)_\mu<
 </div>
 </div>
 </div>
-<p></p><figcaption>Figure&nbsp;6: Charts</figcaption><p></p>
+<p></p><figcaption>Figure&nbsp;10: Charts</figcaption><p></p>
 </figure>
 </div>
 </div>

@@ -11,14 +11,14 @@
     "href": "index.html#fermilab-muon-g-2",
     "title": "LQCD @ PASC23",
     "section": "Fermilab: Muon g-2",
-    "text": "Fermilab: Muon g-2\n\nThe RingIn transitAlmost HomeArrival"
+    "text": "Fermilab: Muon g-2\n\nThe RingIn transitAlmost HomeArrival\n\n\n\n\n\n\n\n\n\nFigure 2: The Muon g-2 ring sits in its detector hall amidst electronics racks, the muon beamline, and other equipment. This impressive experiment operates at negative 450 degrees Fahrenheit and studies the precession (or wobble) of muons as they travel through the magnetic field."
   },
   {
     "objectID": "index.html#python",
     "href": "index.html#python",
     "title": "LQCD @ PASC23",
     "section": "Python",
-    "text": "Python\n\n\nCode\nimport numpy as np\nx = np.random.rand()\nprint(x)\n\n\n0.5674752464048409\n\n\n\nSpeaker notes go here."
+    "text": "Python\n\n\nCode\nimport numpy as np\nx = np.random.rand()\nprint(x)\n\n\n0.6604637788075446\n\n\n\nSpeaker notes go here."
   },
   {
     "objectID": "index.html#columns",
@@ -32,21 +32,21 @@
     "href": "index.html#python-1",
     "title": "LQCD @ PASC23",
     "section": "Python",
-    "text": "Python\nFor a demonstration of a line plot on a polar axis, see Figure 5\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nplt.rcParams.update({\n    'axes.facecolor': 'none',\n    'figure.facecolor': 'none',\n    'savefig.facecolor': 'none',\n    'savefig.format': 'svg',\n    'axes.edgecolor': 'none',\n    'axes.grid': True,\n    'axes.labelcolor': '#666',\n    'axes.titlecolor': '#666',\n    'grid.color': '#666',\n    'text.color': '#666',\n    'grid.linestyle': '--',\n    'grid.linewidth': 0.5,\n    'grid.alpha': 0.4,\n    'xtick.color': 'none',\n    'ytick.color': 'none',\n    'xtick.labelcolor': '#666',\n    'legend.edgecolor': 'none',\n    'ytick.labelcolor': '#666',\n    'savefig.transparent': True,\n})\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfix, ax = plt.subplots(\n    subplot_kw = {'projection': 'polar'}\n)\nassert isinstance(ax, plt.PolarAxes)\nax.plot(theta, r)\nax.set_rticks([0.5, 1., 1.5, 2.])\nax.grid(True)\nplt.show()"
+    "text": "Python\nFor a demonstration of a line plot on a polar axis, see Figure 9\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nplt.rcParams.update({\n    'axes.facecolor': 'none',\n    'figure.facecolor': 'none',\n    'savefig.facecolor': 'none',\n    'savefig.format': 'svg',\n    'axes.edgecolor': 'none',\n    'axes.grid': True,\n    'axes.labelcolor': '#666',\n    'axes.titlecolor': '#666',\n    'grid.color': '#666',\n    'text.color': '#666',\n    'grid.linestyle': '--',\n    'grid.linewidth': 0.5,\n    'grid.alpha': 0.4,\n    'xtick.color': 'none',\n    'ytick.color': 'none',\n    'xtick.labelcolor': '#666',\n    'legend.edgecolor': 'none',\n    'ytick.labelcolor': '#666',\n    'savefig.transparent': True,\n})\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfix, ax = plt.subplots(\n    subplot_kw = {'projection': 'polar'}\n)\nassert isinstance(ax, plt.PolarAxes)\nax.plot(theta, r)\nax.set_rticks([0.5, 1., 1.5, 2.])\nax.grid(True)\nplt.show()"
   },
   {
     "objectID": "index.html#python-1-output",
     "href": "index.html#python-1-output",
     "title": "LQCD @ PASC23",
     "section": "Python",
-    "text": "Python\n\n\n\n\nFigure 5: A line plot on a polar axis"
+    "text": "Python\n\n\n\n\nFigure 9: A line plot on a polar axis"
   },
   {
     "objectID": "index.html#figures-with-subcaptions",
     "href": "index.html#figures-with-subcaptions",
     "title": "LQCD @ PASC23",
     "section": "Figures with Subcaptions",
-    "text": "Figures with Subcaptions\n\nimport matplotlib.pyplot as plt\nplt.plot([1,23,2,4])\nplt.show()\n\nplt.plot([8,65,23,90])\nplt.show()\n\n\n\n\n\n\n\n(a) First\n\n\n\n\n\n\n\n(b) Second\n\n\n\n\nFigure 6: Charts"
+    "text": "Figures with Subcaptions\n\nimport matplotlib.pyplot as plt\nplt.plot([1,23,2,4])\nplt.show()\n\nplt.plot([8,65,23,90])\nplt.show()\n\n\n\n\n\n\n\n(a) First\n\n\n\n\n\n\n\n(b) Second\n\n\n\n\nFigure 10: Charts"
   },
   {
     "objectID": "index.html#mermaid-diagrams",
@@ -173,5 +173,19 @@
     "title": "LQCD @ PASC23",
     "section": "HMC",
     "text": "HMC\n\n\n\n\nflowchart TD\n  v(\"𝒗\") --&gt; G1{\"𝜞\"}\n  x(\"𝒙\") -. \"∂𝑆/∂𝒙\" -.-&gt; G1{\"𝜞\"}\n  x --&gt; L{\"𝜦\"}\n  G1 -.-&gt; L{\"𝜦\"}\n  G1 --&gt; G2{\"𝜞\"}\n  L -.-&gt; G2\n  L ---&gt; x'(\"𝒙'\")\n  G2 --&gt; v'(\"𝒗'\")\n  style x  color:#805AC1\n  style x' color:#805AC1\n  style v' color:#308E40\n  style v color:#308E40\n  style L color:#A64F00\n  style G1 color:#ec407a\n  style G2 color:#ec407a\n  classDef default fill:#1c1c1c%%,stroke:#2c2c2c,stroke-width:1px;"
+  },
+  {
+    "objectID": "index.html#lqcd-alcf-2008",
+    "href": "index.html#lqcd-alcf-2008",
+    "title": "LQCD @ PASC23",
+    "section": "LQCD @ ALCF (2008)",
+    "text": "LQCD @ ALCF (2008)\n\nThe Blue Gene/P at the ALCF has tremendously accelerated the generation of the gauge configurations—in many cases, by a factor of 5 to 10 over what has been possible with other machines. Significant progress has been made in simulations with two different implementations of the quarks—domain wall and staggered1\n   — Mike Papka, 2008\n\nArgonne Leadership Computing Facility • 2008 Annual Report"
+  },
+  {
+    "objectID": "index.html#tension",
+    "href": "index.html#tension",
+    "title": "LQCD @ PASC23",
+    "section": "Tension",
+    "text": "Tension\n\n\nObviously, an independent cross-check of the BMW lattice result for a_{\\mu}^{\\mathrm{hvp, LO}} with sub-percent precision is badly needed\n— (Wittig 2023)\n\n\n\nFigure 3: Full cartoon"
   }
 ]

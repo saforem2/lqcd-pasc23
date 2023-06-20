@@ -63,20 +63,26 @@ format:
     - Quark / gluon interactions in the nuclueus
     - Analytic progress is _difficult_...[^progress]
       - Lattice QCD to the rescue! 🚀
-- [**incomplete!**]{.red-text}
+- [**known to be incomplete!**]{.green-text}
 :::
 
 ::: {.column width="40%"}
 
 <!-- ![](https://github.com/saforem2/physicsSeminar/raw/main/assets/static/nucleus.svg){width="40%" style="text-align:right; margin-left:22%;"} -->
 
-![$e^{+} + e^{-} \rightarrow 2\gamma$](https://github.com/saforem2/physicsSeminar/raw/main/assets/static/feynman.svg){width="100%"}
+::: {#fig-feynman}
 
-::: {style="font-size:0.8em"}
-> Obviously, an independent cross-check of the BMW lattice result for
-> $a_{\mu}^{\mathrm{hvp, LO}}$ with sub-percent precision is badly needed  
-> --- [@wittig2023progress]
+![](https://github.com/saforem2/physicsSeminar/raw/main/assets/static/feynman.svg){width="100%"}
+
+Feynman diagram for
+$$e^{+} + e^{-} \rightarrow 2\gamma$$
 :::
+
+<!-- ::: {style="font-size:0.8em"} -->
+<!-- > Obviously, an independent cross-check of the BMW lattice result for -->
+<!-- > $a_{\mu}^{\mathrm{hvp, LO}}$ with sub-percent precision is badly needed   -->
+<!-- > --- [@wittig2023progress] -->
+<!-- ::: -->
 
 :::
 
@@ -99,13 +105,17 @@ $a_{\mu}^{\mathrm{exp}} - a_{\mu}^{\mathrm{SM}} = \left(25.1 \pm 5.9\right)\cdot
 
 :::
 
-## [Fermilab: Muon g-2](https://vms.fnal.gov/gallery/view?id=41) {style="top:0;"}
+## [Fermilab: Muon g-2](https://vms.fnal.gov/gallery/view?id=41) {style="top:0; font-size:0.75em;"}
 
 ::: {.panel-tabset}
 
 ### The Ring
 
-![](https://mod.fnal.gov/mod/stillphotos/2017/0100/17-0188-17.hr.jpg){width="80%" fig-align="center"}
+::: {#fig-ring}
+![](https://mod.fnal.gov/mod/stillphotos/2017/0100/17-0188-17.hr.jpg){width="75%" fig-align="center"}
+
+The Muon g-2 ring sits in its detector hall amidst electronics racks, the muon beamline, and other equipment. This impressive experiment operates at negative 450 degrees Fahrenheit and studies the precession (or wobble) of muons as they travel through the magnetic field.
+:::
 
 ### In transit
 
@@ -121,7 +131,7 @@ $a_{\mu}^{\mathrm{exp}} - a_{\mu}^{\mathrm{SM}} = \left(25.1 \pm 5.9\right)\cdot
 
 :::
 
-# Tension
+## Tension
 
 ::: {style="font-size:0.75em; text-align: left; margin-left: inherit;"}
 > Obviously, an independent cross-check of the BMW lattice result for
@@ -246,7 +256,7 @@ v' &:= \textcolor{#FB6896}{\Gamma}(x'; \tilde{v}) = \tilde{v} - \frac{\varepsilo
 [at the [beginning]{.yellow-text} of each trajectory]{style="text-align:left;"}
 :::
 
-::: {style="font-size:0.8em;"}
+::: {style="font-size:0.8em; margin-left:13%;"}
 > **Note**: $\partial_{x} S(x)$ is the _force_
 :::
 
@@ -335,15 +345,32 @@ $$\begin{align*}
 
 ![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/network_functions.svg){.absolute top=440 width="100%"}
 
-# L2HMC Update {style="font-size:0.85em;"}
+
+# L2HMC: Leapfrog Layer (alt.)
+
+::: {layout="[[1, 1], [4]]" layout-valign="top"}
+
+![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/update_steps.svg){}
+
+![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/leapfrog_layer_dark2.svg){width="100%"}
+
+![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/network_functions.svg){}
+
+Leapfrog Layer
+:::
+
+
+# L2HMC Update {style="font-size:0.8em;"}
 
 <!-- ::: {.callout-caution title="L2HMC Update"} -->
 
-1. `init`: Resample ${\mathbf{v} \sim \mathcal{N}(0,
-   \mathbb{1})}$, ${d\sim\mathcal{U}(+, -)}$, and construct
-   $\textcolor{#00CCFF}{\xi} =(\mathbf{x}, {\mathbf{v}}, {\pm})$
+1. `input`: $\mathbf{x}$  
 
-2. `forward`:Generate [proposal $\xi^{\ast}$]{.purple-text} by [initial $\xi$]{.blue-text} through $N_{\mathrm{LF}}$ leapfrog layers:  
+    - Resample ${\mathbf{v} \sim \mathcal{N}(0,
+     \mathbb{1})}$, ${d\sim\mathcal{U}(+, -)}$, and construct
+     $\textcolor{#00CCFF}{\xi} =(\mathbf{x}, {\mathbf{v}}, {\pm})$
+
+2. `forward`: Generate [proposal $\xi^{\ast}$]{.purple-text} by passing [initial $\xi$]{.blue-text} through $N_{\mathrm{LF}}$ leapfrog layers  
   $$\textcolor{#00CCFF} \xi \hspace{1pt}\xrightarrow[]{\tiny{\mathrm{LF} \text{ layer}}}\xi_{1} \longrightarrow\cdots \longrightarrow \xi_{N_{\mathrm{LF}}} = \textcolor{#AE81FF}{\xi^{\ast}}$$
 
     - Compute the Metropolis-Hastings (MH) acceptance (with Jacobian $\mathcal{J}$)
@@ -477,12 +504,16 @@ $$Q = \frac{1}{2\pi}\sum_{P}\left\lfloor x_{P}\right\rfloor  \in \mathbb{Z}$$
 :::
 
 ::: {.column width="33%" style="text-align:left; padding-top: 5%;"}
-::: {.callout-important title="Comparison" style="text-align:left!important;"}
-We can measure the performance by comparing $\tau_{\mathrm{int}}^{Q}$ for the
-[**trained model**]{style="color:#FF2052;"} vs. [**HMC**]{style="color:#9F9F9F;"}.  
+
+::: {.callout-important title="Improvement" style="text-align:left!important;"}
+We can measure the performance  
+by comparing $\tau_{\mathrm{int}}^{Q}$ for the  
+[**trained model**]{style="color:#FF2052;"} vs.
+[**HMC**]{style="color:#9F9F9F;"}.  
   
 **Note**: [lower]{.red-text} is better
 :::
+
 :::
 
 ::::
@@ -568,6 +599,17 @@ sectors.
 x_{P}\right\rangle$ varies over a single trajectory for models trained at
   different $\beta$, with varying trajectory lengths $N_{\mathrm{LF}}$</small>]{style="text-align:center;"}
 
+# Comparison
+
+::: {#fig-comparison layout-ncol=2}
+
+![Eval](https://saforem2.github.io/anl-job-talk/assets/dQint_eval.svg){#fig-eval}
+
+![HMC](https://saforem2.github.io/anl-job-talk/assets/dQint_hmc.svg){#fig-hmc}
+
+Comparison of $\delta Q$ for the trained model [@fig-eval] vs. HMC [@fig-hmc]
+:::
+
 
 # 2D $U(1)$ Model {.centeredslide auto-animate="true"}
 
@@ -638,7 +680,12 @@ x_{P}\right\rangle$ varies over a single trajectory for models trained at
 
 # {background-color="white"}
 
+::: {#fig-notebook}
+
 <iframe data-src="https://nbviewer.org/github/saforem2/l2hmc-qcd/blob/dev/src/l2hmc/notebooks/l2hmc-2dU1.ipynb" width="100%" height="650" title="l2hmc-qcd"></iframe>
+
+Jupyter Notebook
+:::
 
 
 # Links + References
@@ -712,6 +759,14 @@ which is a DOE Office of Science User Facility supported under Contract DE-AC02-
 :::
 
 # Extras
+
+## LQCD @ ALCF (2008)
+
+> The Blue Gene/P at the ALCF has tremendously accelerated the generation of the gauge configurations—in many cases, by a factor of 5 to 10 over what has been possible with other machines. Significant progress has been made in simulations with two different implementations of the quarks—domain wall and staggered[^lqcd2008]  
+> <br> &nbsp;
+> --- [Mike Papka]{.green-text}, 2008
+
+[^lqcd2008]: [Argonne Leadership Computing Facility • 2008 Annual Report](https://publications.anl.gov/anlpubs/2009/12/65724.pdf)
 
 ## {.centeredslide background-color="white"}
 

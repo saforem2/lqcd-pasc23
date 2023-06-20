@@ -475,6 +475,7 @@
 </ul></li>
 </ul></li>
 </ul></li>
+<li><span class="red-text"><strong>incomplete!</strong></span></li>
 </ul>
 </div><div class="column" style="width:40%;">
 <!-- ![](https://github.com/saforem2/physicsSeminar/raw/main/assets/static/nucleus.svg){width="40%" style="text-align:right; margin-left:22%;"} -->
@@ -495,13 +496,13 @@
 <aside><ol class="aside-footnotes"><li id="fn1"><p>Completely stalled ?</p></li></ol></aside></section>
 <section id="section-1" class="slide level2 centeredslide center" data-background-video="https://d2r55xnwy6nx47.cloudfront.net/uploads/2021/04/Muon_2560_Lede.mp4" data-background-video-loop="true" data-background-video-muted="true">
 <h2></h2>
-<div style="text-shadow: 0px 0px 10px black; background-color: rgba(22,22,22,0.33); border-radius: 10px; text-align:center; box-shadow:RGBA(0, 0, 0, 0.7) 0px 5px 15px; padding: 0px; padding-left: 1%; padding-right: 1%; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 1em;">
+<div style="text-shadow: 0px 0px 10px black; background-color: rgba(22,22,22,0.33); border-radius: 10px; text-align:center; box-shadow:RGBA(0, 0, 0, 0.7) 0px 5px 15px; padding: 0px; padding-left: 1%; padding-right: 1%; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em;">
 <p><span style="font-size: 1.75em; font-weight: bold;">Magnetic Moment of the Muon</span></p>
 <div style="font-size: 1.5em; margin-top: 0pt; margin-bottom: 0pt; border:2px solid #00CCFF; border-radius:8px; margin-left:auto; margin-right:auto; min-width: max-content; max-width: min-content; padding-left: 1%; padding-right: 1%; background-color: rgba(22,22,22,0.75); ">
 <p><span class="math inline">a_{\mu} = \frac{(g_{\mu} - 2)}{2}</span></p>
 </div>
 <p><span class="math inline">a_{\mu}^{\mathrm{exp}} - a_{\mu}^{\mathrm{SM}} = \left(25.1 \pm 5.9\right)\cdot 10^{-10}</span></p>
-<p><strong>Can Lattice QCD resolve this?</strong></p>
+<p><strong>can Lattice QCD resolve this?</strong></p>
 </div>
 </section>
 <section id="fermilab-muon-g-2" class="slide level2 center" style="top:0;">
@@ -540,6 +541,17 @@
 </div>
 </div>
 </section></section>
+<section id="tension" class="title-slide slide level1 center">
+<h1>Tension</h1>
+<div style="font-size:0.75em; text-align: left; margin-left: inherit;">
+<blockquote>
+<p>Obviously, an independent cross-check of the BMW lattice result for <span class="math inline">a_{\mu}^{\mathrm{hvp, LO}}</span> with sub-percent precision is badly needed<br>
+— <span class="citation" data-cites="wittig2023progress">(<a href="#/references" role="doc-biblioref" onclick="">Wittig 2023</a>)</span></p>
+</blockquote>
+</div>
+
+<img data-src="assets/tension.png" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;1: <a href="https://github.com/saforem2/lqcd-pasc23/blob/main/assets/mu2cartoon.png">Full cartoon</a></p></section>
+
 <section id="markov-chain-monte-carlo-mcmc" class="title-slide slide level1 center">
 <h1>Markov Chain Monte Carlo (MCMC)</h1>
 <div class="columns">
@@ -588,12 +600,14 @@
 </div>
 <div class="callout-content">
 <ul>
-<li>Introduce <em>fictitious</em> momentum <span class="math inline">v \sim \mathcal{N}(0, \mathbb{1})</span></li>
+<li>Introduce <em>fictitious</em> momentum <span class="math inline">v \sim \mathcal{N}(0, \mathbb{1})</span>
+<ul>
 <li>Normally distributed <strong>independent</strong> of <span class="math inline">x</span>, i.e. <span class="math display">\begin{align*}
 p(x, v) &amp;\textcolor{#02b875}{=} p(x)p(v) \propto e^{-S{(x)}} e^{-\frac{1}{2} v^{T}v}
 = e^{-\left[S(x) + \frac{1}{2} v^{T}{v}\right]}
 \textcolor{#02b875}{=} e^{-H(x, v)}
-  \end{align*}</span></li>
+\end{align*}</span></li>
+</ul></li>
 </ul>
 </div>
 </div>
@@ -679,14 +693,20 @@ v' &amp;:= \textcolor{#FB6896}{\Gamma}(x'; \tilde{v}) = \tilde{v} - \frac{\varep
 </div>
 </div>
 </div>
+<div style="font-size:0.8em;">
+<blockquote>
+<p><strong>Note</strong>: <span class="math inline">\partial_{x} S(x)</span> is the <em>force</em></p>
+</blockquote>
+</div>
 </div><div class="column" style="text-align:left;">
 <p><img data-src="./assets/hmc/hmc-update-dark.svg" style="width:60.0%"></p>
 </div>
 </div>
-
-<aside><div>
-<p><strong>Note</strong>: The gradient of the action, <span class="math inline">\partial_{x} S(x)</span> is called the <em>force</em></p>
-</div></aside></section>
+<!-- [^eps]: Of step size $\varepsilon$ -->
+<!-- ::: {.aside} -->
+<!-- **Note**: The gradient of the action, $\partial_{x} S(x)$ is called the _force_ -->
+<!-- ::: -->
+</section>
 
 <section id="hmc-update" class="title-slide slide level1 center">
 <h1>HMC Update</h1>
@@ -758,47 +778,30 @@ v' &amp;:= \textcolor{#FB6896}{\Gamma}(x'; \tilde{v}) = \tilde{v} - \frac{\varep
 <p><img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/network_functions.svg" class="absolute" style="top: 440px; width: 100%; "></p>
 </section>
 
-<section id="section-2" class="title-slide slide level1 centeredslide center" style="font-size:0.9em;">
-<h1></h1>
-<div class="callout callout-caution callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>L2HMC Update</strong></p>
-</div>
-<div class="callout-content">
+<section id="l2hmc-update" class="title-slide slide level1 center" style="font-size:0.85em;">
+<h1>L2HMC Update</h1>
+<!-- ::: {.callout-caution title="L2HMC Update"} -->
 <ol type="1">
-<li>Initialization:
+<li><p><code>init</code>: Resample <span class="math inline">{\mathbf{v} \sim \mathcal{N}(0, \mathbb{1})}</span>, <span class="math inline">{d\sim\mathcal{U}(+, -)}</span>, and construct <span class="math inline">\textcolor{#00CCFF}{\xi} =(\mathbf{x}, {\mathbf{v}}, {\pm})</span></p></li>
+<li><p><code>forward</code>:Generate <span class="purple-text">proposal <span class="math inline">\xi^{\ast}</span></span> by <span class="blue-text">initial <span class="math inline">\xi</span></span> through <span class="math inline">N_{\mathrm{LF}}</span> leapfrog layers:<br>
+<span class="math display">\textcolor{#00CCFF} \xi \hspace{1pt}\xrightarrow[]{\tiny{\mathrm{LF} \text{ layer}}}\xi_{1} \longrightarrow\cdots \longrightarrow \xi_{N_{\mathrm{LF}}} = \textcolor{#AE81FF}{\xi^{\ast}}</span></p>
 <ul>
-<li>Resample: <span class="math inline">{\mathbf{v} \sim \mathcal{N}(0, \mathbb{1})}</span>, <span class="math inline">{d\sim\mathcal{U}(+, -)}</span></li>
-<li>Construct <span class="math inline">\textcolor{#00CCFF}{\xi} =(\mathbf{x}, {\mathbf{v}}, {\pm})</span></li>
+<li>Compute the Metropolis-Hastings (MH) acceptance (with Jacobian <span class="math inline">\mathcal{J}</span>) <span class="math display">\begin{equation}
+A({\textcolor{#AE81FF}{\xi^{\ast}}}|{\textcolor{#00CCFF}{\xi}})=
+\mathrm{min}\left\{1,
+\frac{p(\textcolor{#AE81FF}{\xi^{\ast}})}{p(\textcolor{#00CCFF}{\xi})} \left| \mathcal{J}\left(\textcolor{#AE81FF}{\xi^{\ast}},\textcolor{#00CCFF}{\xi}\right)\right| \right\}
+\end{equation}</span></li>
 </ul></li>
-<li>Generate <span class="purple-text">proposal</span> <span class="math inline">\xi^{\ast}</span> by <span class="blue-text">initial <span class="math inline">\xi</span></span> through <span class="math inline">N_{\mathrm{LF}}</span> leapfrog layers:<br>
-<span class="math display">
-  \textcolor{#00CCFF} \xi \hspace{1pt}\xrightarrow[]{\tiny{\mathrm{LF} \text{ layer}}}\xi_{1} \longrightarrow\cdots \longrightarrow \xi_{N_{\mathrm{LF}}} = \textcolor{#AE81FF}{\xi^{\ast}}
-  </span></li>
-<li>Compute the Metropolis-Hastings (MH) acceptance (with Jacobian <span class="math inline">\mathcal{J}</span>) <span class="math display">
-  A({\textcolor{#AE81FF}{\xi^{\ast}}}|{\textcolor{#00CCFF}{\xi}})=
-  \mathrm{min}\left\{1,
-  \frac{p(\textcolor{#AE81FF}{\xi^{\ast}})}{p(\textcolor{#00CCFF}{\xi})}\mathcal{J}\left(\textcolor{#AE81FF}{\xi^{\ast}},\textcolor{#00CCFF}{\xi}\right)\right\}
-  </span></li>
-<li><code>if training</code>:
+<li><p><code>backward</code>:</p>
 <ul>
 <li>Evaluate the <strong>loss function</strong><sup>1</sup> <span class="math inline">\mathcal{L}\gets \mathcal{L}_{\theta}(\textcolor{#AE81FF}{\xi^{\ast}}, \textcolor{#00CCFF}{\xi})</span> and backprop</li>
 </ul></li>
-<li>Evaluate MH criteria and assign the next state in the chain according to <span class="math display">
-  \mathbf{x}_{i+1}\gets
+<li><p><code>return</code>: Evaluate MH criteria <span class="math inline">(1)</span> and return accepted config, <span class="math inline">\mathbf{x}_{i+1}</span> <span class="math display">\mathbf{x}_{i+1}\gets
   \begin{cases}
   \textcolor{#AE81FF}{\mathbf{x}^{\ast}} \small{\text{ w/ prob }} A(\textcolor{#AE81FF}{\xi^{\ast}}|\textcolor{#00CCFF}{\xi}) \hspace{26pt} ✅ \\
   \textcolor{#00CCFF}{\mathbf{x}} \hspace{5pt}\small{\text{ w/ prob }} 1 - A(\textcolor{#AE81FF}{\xi^{\ast}}|{\textcolor{#00CCFF}{\xi}}) \hspace{10pt} 🚫
-  \end{cases}
-  </span></li>
+  \end{cases}</span></p></li>
 </ol>
-</div>
-</div>
-</div>
 <aside><ol class="aside-footnotes"><li id="fn6"><p>For simple <span class="math inline">\mathbf{x} \in \mathbb{R}^{2}</span> example, <span class="math inline">\mathcal{L}_{\theta} = A(\xi^{\ast}|\xi)\cdot \left(\mathbf{x}^{\ast} - \mathbf{x}\right)^{2}</span></p></li></ol></aside></section>
 
 <section id="toy-example-gmm-in-mathbbr2" class="title-slide slide level1 centeredslide center">
@@ -808,7 +811,7 @@ v' &amp;:= \textcolor{#FB6896}{\Gamma}(x'; \tilde{v}) = \tilde{v} - \frac{\varep
 
 <section id="lattice-gauge-theory-2d-u1" class="title-slide slide level1 centeredslide center">
 <h1>Lattice Gauge Theory (2D <span class="math inline">U(1)</span>)</h1>
-<div class="columns">
+<div class="columns" data-layout-valign="top">
 <div class="column" style="width:50%;">
 <div style="text-align:center;">
 <div class="callout callout-note callout-titled callout-style-default">
@@ -953,7 +956,7 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1, \frac{p(\xi^{\ast})}{p(\xi)}\left|\fra
 <section id="integrated-autocorrelation-time" class="title-slide slide level1 centeredslide center">
 <h1>Integrated Autocorrelation Time</h1>
 
-<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/tint1.svg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;1: Plot of the integrated autocorrelation time for both the trained model (colored) and HMC (greyscale).</p></section>
+<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/tint1.svg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;2: Plot of the integrated autocorrelation time for both the trained model (colored) and HMC (greyscale).</p></section>
 
 <section id="interpretation" class="title-slide slide level1 centeredslide center">
 <h1>Interpretation</h1>
@@ -967,7 +970,7 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1, \frac{p(\xi^{\ast})}{p(\xi)}\left|\fra
 </div>
 </div>
 
-<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/ridgeplots.svg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;2: Illustration of how different observables evolve over a single L2HMC trajectory.</p></section>
+<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/ridgeplots.svg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;3: Illustration of how different observables evolve over a single L2HMC trajectory.</p></section>
 
 <section id="interpretation-1" class="title-slide slide level1 centeredslide center">
 <h1>Interpretation</h1>
@@ -991,7 +994,7 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1, \frac{p(\xi^{\ast})}{p(\xi)}\left|\fra
 </div>
 </div>
 </div>
-<p></p><figcaption>Figure&nbsp;3: The trained model artifically increases the energy towards the middle of the trajectory, allowing the sampler to tunnel between isolated sectors.</figcaption><p></p>
+<p></p><figcaption>Figure&nbsp;4: The trained model artifically increases the energy towards the middle of the trajectory, allowing the sampler to tunnel between isolated sectors.</figcaption><p></p>
 </figure>
 </div>
 </section>
@@ -1096,7 +1099,7 @@ updated in parallel
 </div>
 </section>
 
-<section id="section-3" class="title-slide slide level1 center" data-background-color="white">
+<section id="section-2" class="title-slide slide level1 center" data-background-color="white">
 <h1></h1>
 <iframe data-src="https://nbviewer.org/github/saforem2/l2hmc-qcd/blob/dev/src/l2hmc/notebooks/l2hmc-2dU1.ipynb" width="100%" height="650" title="l2hmc-qcd">
 </iframe>
@@ -1207,7 +1210,7 @@ Wittig, Hartmut. 2023. <span>“Progress on <span class="math inline">(g-2)_\mu<
 <h1>Extras</h1>
 
 </section>
-<section id="section-4" class="slide level2 centeredslide center" data-background-color="white">
+<section id="section-3" class="slide level2 centeredslide center" data-background-color="white">
 <h2></h2>
 
 <img data-src="https://upload.wikimedia.org/wikipedia/commons/0/00/Standard_Model_of_Elementary_Particles.svg" class="r-stretch"></section>
@@ -1250,7 +1253,7 @@ Wittig, Hartmut. 2023. <span>“Progress on <span class="math inline">(g-2)_\mu<
 <span id="cb1-3"><a href="#cb1-3"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.07499699306718088</code></pre>
+<pre><code>0.5674752464048409</code></pre>
 </div>
 </div>
 <aside class="notes">
@@ -1269,7 +1272,7 @@ Wittig, Hartmut. 2023. <span>“Progress on <span class="math inline">(g-2)_\mu<
 </section>
 <section id="python-1" class="slide level2 scrollable center">
 <h2>Python</h2>
-<p>For a demonstration of a line plot on a polar axis, see <a href="#/python-1-output">Figure&nbsp;4</a></p>
+<p>For a demonstration of a line plot on a polar axis, see <a href="#/python-1-output">Figure&nbsp;5</a></p>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1314,7 +1317,7 @@ Wittig, Hartmut. 2023. <span>“Progress on <span class="math inline">(g-2)_\mu<
 <div id="fig-polar" class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="index_files/figure-revealjs/fig-polar-output-1.png" width="450" height="439"></p>
-<figcaption>Figure&nbsp;4: A line plot on a polar axis</figcaption>
+<figcaption>Figure&nbsp;5: A line plot on a polar axis</figcaption>
 </figure>
 </div>
 </div>
@@ -1347,29 +1350,8 @@ Wittig, Hartmut. 2023. <span>“Progress on <span class="math inline">(g-2)_\mu<
 </div>
 </div>
 </div>
-<p></p><figcaption>Figure&nbsp;5: Charts</figcaption><p></p>
+<p></p><figcaption>Figure&nbsp;6: Charts</figcaption><p></p>
 </figure>
-</div>
-</div>
-</section>
-<section id="hmc-mermaid" class="slide level2 center">
-<h2>HMC Mermaid</h2>
-<div class="cell" data-reveal="true">
-<div class="cell-output-display">
-<div>
-<div>
-<pre class="mermaid mermaid-js">flowchart TB
-  v --&gt; G1
-  x -.-&gt; G1
-  x --&gt; L
-  G1 -.-&gt; L
-  G1 -.-&gt; G2
-  L -.-&gt; G2
-  L --&gt; x'
-  G2 --&gt; v'
-</pre>
-</div>
-</div>
 </div>
 </div>
 </section>
@@ -1630,7 +1612,7 @@ Wittig, Hartmut. 2023. <span>“Progress on <span class="math inline">(g-2)_\mu<
         height: 700,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 0.15,
 
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,

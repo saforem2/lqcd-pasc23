@@ -18,7 +18,7 @@ format:
     controls: false
     logo: "https://raw.githubusercontent.com/saforem2/anl-job-talk/main/docs/assets/anl.svg"
     history: false
-    margin: 0.1
+    margin: 0.15
     theme: [dark, custom.scss]
     css: [css/default.css, css/callouts.css, css/code-callout.css]
     self-contained: false
@@ -63,6 +63,7 @@ format:
     - Quark / gluon interactions in the nuclueus
     - Analytic progress is _difficult_...[^progress]
       - Lattice QCD to the rescue! 🚀
+- [**incomplete!**]{.red-text}
 :::
 
 ::: {.column width="40%"}
@@ -85,7 +86,7 @@ format:
 
 ## {.centeredslide background-video="https://d2r55xnwy6nx47.cloudfront.net/uploads/2021/04/Muon_2560_Lede.mp4" background-video-loop="true" background-video-muted="true"}
 
-::: {style="text-shadow: 0px 0px 10px black; background-color: rgba(22,22,22,0.33); border-radius: 10px; text-align:center; box-shadow:RGBA(0, 0, 0, 0.7) 0px 5px 15px; padding: 0px; padding-left: 1%; padding-right: 1%; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 1em;"}
+::: {style="text-shadow: 0px 0px 10px black; background-color: rgba(22,22,22,0.33); border-radius: 10px; text-align:center; box-shadow:RGBA(0, 0, 0, 0.7) 0px 5px 15px; padding: 0px; padding-left: 1%; padding-right: 1%; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em;"}
 [Magnetic Moment of the Muon]{style="font-size: 1.75em; font-weight: bold;"}
 
 ::: {style="font-size: 1.5em; margin-top: 0pt; margin-bottom: 0pt; border:2px solid #00CCFF; border-radius:8px; margin-left:auto; margin-right:auto; min-width: max-content; max-width: min-content; padding-left: 1%; padding-right: 1%; background-color: rgba(22,22,22,0.75); "}
@@ -94,7 +95,7 @@ $a_{\mu} = \frac{(g_{\mu} - 2)}{2}$
 
 $a_{\mu}^{\mathrm{exp}} - a_{\mu}^{\mathrm{SM}} = \left(25.1 \pm 5.9\right)\cdot 10^{-10}$
 
-**Can Lattice QCD resolve this?**  
+**can Lattice QCD resolve this?**  
 
 :::
 
@@ -118,6 +119,21 @@ $a_{\mu}^{\mathrm{exp}} - a_{\mu}^{\mathrm{SM}} = \left(25.1 \pm 5.9\right)\cdot
 
 ![](https://mod.fnal.gov/mod/stillphotos/2013/0200/13-0244-11D.hr.jpg){width="80%" fig-align="center"}
 
+:::
+
+# Tension
+
+::: {style="font-size:0.75em; text-align: left; margin-left: inherit;"}
+> Obviously, an independent cross-check of the BMW lattice result for
+> $a_{\mu}^{\mathrm{hvp, LO}}$ with sub-percent precision is badly needed  
+> --- [@wittig2023progress]
+:::
+
+::: {#fig-tension}
+
+![](assets/tension.png)
+
+[Full cartoon](https://github.com/saforem2/lqcd-pasc23/blob/main/assets/mu2cartoon.png)
 :::
 
 # Markov Chain Monte Carlo (MCMC)
@@ -163,7 +179,7 @@ If configurations were <span style="color:#00CCFF;">independent</span>, we could
 
 ::: {.callout-tip title="Trick" style="display:inline!important;"}
   - Introduce _fictitious_ momentum $v \sim \mathcal{N}(0, \mathbb{1})$
-  - Normally distributed **independent** of $x$, i.e.
+    - Normally distributed **independent** of $x$, i.e.
   $$\begin{align*}
     p(x, v) &\textcolor{#02b875}{=} p(x)p(v) \propto e^{-S{(x)}} e^{-\frac{1}{2} v^{T}v}
    	= e^{-\left[S(x) + \frac{1}{2} v^{T}{v}\right]}
@@ -214,7 +230,6 @@ $\left(\dot{x}, \dot{v}\right) = \left(\partial_{v} H, -\partial_{x} H\right)$
 :::
 
 ::: {.callout-note title="Leapfrog Step"}
-
 [input]{.dim-text style="font-family:monospace;"} $\,\left(x, v\right) \rightarrow \left(x', v'\right)\,$ [output]{.dim-text style="font-family:monospace;"}
 
 $$\begin{align*}
@@ -226,9 +241,13 @@ v' &:= \textcolor{#FB6896}{\Gamma}(x'; \tilde{v}) = \tilde{v} - \frac{\varepsilo
 :::
 
 ::: {.callout-warning title="Warning!"}
+
 [Resample $v_{0} \sim \mathcal{N}(0, \mathbb{1})$]{style="text-align:left;"}  
 [at the [beginning]{.yellow-text} of each trajectory]{style="text-align:left;"}
+:::
 
+::: {style="font-size:0.8em;"}
+> **Note**: $\partial_{x} S(x)$ is the _force_
 :::
 
 :::
@@ -239,12 +258,11 @@ v' &:= \textcolor{#FB6896}{\Gamma}(x'; \tilde{v}) = \tilde{v} - \frac{\varepsilo
 
 ::::
 
-[^eps]: Of step size $\varepsilon$
+<!-- [^eps]: Of step size $\varepsilon$ -->
 
-::: {.aside}
-**Note**: The gradient of the action, $\partial_{x} S(x)$ is called the _force_
-:::
-
+<!-- ::: {.aside} -->
+<!-- **Note**: The gradient of the action, $\partial_{x} S(x)$ is called the _force_ -->
+<!-- ::: -->
 
 # HMC Update
 
@@ -317,35 +335,32 @@ $$\begin{align*}
 
 ![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/network_functions.svg){.absolute top=440 width="100%"}
 
-# {.centeredslide style="font-size:0.9em;"}
+# L2HMC Update {style="font-size:0.85em;"}
 
-::: {.callout-caution title="L2HMC Update"}
+<!-- ::: {.callout-caution title="L2HMC Update"} -->
 
-1. Initialization:  
-    - Resample: ${\mathbf{v} \sim \mathcal{N}(0, \mathbb{1})}$, ${d\sim\mathcal{U}(+, -)}$
-    - Construct $\textcolor{#00CCFF}{\xi} =(\mathbf{x}, {\mathbf{v}}, {\pm})$
+1. `init`: Resample ${\mathbf{v} \sim \mathcal{N}(0,
+   \mathbb{1})}$, ${d\sim\mathcal{U}(+, -)}$, and construct
+   $\textcolor{#00CCFF}{\xi} =(\mathbf{x}, {\mathbf{v}}, {\pm})$
 
-2. Generate [proposal]{.purple-text} $\xi^{\ast}$ by [initial $\xi$]{.blue-text} through $N_{\mathrm{LF}}$ leapfrog layers:  
-  $$
-  \textcolor{#00CCFF} \xi \hspace{1pt}\xrightarrow[]{\tiny{\mathrm{LF} \text{ layer}}}\xi_{1} \longrightarrow\cdots \longrightarrow \xi_{N_{\mathrm{LF}}} = \textcolor{#AE81FF}{\xi^{\ast}}
-  $$
-4. Compute the Metropolis-Hastings (MH) acceptance (with Jacobian $\mathcal{J}$)
-  $$
-  A({\textcolor{#AE81FF}{\xi^{\ast}}}|{\textcolor{#00CCFF}{\xi}})=
-  \mathrm{min}\left\{1,
-  \frac{p(\textcolor{#AE81FF}{\xi^{\ast}})}{p(\textcolor{#00CCFF}{\xi})}\mathcal{J}\left(\textcolor{#AE81FF}{\xi^{\ast}},\textcolor{#00CCFF}{\xi}\right)\right\}
-  $$
-5. `if training`:  
+2. `forward`:Generate [proposal $\xi^{\ast}$]{.purple-text} by [initial $\xi$]{.blue-text} through $N_{\mathrm{LF}}$ leapfrog layers:  
+  $$\textcolor{#00CCFF} \xi \hspace{1pt}\xrightarrow[]{\tiny{\mathrm{LF} \text{ layer}}}\xi_{1} \longrightarrow\cdots \longrightarrow \xi_{N_{\mathrm{LF}}} = \textcolor{#AE81FF}{\xi^{\ast}}$$
+
+    - Compute the Metropolis-Hastings (MH) acceptance (with Jacobian $\mathcal{J}$)
+      $$\begin{equation}
+      A({\textcolor{#AE81FF}{\xi^{\ast}}}|{\textcolor{#00CCFF}{\xi}})=
+      \mathrm{min}\left\{1,
+      \frac{p(\textcolor{#AE81FF}{\xi^{\ast}})}{p(\textcolor{#00CCFF}{\xi})} \left| \mathcal{J}\left(\textcolor{#AE81FF}{\xi^{\ast}},\textcolor{#00CCFF}{\xi}\right)\right| \right\}
+      \end{equation}$$
+
+5. `backward`:  
     - Evaluate the **loss function**[^loss] $\mathcal{L}\gets \mathcal{L}_{\theta}(\textcolor{#AE81FF}{\xi^{\ast}}, \textcolor{#00CCFF}{\xi})$ and backprop
-6. Evaluate MH criteria and assign the next state in the chain according to
-  $$
-  \mathbf{x}_{i+1}\gets
+6. `return`: Evaluate MH criteria $(1)$ and return accepted config, $\mathbf{x}_{i+1}$
+  $$\mathbf{x}_{i+1}\gets
   \begin{cases}
   \textcolor{#AE81FF}{\mathbf{x}^{\ast}} \small{\text{ w/ prob }} A(\textcolor{#AE81FF}{\xi^{\ast}}|\textcolor{#00CCFF}{\xi}) \hspace{26pt} ✅ \\
   \textcolor{#00CCFF}{\mathbf{x}} \hspace{5pt}\small{\text{ w/ prob }} 1 - A(\textcolor{#AE81FF}{\xi^{\ast}}|{\textcolor{#00CCFF}{\xi}}) \hspace{10pt} 🚫
-  \end{cases}
-  $$
-:::
+  \end{cases}$$
 
 [^loss]: 
     For simple $\mathbf{x} \in \mathbb{R}^{2}$ example, $\mathcal{L}_{\theta} =
@@ -357,7 +372,7 @@ $$\begin{align*}
 
 # Lattice Gauge Theory (2D $U(1)$) {.centeredslide}
 
-:::: {.columns}
+:::: {.columns layout-valign="top"}
 
 ::: {.column width="50%"}
 
@@ -802,20 +817,6 @@ plt.show()
 
 plt.plot([8,65,23,90])
 plt.show()
-```
-
-## HMC Mermaid
-
-```{mermaid}
-flowchart TB
-  v --> G1
-  x -.-> G1
-  x --> L
-  G1 -.-> L
-  G1 -.-> G2
-  L -.-> G2
-  L --> x'
-  G2 --> v'
 ```
 
 ## Testing Callouts

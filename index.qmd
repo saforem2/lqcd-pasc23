@@ -8,6 +8,8 @@ format:
     slide-number: true
     title-slide-style: pandoc
     chalkboard: true
+    auto-animate: true
+    reference-location: section
     touch: true
     # loop: true
     pause: false
@@ -18,7 +20,7 @@ format:
     controls: false
     logo: "https://raw.githubusercontent.com/saforem2/anl-job-talk/main/docs/assets/anl.svg"
     history: false
-    margin: 0.15
+    # margin: 0.15
     theme: [dark, custom.scss]
     css: [css/default.css, css/callouts.css, css/code-callout.css]
     self-contained: false
@@ -133,15 +135,15 @@ The Muon g-2 ring sits in its detector hall amidst electronics racks, the muon b
 
 ## Tension
 
-::: {style="font-size:0.75em; text-align: left; margin-left: inherit;"}
+::: {style="font-size:0.75em; text-align: inherit; margin-left: inherit;"}
 > Obviously, an independent cross-check of the BMW lattice result for
-> $a_{\mu}^{\mathrm{hvp, LO}}$ with sub-percent precision is badly needed  
+> $a_{\mu}^{\mathrm{hvp, LO}}$ with sub-percent precision is badly needed.&nbsp;  
 > --- [@wittig2023progress]
 :::
 
 ::: {#fig-tension}
 
-![](assets/tension.png)
+![](assets/tension.png){fig-align="center" width="66%"}
 
 [Full cartoon](https://github.com/saforem2/lqcd-pasc23/blob/main/assets/mu2cartoon.png)
 :::
@@ -181,14 +183,14 @@ If configurations were <span style="color:#00CCFF;">independent</span>, we could
 # Hamiltonian Monte Carlo (HMC)[^hmc] {.centeredslide}
 
 - Want to (sequentially) construct a chain of states:
-  $$x_{0} \rightarrow x_{1} \rightarrow \cdots \rightarrow x_{N}\hspace{10pt}$$
+  $$x_{0} \rightarrow x_{1} \rightarrow x_{i} \rightarrow \cdots \rightarrow x_{N}\hspace{10pt}$$
 
   such that, as $N \rightarrow \infty$:
   $$\left\{x_{i}, x_{i+1}, x_{i+2}, \cdots, x_{N} \right\} \xrightarrow[]{N\rightarrow\infty} p(x)
   \propto e^{-S(x)}$$
 
 ::: {.callout-tip title="Trick" style="display:inline!important;"}
-  - Introduce _fictitious_ momentum $v \sim \mathcal{N}(0, \mathbb{1})$
+  - Introduce [fictitious]{.green-text} momentum $v \sim \mathcal{N}(0, \mathbb{1})$
     - Normally distributed **independent** of $x$, i.e.
   $$\begin{align*}
     p(x, v) &\textcolor{#02b875}{=} p(x)p(v) \propto e^{-S{(x)}} e^{-\frac{1}{2} v^{T}v}
@@ -240,39 +242,31 @@ $\left(\dot{x}, \dot{v}\right) = \left(\partial_{v} H, -\partial_{x} H\right)$
 :::
 
 ::: {.callout-note title="Leapfrog Step"}
-[input]{.dim-text style="font-family:monospace;"} $\,\left(x, v\right) \rightarrow \left(x', v'\right)\,$ [output]{.dim-text style="font-family:monospace;"}
+`input` $\,\left(x, v\right) \rightarrow \left(x', v'\right)\,$ `output`
 
 $$\begin{align*}
-\tilde{v} &:= \textcolor{#FB6896}{\Gamma}(x; v)\hspace{2.2pt} = v - \frac{\varepsilon}{2} \partial_{x} S(x) \\
-x' &:= \textcolor{#A64F00}{\Lambda}(x; \tilde{v}) \, =  x + \varepsilon \, \tilde{v} \\
-v' &:= \textcolor{#FB6896}{\Gamma}(x'; \tilde{v}) = \tilde{v} - \frac{\varepsilon}{2} \partial_{x} S(x')
+\tilde{v} &:= \textcolor{#F06292}{\Gamma}(x; v)\hspace{2.2pt} = v - \frac{\varepsilon}{2} \partial_{x} S(x) \\
+x' &:= \textcolor{#FD971F}{\Lambda}(x; \tilde{v}) \, =  x + \varepsilon \, \tilde{v} \\
+v' &:= \textcolor{#F06292}{\Gamma}(x'; \tilde{v}) = \tilde{v} - \frac{\varepsilon}{2} \partial_{x} S(x')
 \end{align*}$$
 
 :::
 
-::: {.callout-warning title="Warning!"}
-
-[Resample $v_{0} \sim \mathcal{N}(0, \mathbb{1})$]{style="text-align:left;"}  
+::: {.callout-warning title="Warning!" style="text-align:left;"}
+[Resample $v_{0} \sim \mathcal{N}(0, \mathbb{1})$]{style="text-align:left!important;"}  
 [at the [beginning]{.yellow-text} of each trajectory]{style="text-align:left;"}
 :::
 
 ::: {style="font-size:0.8em; margin-left:13%;"}
-> **Note**: $\partial_{x} S(x)$ is the _force_
+[**Note**: $\partial_{x} S(x)$ is the _force_]{.dim-text}
 :::
 
 :::
 
 ::: {.column width="49%" style="text-align:left;"}
-![](./assets/hmc/hmc-update-dark.svg){width=60%}
+![](./assets/hmc/hmc-update-light.svg){width=60%}
 :::
-
 ::::
-
-<!-- [^eps]: Of step size $\varepsilon$ -->
-
-<!-- ::: {.aside} -->
-<!-- **Note**: The gradient of the action, $\partial_{x} S(x)$ is called the _force_ -->
-<!-- ::: -->
 
 # HMC Update
 
@@ -292,29 +286,36 @@ v' &:= \textcolor{#FB6896}{\Gamma}(x'; \tilde{v}) = \tilde{v} - \frac{\varepsilo
 <!-- - Use $x'$ as our proposal in the Metropolis-Hastings accept / reject, $A(x'|x)$ -->
 
 $$\begin{align*}
-  \textcolor{#FB6896}{\Gamma}: (x, v) \textcolor{#FB6896}{\rightarrow} v' &:= v - \frac{\varepsilon}{2} \partial_{x} S(x) \\
-  \textcolor{#A64F00}{\Lambda}: (x, v) \textcolor{#A64F00}{\rightarrow} x' &:= x + \varepsilon v
+  \textcolor{#F06292}{\Gamma}: (x, v) \textcolor{#F06292}{\rightarrow} v' &:= v - \frac{\varepsilon}{2} \partial_{x} S(x) \\
+  \textcolor{#FD971F}{\Lambda}: (x, v) \textcolor{#FD971F}{\rightarrow} x' &:= x + \varepsilon v
 \end{align*}$$
 
 - We then accept / reject $x'$ using Metropolis-Hastings criteria,  
   $A(x'|x) = \min\left\{1, \frac{p(x')}{p(x)}\left|\frac{\partial x'}{\partial x}\right|\right\}$
+
 :::
 
-::: {.column width="34%"}
-![](./assets/hmc/hmc-update-dark.svg)
-:::
+::: {.column width="30%"}
 
+![](./assets/hmc/hmc-update-light.svg)
+
+:::
 ::::
 
-[^v0]: 
-    We **always** start by resampling the momentum,
-    $v_{0} \sim \mathcal{N}(0, \mathbb{1})$
+[^v0]: We **always** start by resampling the momentum, $v_{0} \sim
+\mathcal{N}(0, \mathbb{1})$
+
 
 # HMC Demo {.centeredslide}
 
-<iframe data-src="https://chi-feng.github.io/mcmc-demo/app.html" width="100%" height="650" title="l2hmc-qcd"></iframe>
+::: {#fig-hmc-demo}
 
-# Issues with HMC
+<iframe data-src="https://chi-feng.github.io/mcmc-demo/app.html" width="90%" height="500" title="l2hmc-qcd"></iframe>
+
+HMC Demo
+:::
+
+# Issues with HMC {style="font-size:0.9em;"}
 
 - What do we want in a good sampler?
   - **Fast mixing** (small autocorrelations)
@@ -324,10 +325,12 @@ $$\begin{align*}
   - Energy levels selected randomly $\rightarrow$ **slow mixing**
   - Cannot easily traverse low-density zones $\rightarrow$ **slow convergence**
 
-::: {layout-ncol=2}
-![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/hmc_traj_eps025.svg)
+::: {#fig-hmc-issues layout-ncol=2}
+![HMC Samples with $\varepsilon=0.25$](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/hmc_traj_eps025.svg)
 
-![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/hmc_traj_eps05.svg)
+![HMC Samples with $\varepsilon=0.5$](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/hmc_traj_eps05.svg)
+
+HMC Samples generated with varying step sizes $\varepsilon$
 :::
 
 # L2HMC: Leapfrog Layer {.centeredslide}
@@ -346,23 +349,23 @@ $$\begin{align*}
 ![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/network_functions.svg){.absolute top=440 width="100%"}
 
 
-# L2HMC: Leapfrog Layer (alt.)
+<!-- # L2HMC: Leapfrog Layer (alt.) -->
+<!---->
+<!-- ::: {layout="[[1, 1], [4]]" layout-valign="top"} -->
+<!---->
+<!-- ![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/update_steps.svg){} -->
+<!---->
+<!-- ![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/leapfrog_layer_dark2.svg){width="100%"} -->
+<!---->
+<!-- ![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/network_functions.svg){} -->
+<!---->
+<!-- Leapfrog Layer -->
+<!-- ::: -->
+<!---->
 
-::: {layout="[[1, 1], [4]]" layout-valign="top"}
+# {.centeredslide}
 
-![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/update_steps.svg){}
-
-![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/leapfrog_layer_dark2.svg){width="100%"}
-
-![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/network_functions.svg){}
-
-Leapfrog Layer
-:::
-
-
-# L2HMC Update {style="font-size:0.8em;"}
-
-<!-- ::: {.callout-caution title="L2HMC Update"} -->
+::: {.callout-caution title="Algorithm: L2HMC Update"}
 
 1. `input`: $\mathbf{x}$  
 
@@ -380,7 +383,7 @@ Leapfrog Layer
       \frac{p(\textcolor{#AE81FF}{\xi^{\ast}})}{p(\textcolor{#00CCFF}{\xi})} \left| \mathcal{J}\left(\textcolor{#AE81FF}{\xi^{\ast}},\textcolor{#00CCFF}{\xi}\right)\right| \right\}
       \end{equation}$$
 
-5. `backward`:  
+5. `backward` (if training):  
     - Evaluate the **loss function**[^loss] $\mathcal{L}\gets \mathcal{L}_{\theta}(\textcolor{#AE81FF}{\xi^{\ast}}, \textcolor{#00CCFF}{\xi})$ and backprop
 6. `return`: Evaluate MH criteria $(1)$ and return accepted config, $\mathbf{x}_{i+1}$
   $$\mathbf{x}_{i+1}\gets
@@ -388,6 +391,8 @@ Leapfrog Layer
   \textcolor{#AE81FF}{\mathbf{x}^{\ast}} \small{\text{ w/ prob }} A(\textcolor{#AE81FF}{\xi^{\ast}}|\textcolor{#00CCFF}{\xi}) \hspace{26pt} ✅ \\
   \textcolor{#00CCFF}{\mathbf{x}} \hspace{5pt}\small{\text{ w/ prob }} 1 - A(\textcolor{#AE81FF}{\xi^{\ast}}|{\textcolor{#00CCFF}{\xi}}) \hspace{10pt} 🚫
   \end{cases}$$
+
+:::
 
 [^loss]: 
     For simple $\mathbf{x} \in \mathbb{R}^{2}$ example, $\mathcal{L}_{\theta} =
@@ -410,22 +415,27 @@ $$U_{\mu}(n) = e^{i x_{\mu}(n)}\in \mathbb{C},\quad \text{where}\quad$$
 $$x_{\mu}(n) \in [-\pi,\pi)$$
 :::
 
+::: {}
+
 ::: {.callout-important title="Wilson Action"}
-$$\begin{align*}
-S_{\beta}(x) &= \beta\sum_{P} \cos \textcolor{#00CCFF}{x_{P}}, \text{ where } \\
-\textcolor{#00CCFF}{x_{P}} &= \big[x_{\mu}(n) + x_{\nu}(n+\hat{\mu}) \\
-&\hspace{20pt}- x_{\mu}(n+\hat{\nu})-x_{\nu}(n)\big]
-\end{align*}$$
+$$S_{\beta}(x) = \beta\sum_{P} \cos \textcolor{#00CCFF}{x_{P}},$$
+
+$$\textcolor{#00CCFF}{x_{P}} = \left[x_{\mu}(n) + x_{\nu}(n+\hat{\mu})
+- x_{\mu}(n+\hat{\nu})-x_{\nu}(n)\right]$$
 :::
 
-> **Note**: $\textcolor{#00CCFF}{x_{P}}$ is the product of links around
-> $1\times 1$ square, called a ["plaquette"]{.blue-text}
+[**Note**: $\textcolor{#00CCFF}{x_{P}}$ is the product of
+links around $1\times 1$ square, called a ["plaquette"]{.blue-text}]{.dim-text style=font-size:0.8em;}
+:::
+
 :::
 
 :::
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/u1lattice.dark.svg){width="100%"}
+
+![2D Lattice](https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/u1lattice.dark.svg){width="80%"}
+
 :::
 
 ::::
@@ -506,12 +516,11 @@ $$Q = \frac{1}{2\pi}\sum_{P}\left\lfloor x_{P}\right\rfloor  \in \mathbb{Z}$$
 ::: {.column width="33%" style="text-align:left; padding-top: 5%;"}
 
 ::: {.callout-important title="Improvement" style="text-align:left!important;"}
-We can measure the performance  
-by comparing $\tau_{\mathrm{int}}^{Q}$ for the  
+We can measure the performance by comparing $\tau_{\mathrm{int}}$ for the
 [**trained model**]{style="color:#FF2052;"} vs.
 [**HMC**]{style="color:#9F9F9F;"}.  
   
-**Note**: [lower]{.red-text} is better
+**Note**: [lower]{style="color:#FF2052;"} is better
 :::
 
 :::
@@ -566,7 +575,7 @@ trajectory.
 # Interpretation {.centeredslide}
 
 
-::: {#fig-energy-ridgeplot layout-ncol=2 width="100%"}
+::: {#fig-energy-ridgeplot layout-ncol=2}
 
 ![Average plaquette: $\langle x_{P}\rangle$ vs LF step](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/plaqsf_ridgeplot.svg){width="100%"}
 
@@ -760,6 +769,56 @@ which is a DOE Office of Science User Facility supported under Contract DE-AC02-
 
 # Extras
 
+## Networks 2D $U(1)$
+
+- Stack gauge links as `shape`$\left(U_{\mu}\right)$` =[Nb, 2, Nt, Nx]` $\in \mathbb{C}$
+
+  $$ x_{\mu}(n) ≔ \left[\cos(x), \sin(x)\right]$$
+
+  with `shape`$\left(x_{\mu}\right)$` = [Nb, 2, Nt, Nx, 2]` $\in \mathbb{R}$
+
+- $x$-Network:
+    - $\Lambda^{\pm}_{k}(x, v) \rightarrow \left[s^{k}_{x}, t^{k}_{x}, q^{k}_{x}\right]$
+
+- $v$-Network:
+    - $\Gamma_{k}^{\pm}(x, v) \rightarrow \left[s^{k}_{v}, t^{k}_{v}, q^{k}_{v}\right]$
+
+
+## $v$-update (pt. 1)
+
+- `network`[^sigma]: $\left(x, \partial_{x} S(x)\right) \coloneqq \left(x, F \right)\rightarrow (s_{v}, t_{v}, q_{v})$, where
+  $$\begin{align*}
+  h_{0} &= \sigma\left( w_{x} x + w_{F} F + b \right) \\
+  h_{1} &= \sigma\left( w_{1} h_{0} + b_{1} \right) \\
+  &\vdots \\
+  h_{n} &= \sigma\left(w_{n} h_{n-1} + b_{n}\right) \longrightarrow \\
+  \end{align*}$$
+  $$s_{v} = \lambda_{s} \tanh\left(w_{s} h_{n} + b_{s}\right), \quad
+  t_{v} = w_{t} z + b_{t}, \quad
+  q_{v} = \lambda_{q}w_{q} z + b_{q}$$
+
+[^sigma]: $\sigma(\cdot)$ denotes an activation function
+
+## $v$-update (pt. 2) {style="font-size:0.9em;"}
+
+- Network outputs[^constants]:
+  $$s_{v} = \lambda_{s} \tanh\left(w_{s}\, h_{n} + b_{s}\right), \quad
+  t_{v} = w_{t} h_{n} + b_{t}, \quad
+  q_{v} = \lambda_{q}\tanh\left(w_{q} h_{n} + b_{q}\right)$$
+
+- Use these to update $\Gamma^{\pm}: (x, v) \rightarrow \left(x, v_{\pm}\right)$[^inverse]:
+
+    - [forward]{style="color:#FF5252"} $(d = \textcolor{#FF5252}{+})$:
+      $$v_{\textcolor{#FF5252}{+}} = v \cdot e^{\frac{\varepsilon}{2} s_{v}} - \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{v}} + t_{v} \right]$$
+
+
+    - [backward]{style="color:#1A8FFF;"} $(d = \textcolor{#1A8FFF}{-})$: 
+      $$v_{\textcolor{#1A8FFF}{-}} = e^{-\frac{\varepsilon}{2} s_{v}} \left\{v + \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{v}} + t_{v} \right]\right\}$$
+
+
+[^constants]: $\lambda_{s},\, \lambda_{q} \in \mathbb{R}$ are trainable parameters
+[^inverse]: Note that $\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}$
+
 ## LQCD @ ALCF (2008)
 
 > The Blue Gene/P at the ALCF has tremendously accelerated the generation of the gauge configurations—in many cases, by a factor of 5 to 10 over what has been possible with other machines. Significant progress has been made in simulations with two different implementations of the quarks—domain wall and staggered[^lqcd2008]  
@@ -775,23 +834,23 @@ which is a DOE Office of Science User Facility supported under Contract DE-AC02-
 ## HMC 
 
 ```{mermaid}
-flowchart TD
-  v("𝒗") --> G1{"𝜞"}
-  x("𝒙") -. "∂𝑆/∂𝒙" -.-> G1{"𝜞"}
-  x --> L{"𝜦"}
-  G1 -.-> L{"𝜦"}
-  G1 --> G2{"𝜞"}
+flowchart LR
+  v("v") --> G1{"Γ"}
+  x0("x") -. "∂𝑆 / ∂𝒙" -.-> G1{"Γ"}
+  G1 -.-> L{"Λ"}
+  x0 --> L{"Λ"}
+  G1 --> G2{"Γ"}
   L -.-> G2
-  L ---> x'("𝒙'")
-  G2 --> v'("𝒗'")
-  style x  color:#805AC1
+  L ---> x'("x*")
+  G2 --> v'("v*")
+  style x0  color:#805AC1
   style x' color:#805AC1
   style v' color:#308E40
   style v color:#308E40
-  style L color:#A64F00
+  style L color:#FD971F
   style G1 color:#ec407a
   style G2 color:#ec407a
-  classDef default fill:#1c1c1c%%,stroke:#2c2c2c,stroke-width:1px;
+  classDef default fill:#1c1c1c
 ```
 
 ## Python

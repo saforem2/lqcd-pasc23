@@ -101,40 +101,72 @@ $algbg: #1c1c1c !default;
 
 /*-- scss:rules --*/
 
+// .reveal .slide aside .aside-footnotes {
+//   margin-bottom: 1em;
+// }
+//
+// .reveal .slide aside .aside-footnotes li:first-of-type {
+//     position: absolute!important;
+//     bottom: 20px!important;
+//     margin-bottom: unset!important;
+//     font-size: 0.7em!important;
+//     color: $dim-text!important;
+// }
+//
+// .reveal .slide aside, .reveal .slide aside .aside-footnotes .reveal .slide div.aside {
+//     position: absolute!important;
+//     bottom: 20px!important;
+//     margin-bottom: unset!important;
+//     font-size: 0.7em!important;
+//     color: $dim-text!important;
+// }
+//
+// .reveal .slide aside,
+// .reveal .slide aside .aside-footnotes
+// .reveal .slide div.aside {
+//     position: absolute;
+//     bottom: 20px;
+//     // display: block;
+//     // margin: inherit;
+//     // padding-bottom: 1em!important;
+//     font-size: 0.7em;
+//     color: $dim-text;
+// }
+// .reveal .slide aside {
+//     position: absolute!important;
+//     bottom: 20px!important;
+//     margin-bottom: inherit;
+//     font-size: 0.7em!important;
+//     color: $dim-text!important;
+// }
+// .reveal.center .slide aside, .reveal.center .slide div.aside {
+//      position: absolute!important;
+//     bottom: 20px!important;
+//     font-size: 0.7em!important;
+//     color: $dim-text!important;
+// }
+//
+// .reveal .slide.scrollable aside,.reveal .slide.scrollable div.aside {
+//     position: relative;
+//     margin-top: 1em
+// }
+
 .reveal .slide aside .aside-footnotes {
-  margin-bottom: 1em;
+    // position: fixed!important;
+    // margin-top: 1em!important;
+    // bottom: 2px!important;
+    // font-size: 0.7em!important;
+    color: $dim-text!important;
 }
-
-.reveal .slide aside .aside-footnotes li:first-of-type {
-  margin-top: 0;
-}
-
-.reveal .slide aside,
-.reveal .slide aside .aside-footnotes
-.reveal .slide div.aside {
-    position: absolute;
-    bottom: auto;
-    margin-bottom: 1em;
-    font-size: 0.7em;
-    color: $dim-text;
-}
+//
+// .reveal .slide aside .aside-footnotes li:first-of-type {
+//     margin-top: 0
+// }
 
 .reveal .slide sup {
     font-size: 0.7em;
 }
 
-.reveal .slide.scrollable aside,.reveal .slide.scrollable div.aside {
-    position: relative;
-    margin-top: 1em
-}
-
-.reveal .slide aside .aside-footnotes {
-    margin-bottom: 1em;
-}
-
-.reveal .slide aside .aside-footnotes li:first-of-type {
-    margin-top: 0
-}
 
 // .reveal strong,.reveal b {
 //     font-weight: bold;
@@ -349,4 +381,12 @@ $algbg: #1c1c1c !default;
     font-size: 0.9em;
     margin-left: 2em;
     text-indent: -2em!Important;
+}
+
+.reveal .slide-chalkboard-buttons {
+    display: none!important;
+}
+
+.slide-chalkboard-buttons.slide-menu-offset {
+    display: none!important;
 }

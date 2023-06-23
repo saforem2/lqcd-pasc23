@@ -440,13 +440,19 @@ links around $1\times 1$ square, called a ["plaquette"]{.blue-text}]{.dim-text s
 
 ::::
 
-# Physical Quantities {}
+# Physical Quantities
 
 - To estimate physical quantities, we:
   - calculate physical observables at **increasing** spatial resolution
   - perform extrapolation to continuum limit
 
+::: {#fig-continuum}
 ![](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/static/continuum.svg){.r-stretch}
+
+Increasing the physical resolution ($a \rightarrow 0$) allows us to make
+predictions about numerical values of physical quantities in the continuum
+limit.
+:::
 
 
 # Topological Freezing {.centeredslide}
@@ -477,7 +483,8 @@ $$Q = \frac{1}{2\pi}\sum_{P}\left\lfloor x_{P}\right\rfloor  \in \mathbb{Z}$$
 
 ::: {.column width="45%"}
 
-![Critical Slowing Down at increasing $\beta$](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/critical_slowing_down.svg){width="80%"}
+![Note $\delta Q \rightarrow 0$ at increasing
+$\beta$](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/critical_slowing_down.svg){width="80%"}
 
 <!-- Illustration of critical slowing down at increasing $\beta$. Note at $\beta = 7$, $Q$ remains stuck for the entire run. -->
 
@@ -489,7 +496,9 @@ $$Q = \frac{1}{2\pi}\sum_{P}\left\lfloor x_{P}\right\rfloor  \in \mathbb{Z}$$
 
 - Want to maximize the _expected_ squared charge difference[^charge-diff]:
   $$\begin{equation*}
-  \mathcal{L}_{\theta}\left(\xi^{\ast}, \xi\right) = {\mathbb{E}_{p(\xi)}}\big[-\textcolor{#FA5252}{{\delta Q}}^{2} \left(\xi^{\ast}, \xi \right)\cdot A(\xi^{\ast}|\xi)\big]
+  \mathcal{L}_{\theta}\left(\xi^{\ast}, \xi\right) =
+  {\mathbb{E}_{p(\xi)}}\big[-\textcolor{#FA5252}{{\delta Q}}^{2}
+  \left(\xi^{\ast}, \xi \right)\cdot A(\xi^{\ast}|\xi)\big]
   \end{equation*}$$
 
 - Where:
@@ -498,12 +507,17 @@ $$Q = \frac{1}{2\pi}\sum_{P}\left\lfloor x_{P}\right\rfloor  \in \mathbb{Z}$$
       \textcolor{#FA5252}{\delta Q}(\xi^{\ast},\xi)=\left|Q^{\ast} - Q\right|
       \end{equation*}$$
 
-    - $A(\xi^{\ast}|\xi)$ is the probability of accepting the proposal $\xi^{\ast}$:
+    - $A(\xi^{\ast}|\xi)$ is the probability[^jacobian] of accepting the proposal $\xi^{\ast}$:
       $$\begin{equation*}
-      A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1, \frac{p(\xi^{\ast})}{p(\xi)}\left|\frac{\partial \xi^{\ast}}{\partial \xi^{T}}\right|\right)
+      A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1,
+      \frac{p(\xi^{\ast})}{p(\xi)}\left|\frac{\partial \xi^{\ast}}{\partial
+      \xi^{T}}\right|\right)
       \end{equation*}$$
 
-[^charge-diff]: Here, $\xi^{\ast}$ is the _proposed_ configuration (prior to Accept / Reject)
+[^charge-diff]: Here, $\xi^{\ast}$ is the _proposed_ configuration (prior to
+Accept / Reject)
+[^jacobian]: $\left|\frac{\partial \xi^{\ast}}{\partial \xi^{T}}\right|$ is the
+Jacobian of the transformation from $\xi \rightarrow \xi^{\ast}$
 
 # Integrated Autocorrelation time: $\tau_{\mathrm{int}}$ {.centeredslide}
 
@@ -575,11 +589,11 @@ trajectory.
 # Interpretation {.centeredslide}
 
 
-::: {#fig-energy-ridgeplot layout-ncol=2}
+::: {#fig-energy-ridgeplot layout-ncol=2 layout-valign="top"}
 
-![Average plaquette: $\langle x_{P}\rangle$ vs LF step](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/plaqsf_ridgeplot.svg){width="100%"}
+![Average plaquette: $\langle x_{P}\rangle$ vs LF step](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/plaqsf_ridgeplot.svg)
 
-![Average energy: $H - \sum\log|\mathcal{J}|$](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/Hf_ridgeplot.svg){width="100%"}
+![Average energy: $H - \sum\log|\mathcal{J}|$](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/Hf_ridgeplot.svg)
 
 The trained model artifically increases the energy towards
 the middle of the trajectory, allowing the sampler to tunnel between isolated
@@ -590,7 +604,7 @@ sectors.
 
 :::: {.columns}
 
-::: {.column width="55%"}
+::: {#fig-deviation .column width="55%"}
 
 [Deviation from $V\rightarrow\infty$ limit,  $x_{P}^{\ast}$]{.dim-text style="text-align:center; font-size:0.9em;"}
 :::
@@ -615,11 +629,12 @@ varying trajectory lengths $N_{\mathrm{LF}}$
 
 ::: {#fig-comparison layout-ncol=2}
 
-![Eval](https://saforem2.github.io/anl-job-talk/assets/dQint_eval.svg){#fig-eval}
+![Trained model](https://saforem2.github.io/anl-job-talk/assets/dQint_eval.svg){#fig-eval}
 
-![HMC](https://saforem2.github.io/anl-job-talk/assets/dQint_hmc.svg){#fig-hmc}
+![Generic HMC](https://saforem2.github.io/anl-job-talk/assets/dQint_hmc.svg){#fig-hmc}
 
-Comparison of $\delta Q$ for the trained model [@fig-eval] vs. HMC [@fig-hmc]
+Comparison of $\langle \delta Q\rangle = \frac{1}{N}\sum_{i=k}^{N} \delta Q_{i}$ for the
+trained model [@fig-eval] vs. HMC [@fig-hmc]
 :::
 
 

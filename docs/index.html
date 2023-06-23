@@ -913,8 +913,8 @@ A({\textcolor{#AE81FF}{\xi^{\ast}}}|{\textcolor{#00CCFF}{\xi}})=
 <li>perform extrapolation to continuum limit</li>
 </ul></li>
 </ul>
-<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/static/continuum.svg" class="r-stretch">
-</section>
+
+<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/static/continuum.svg" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;6: Increasing the physical resolution (<span class="math inline">a \rightarrow 0</span>) allows us to make predictions about numerical values of physical quantities in the continuum limit.</p></section>
 
 <section id="topological-freezing" class="title-slide slide level1 centeredslide center">
 <h1>Topological Freezing</h1>
@@ -952,7 +952,7 @@ A({\textcolor{#AE81FF}{\xi^{\ast}}}|{\textcolor{#00CCFF}{\xi}})=
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/critical_slowing_down.svg" style="width:80.0%"></p>
-<figcaption>Critical Slowing Down at increasing <span class="math inline">\beta</span></figcaption>
+<figcaption>Note <span class="math inline">\delta Q \rightarrow 0</span> at increasing <span class="math inline">\beta</span></figcaption>
 </figure>
 </div>
 <!-- Illustration of critical slowing down at increasing $\beta$. Note at $\beta = 7$, $Q$ remains stuck for the entire run. -->
@@ -964,19 +964,23 @@ A({\textcolor{#AE81FF}{\xi^{\ast}}}|{\textcolor{#00CCFF}{\xi}})=
 <h1>Loss Function</h1>
 <ul>
 <li><p>Want to maximize the <em>expected</em> squared charge difference<sup>1</sup>: <span class="math display">\begin{equation*}
-\mathcal{L}_{\theta}\left(\xi^{\ast}, \xi\right) = {\mathbb{E}_{p(\xi)}}\big[-\textcolor{#FA5252}{{\delta Q}}^{2} \left(\xi^{\ast}, \xi \right)\cdot A(\xi^{\ast}|\xi)\big]
+\mathcal{L}_{\theta}\left(\xi^{\ast}, \xi\right) =
+{\mathbb{E}_{p(\xi)}}\big[-\textcolor{#FA5252}{{\delta Q}}^{2}
+\left(\xi^{\ast}, \xi \right)\cdot A(\xi^{\ast}|\xi)\big]
 \end{equation*}</span></p></li>
 <li><p>Where:</p>
 <ul>
 <li><p><span class="math inline">\delta Q</span> is the <em>tunneling rate</em>: <span class="math display">\begin{equation*}
 \textcolor{#FA5252}{\delta Q}(\xi^{\ast},\xi)=\left|Q^{\ast} - Q\right|
 \end{equation*}</span></p></li>
-<li><p><span class="math inline">A(\xi^{\ast}|\xi)</span> is the probability of accepting the proposal <span class="math inline">\xi^{\ast}</span>: <span class="math display">\begin{equation*}
-A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1, \frac{p(\xi^{\ast})}{p(\xi)}\left|\frac{\partial \xi^{\ast}}{\partial \xi^{T}}\right|\right)
+<li><p><span class="math inline">A(\xi^{\ast}|\xi)</span> is the probability<sup>2</sup> of accepting the proposal <span class="math inline">\xi^{\ast}</span>: <span class="math display">\begin{equation*}
+A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1,
+\frac{p(\xi^{\ast})}{p(\xi)}\left|\frac{\partial \xi^{\ast}}{\partial
+\xi^{T}}\right|\right)
 \end{equation*}</span></p></li>
 </ul></li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn7"><p>Here, <span class="math inline">\xi^{\ast}</span> is the <em>proposed</em> configuration (prior to Accept / Reject)</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn7"><p>Here, <span class="math inline">\xi^{\ast}</span> is the <em>proposed</em> configuration (prior to Accept / Reject)</p></li><li id="fn8"><p><span class="math inline">\left|\frac{\partial \xi^{\ast}}{\partial \xi^{T}}\right|</span> is the Jacobian of the transformation from <span class="math inline">\xi \rightarrow \xi^{\ast}</span></p></li></ol></aside></section>
 
 
 <section id="integrated-autocorrelation-time-tau_mathrmint" class="title-slide slide level1 centeredslide center">
@@ -1007,7 +1011,7 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1, \frac{p(\xi^{\ast})}{p(\xi)}\left|\fra
 <section id="integrated-autocorrelation-time" class="title-slide slide level1 centeredslide center">
 <h1>Integrated Autocorrelation Time</h1>
 
-<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/tint1.svg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;6: Plot of the integrated autocorrelation time for both the trained model (colored) and HMC (greyscale).</p></section>
+<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/tint1.svg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;7: Plot of the integrated autocorrelation time for both the trained model (colored) and HMC (greyscale).</p></section>
 
 <section id="interpretation" class="title-slide slide level1 centeredslide center">
 <h1>Interpretation</h1>
@@ -1021,7 +1025,7 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1, \frac{p(\xi^{\ast})}{p(\xi)}\left|\fra
 </div>
 </div>
 
-<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/ridgeplots.svg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;7: Illustration of how different observables evolve over a single L2HMC trajectory.</p></section>
+<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/ridgeplots.svg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;8: Illustration of how different observables evolve over a single L2HMC trajectory.</p></section>
 
 <section id="interpretation-1" class="title-slide slide level1 centeredslide center">
 <h1>Interpretation</h1>
@@ -1045,7 +1049,7 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1, \frac{p(\xi^{\ast})}{p(\xi)}\left|\fra
 </div>
 </div>
 </div>
-<p></p><figcaption>Figure&nbsp;8: The trained model artifically increases the energy towards the middle of the trajectory, allowing the sampler to tunnel between isolated sectors.</figcaption><p></p>
+<p></p><figcaption>Figure&nbsp;9: The trained model artifically increases the energy towards the middle of the trajectory, allowing the sampler to tunnel between isolated sectors.</figcaption><p></p>
 </figure>
 </div>
 </section>
@@ -1053,14 +1057,17 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1, \frac{p(\xi^{\ast})}{p(\xi)}\left|\fra
 <section id="plaquette-analysis-x_p" class="title-slide slide level1 centeredslide center">
 <h1>Plaquette analysis: <span class="math inline">x_{P}</span></h1>
 <div class="columns">
-<div class="column" style="width:55%;">
-<p><span class="dim-text" style="text-align:center; font-size:0.9em;">Deviation from <span class="math inline">V\rightarrow\infty</span> limit, <span class="math inline">x_{P}^{\ast}</span></span></p>
-</div><div class="column" style="width:45%;">
+<div class="column" style="width:45%;">
 <p><span class="dim-text" style="text-align:right!important; font-size:0.9em;">Average <span class="math inline">\langle x_{P}\rangle</span>, with <span class="math inline">x_{P}^{\ast}</span> (dotted-lines)</span></p>
 </div>
 </div>
+<div id="fig-avg-plaq" class="quarto-figure quarto-figure-center">
+<figure>
 
-<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/plaqsf_vs_lf_step1.svg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;9: Plot showing how <strong>average plaquette</strong>, <span class="math inline">\left\langle x_{P}\right\rangle</span> varies over a single trajectory for models trained at different <span class="math inline">\beta</span>, with varying trajectory lengths <span class="math inline">N_{\mathrm{LF}}</span></p></section>
+<figcaption>Figure&nbsp;11: Plot showing how <strong>average plaquette</strong>, <span class="math inline">\left\langle x_{P}\right\rangle</span> varies over a single trajectory for models trained at different <span class="math inline">\beta</span>, with varying trajectory lengths <span class="math inline">N_{\mathrm{LF}}</span></figcaption>
+</figure>
+</div>
+<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/plaqsf_vs_lf_step1.svg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;11: Plot showing how <strong>average plaquette</strong>, <span class="math inline">\left\langle x_{P}\right\rangle</span> varies over a single trajectory for models trained at different <span class="math inline">\beta</span>, with varying trajectory lengths <span class="math inline">N_{\mathrm{LF}}</span></p></section>
 
 <section id="comparison" class="title-slide slide level1 center">
 <h1>Comparison</h1>
@@ -1071,7 +1078,7 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1, \frac{p(\xi^{\ast})}{p(\xi)}\left|\fra
 <div id="fig-eval" class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="https://saforem2.github.io/anl-job-talk/assets/dQint_eval.svg" data-ref-parent="fig-comparison"></p>
-<figcaption>(a) Eval</figcaption>
+<figcaption>(a) Trained model</figcaption>
 </figure>
 </div>
 </div>
@@ -1079,12 +1086,12 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1, \frac{p(\xi^{\ast})}{p(\xi)}\left|\fra
 <div id="fig-hmc" class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="https://saforem2.github.io/anl-job-talk/assets/dQint_hmc.svg" data-ref-parent="fig-comparison"></p>
-<figcaption>(b) HMC</figcaption>
+<figcaption>(b) Generic HMC</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p></p><figcaption>Figure&nbsp;10: Comparison of <span class="math inline">\delta Q</span> for the trained model <a href="#/comparison">Figure&nbsp;10 (a)</a> vs.&nbsp;HMC <a href="#/comparison">Figure&nbsp;10 (b)</a></figcaption><p></p>
+<p></p><figcaption>Figure&nbsp;12: Comparison of <span class="math inline">\langle \delta Q\rangle = \frac{1}{N}\sum_{i=k}^{N} \delta Q_{i}</span> for the trained model <a href="#/comparison">Figure&nbsp;12 (a)</a> vs.&nbsp;HMC <a href="#/comparison">Figure&nbsp;12 (b)</a></figcaption><p></p>
 </figure>
 </div>
 </section>
@@ -1182,7 +1189,7 @@ updated in parallel
 <figure>
 <iframe data-src="https://nbviewer.org/github/saforem2/l2hmc-qcd/blob/dev/src/l2hmc/notebooks/l2hmc-2dU1.ipynb" width="100%" height="650" title="l2hmc-qcd">
 </iframe>
-<figcaption>Figure&nbsp;11: Jupyter Notebook</figcaption>
+<figcaption>Figure&nbsp;13: Jupyter Notebook</figcaption>
 </figure>
 </div>
 </section>
@@ -1320,7 +1327,7 @@ h_{n} &amp;= \sigma\left(w_{n} h_{n-1} + b_{n}\right) \longrightarrow \\
 t_{v} = w_{t} z + b_{t}, \quad
 q_{v} = \lambda_{q}w_{q} z + b_{q}</span></li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn8"><p><span class="math inline">\sigma(\cdot)</span> denotes an activation function</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn9"><p><span class="math inline">\sigma(\cdot)</span> denotes an activation function</p></li></ol></aside></section>
 
 <section id="v-update-pt.-2" class="slide level2 center" style="font-size:0.9em;">
 <h2><span class="math inline">v</span>-update (pt.&nbsp;2)</h2>
@@ -1334,7 +1341,7 @@ q_{v} = \lambda_{q}\tanh\left(w_{q} h_{n} + b_{q}\right)</span></p></li>
 <li><p><span style="color:#1A8FFF;">backward</span> <span class="math inline">(d = \textcolor{#1A8FFF}{-})</span>: <span class="math display">\Gamma^{\textcolor{#1A8FFF}{-}}(x, v) \coloneqq v_{\textcolor{#1A8FFF}{-}} = e^{-\frac{\varepsilon}{2} s_{v}} \left\{v + \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{v}} + t_{v} \right]\right\}</span></p></li>
 </ul></li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn9"><p><span class="math inline">\lambda_{s},\, \lambda_{q} \in \mathbb{R}</span> are trainable parameters</p></li><li id="fn10"><p>Note that <span class="math inline">\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}</span>, i.e.&nbsp;<span class="math inline">\Gamma^{+}\left[\Gamma^{-}(x, v)\right] = \Gamma^{-}\left[\Gamma^{+}(x, v)\right] = (x, v)</span></p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn10"><p><span class="math inline">\lambda_{s},\, \lambda_{q} \in \mathbb{R}</span> are trainable parameters</p></li><li id="fn11"><p>Note that <span class="math inline">\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}</span>, i.e.&nbsp;<span class="math inline">\Gamma^{+}\left[\Gamma^{-}(x, v)\right] = \Gamma^{-}\left[\Gamma^{+}(x, v)\right] = (x, v)</span></p></li></ol></aside></section>
 
 <section id="lqcd-alcf-2008" class="slide level2 center">
 <h2>LQCD @ ALCF (2008)</h2>
@@ -1342,7 +1349,7 @@ q_{v} = \lambda_{q}\tanh\left(w_{q} h_{n} + b_{q}\right)</span></p></li>
 <p>The Blue Gene/P at the ALCF has tremendously accelerated the generation of the gauge configurations—in many cases, by a factor of 5 to 10 over what has been possible with other machines. Significant progress has been made in simulations with two different implementations of the quarks—domain wall and staggered<sup>1</sup><br>
 <br> &nbsp; — <span class="green-text">Mike Papka</span>, 2008</p>
 </blockquote>
-<aside><ol class="aside-footnotes"><li id="fn11"><p><a href="https://publications.anl.gov/anlpubs/2009/12/65724.pdf">Argonne Leadership Computing Facility • 2008 Annual Report</a></p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn12"><p><a href="https://publications.anl.gov/anlpubs/2009/12/65724.pdf">Argonne Leadership Computing Facility • 2008 Annual Report</a></p></li></ol></aside></section>
 
 <section id="section-4" class="slide level2 centeredslide center" data-background-color="white">
 <h2></h2>
@@ -1387,7 +1394,7 @@ q_{v} = \lambda_{q}\tanh\left(w_{q} h_{n} + b_{q}\right)</span></p></li>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.4788688572632839</code></pre>
+<pre><code>0.5188124755961172</code></pre>
 </div>
 </div>
 <aside class="notes">
@@ -1406,7 +1413,7 @@ q_{v} = \lambda_{q}\tanh\left(w_{q} h_{n} + b_{q}\right)</span></p></li>
 </section>
 <section id="python-1" class="slide level2 scrollable center">
 <h2>Python</h2>
-<p>For a demonstration of a line plot on a polar axis, see <a href="#/python-1-output">Figure&nbsp;12</a></p>
+<p>For a demonstration of a line plot on a polar axis, see <a href="#/python-1-output">Figure&nbsp;14</a></p>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1451,7 +1458,7 @@ q_{v} = \lambda_{q}\tanh\left(w_{q} h_{n} + b_{q}\right)</span></p></li>
 <div id="fig-polar" class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="index_files/figure-revealjs/fig-polar-output-1.png" width="450" height="439"></p>
-<figcaption>Figure&nbsp;12: A line plot on a polar axis</figcaption>
+<figcaption>Figure&nbsp;14: A line plot on a polar axis</figcaption>
 </figure>
 </div>
 </div>
@@ -1484,7 +1491,7 @@ q_{v} = \lambda_{q}\tanh\left(w_{q} h_{n} + b_{q}\right)</span></p></li>
 </div>
 </div>
 </div>
-<p></p><figcaption>Figure&nbsp;13: Charts</figcaption><p></p>
+<p></p><figcaption>Figure&nbsp;15: Charts</figcaption><p></p>
 </figure>
 </div>
 </div>

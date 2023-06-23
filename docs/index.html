@@ -1060,8 +1060,7 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1, \frac{p(\xi^{\ast})}{p(\xi)}\left|\fra
 </div>
 </div>
 
-<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/plaqsf_vs_lf_step1.svg" style="width:100.0%" class="r-stretch"><p><span style="text-align:center;"><small><b>Fig.</b> Plot showing how <strong>average plaquette</strong>, <span class="math inline">\left\langle x_{P}\right\rangle</span> varies over a single trajectory for models trained at different <span class="math inline">\beta</span>, with varying trajectory lengths <span class="math inline">N_{\mathrm{LF}}</span></small></span></p>
-</section>
+<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/plaqsf_vs_lf_step1.svg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;9: Plot showing how <strong>average plaquette</strong>, <span class="math inline">\left\langle x_{P}\right\rangle</span> varies over a single trajectory for models trained at different <span class="math inline">\beta</span>, with varying trajectory lengths <span class="math inline">N_{\mathrm{LF}}</span></p></section>
 
 <section id="comparison" class="title-slide slide level1 center">
 <h1>Comparison</h1>
@@ -1085,7 +1084,7 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1, \frac{p(\xi^{\ast})}{p(\xi)}\left|\fra
 </div>
 </div>
 </div>
-<p></p><figcaption>Figure&nbsp;9: Comparison of <span class="math inline">\delta Q</span> for the trained model <a href="#/comparison">Figure&nbsp;9 (a)</a> vs.&nbsp;HMC <a href="#/comparison">Figure&nbsp;9 (b)</a></figcaption><p></p>
+<p></p><figcaption>Figure&nbsp;10: Comparison of <span class="math inline">\delta Q</span> for the trained model <a href="#/comparison">Figure&nbsp;10 (a)</a> vs.&nbsp;HMC <a href="#/comparison">Figure&nbsp;10 (b)</a></figcaption><p></p>
 </figure>
 </div>
 </section>
@@ -1183,7 +1182,7 @@ updated in parallel
 <figure>
 <iframe data-src="https://nbviewer.org/github/saforem2/l2hmc-qcd/blob/dev/src/l2hmc/notebooks/l2hmc-2dU1.ipynb" width="100%" height="650" title="l2hmc-qcd">
 </iframe>
-<figcaption>Figure&nbsp;10: Jupyter Notebook</figcaption>
+<figcaption>Figure&nbsp;11: Jupyter Notebook</figcaption>
 </figure>
 </div>
 </section>
@@ -1331,11 +1330,11 @@ t_{v} = w_{t} h_{n} + b_{t}, \quad
 q_{v} = \lambda_{q}\tanh\left(w_{q} h_{n} + b_{q}\right)</span></p></li>
 <li><p>Use these to update <span class="math inline">\Gamma^{\pm}: (x, v) \rightarrow \left(x, v_{\pm}\right)</span><sup>2</sup>:</p>
 <ul>
-<li><p><span style="color:#FF5252">forward</span> <span class="math inline">(d = \textcolor{#FF5252}{+})</span>: <span class="math display">v_{\textcolor{#FF5252}{+}} = v \cdot e^{\frac{\varepsilon}{2} s_{v}} - \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{v}} + t_{v} \right]</span></p></li>
-<li><p><span style="color:#1A8FFF;">backward</span> <span class="math inline">(d = \textcolor{#1A8FFF}{-})</span>: <span class="math display">v_{\textcolor{#1A8FFF}{-}} = e^{-\frac{\varepsilon}{2} s_{v}} \left\{v + \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{v}} + t_{v} \right]\right\}</span></p></li>
+<li><p><span style="color:#FF5252">forward</span> <span class="math inline">(d = \textcolor{#FF5252}{+})</span>: <span class="math display">\Gamma^{\textcolor{#FF5252}{+}}(x, v) \coloneqq v_{\textcolor{#FF5252}{+}} = v \cdot e^{\frac{\varepsilon}{2} s_{v}} - \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{v}} + t_{v} \right]</span></p></li>
+<li><p><span style="color:#1A8FFF;">backward</span> <span class="math inline">(d = \textcolor{#1A8FFF}{-})</span>: <span class="math display">\Gamma^{\textcolor{#1A8FFF}{-}}(x, v) \coloneqq v_{\textcolor{#1A8FFF}{-}} = e^{-\frac{\varepsilon}{2} s_{v}} \left\{v + \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{v}} + t_{v} \right]\right\}</span></p></li>
 </ul></li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn9"><p><span class="math inline">\lambda_{s},\, \lambda_{q} \in \mathbb{R}</span> are trainable parameters</p></li><li id="fn10"><p>Note that <span class="math inline">\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}</span></p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn9"><p><span class="math inline">\lambda_{s},\, \lambda_{q} \in \mathbb{R}</span> are trainable parameters</p></li><li id="fn10"><p>Note that <span class="math inline">\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}</span>, i.e.&nbsp;<span class="math inline">\Gamma^{+}\left[\Gamma^{-}(x, v)\right] = \Gamma^{-}\left[\Gamma^{+}(x, v)\right] = (x, v)</span></p></li></ol></aside></section>
 
 <section id="lqcd-alcf-2008" class="slide level2 center">
 <h2>LQCD @ ALCF (2008)</h2>
@@ -1388,7 +1387,7 @@ q_{v} = \lambda_{q}\tanh\left(w_{q} h_{n} + b_{q}\right)</span></p></li>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.026615305182920768</code></pre>
+<pre><code>0.4788688572632839</code></pre>
 </div>
 </div>
 <aside class="notes">
@@ -1407,7 +1406,7 @@ q_{v} = \lambda_{q}\tanh\left(w_{q} h_{n} + b_{q}\right)</span></p></li>
 </section>
 <section id="python-1" class="slide level2 scrollable center">
 <h2>Python</h2>
-<p>For a demonstration of a line plot on a polar axis, see <a href="#/python-1-output">Figure&nbsp;11</a></p>
+<p>For a demonstration of a line plot on a polar axis, see <a href="#/python-1-output">Figure&nbsp;12</a></p>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1452,7 +1451,7 @@ q_{v} = \lambda_{q}\tanh\left(w_{q} h_{n} + b_{q}\right)</span></p></li>
 <div id="fig-polar" class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="index_files/figure-revealjs/fig-polar-output-1.png" width="450" height="439"></p>
-<figcaption>Figure&nbsp;11: A line plot on a polar axis</figcaption>
+<figcaption>Figure&nbsp;12: A line plot on a polar axis</figcaption>
 </figure>
 </div>
 </div>
@@ -1485,7 +1484,7 @@ q_{v} = \lambda_{q}\tanh\left(w_{q} h_{n} + b_{q}\right)</span></p></li>
 </div>
 </div>
 </div>
-<p></p><figcaption>Figure&nbsp;12: Charts</figcaption><p></p>
+<p></p><figcaption>Figure&nbsp;13: Charts</figcaption><p></p>
 </figure>
 </div>
 </div>

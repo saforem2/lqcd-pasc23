@@ -602,11 +602,14 @@ sectors.
 
 ::::
 
+::: {#fig-avg-plaq}
+
 ![](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/plaqsf_vs_lf_step1.svg){width="100%"}
 
-[<small><b>Fig.</b> Plot showing how **average plaquette**, $\left\langle
-x_{P}\right\rangle$ varies over a single trajectory for models trained at
-  different $\beta$, with varying trajectory lengths $N_{\mathrm{LF}}$</small>]{style="text-align:center;"}
+Plot showing how **average plaquette**, $\left\langle x_{P}\right\rangle$
+varies over a single trajectory for models trained at different $\beta$, with
+varying trajectory lengths $N_{\mathrm{LF}}$
+:::
 
 # Comparison
 
@@ -809,15 +812,15 @@ which is a DOE Office of Science User Facility supported under Contract DE-AC02-
 - Use these to update $\Gamma^{\pm}: (x, v) \rightarrow \left(x, v_{\pm}\right)$[^inverse]:
 
     - [forward]{style="color:#FF5252"} $(d = \textcolor{#FF5252}{+})$:
-      $$v_{\textcolor{#FF5252}{+}} = v \cdot e^{\frac{\varepsilon}{2} s_{v}} - \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{v}} + t_{v} \right]$$
+      $$\Gamma^{\textcolor{#FF5252}{+}}(x, v) \coloneqq v_{\textcolor{#FF5252}{+}} = v \cdot e^{\frac{\varepsilon}{2} s_{v}} - \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{v}} + t_{v} \right]$$
 
 
     - [backward]{style="color:#1A8FFF;"} $(d = \textcolor{#1A8FFF}{-})$: 
-      $$v_{\textcolor{#1A8FFF}{-}} = e^{-\frac{\varepsilon}{2} s_{v}} \left\{v + \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{v}} + t_{v} \right]\right\}$$
+      $$\Gamma^{\textcolor{#1A8FFF}{-}}(x, v) \coloneqq v_{\textcolor{#1A8FFF}{-}} = e^{-\frac{\varepsilon}{2} s_{v}} \left\{v + \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{v}} + t_{v} \right]\right\}$$
 
 
 [^constants]: $\lambda_{s},\, \lambda_{q} \in \mathbb{R}$ are trainable parameters
-[^inverse]: Note that $\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}$
+[^inverse]: Note that $\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}$, i.e. $\Gamma^{+}\left[\Gamma^{-}(x, v)\right] = \Gamma^{-}\left[\Gamma^{+}(x, v)\right] = (x, v)$
 
 ## LQCD @ ALCF (2008)
 

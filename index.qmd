@@ -949,25 +949,3 @@ flowchart LR
   style G2 color:#ec407a
   classDef default fill:#1c1c1c
 ```
-
-## Testing Callouts
-
-::: {.callout-note title="Note"}
-Testing note callouts with `default` appearance
-:::
-
-::: {.callout-tip title="Tip"}
-Testing tip callout with `default` appearance
-:::
-
-::: {.callout-caution title="Caution"}
-Testing tip callout with `default` appearance
-:::
-
-::: {.callout-warning title="Warning"}
-Testing warning callout with `default` appearance
-:::
-
-::: {.callout-important title="Important"}
-Testing important callout with `default` appearance
-:::

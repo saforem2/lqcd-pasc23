@@ -29,7 +29,8 @@ format:
     theme: [dark, custom.scss]
       # - light: [light, custom.scss]
     css: [css/default.css, css/callouts.css, css/code-callout.css]
-    menu: false
+    menu:
+      width: "half"
     # menu:
     #   side: right
     #   width: wide
@@ -138,7 +139,11 @@ The Muon g-2 ring sits in its detector hall amidst electronics racks, the muon b
 
 ### In transit
 
-![](https://mod.fnal.gov/mod/stillphotos/2013/0200/13-0232-09D.hr.jpg){width="80%" fig-align="center"}
+::: {#fig-in-transit}
+![](https://mod.fnal.gov/mod/stillphotos/2013/0200/13-0222-15D.hr.jpg){width="75%" fig-align="center"}
+
+In the summer of 2013, the Muon g-2 team successfully transported a 50-foot-wide electromagnet from Long Island to the Chicago suburbs in one piece. The move took 35 days and traversed 3,200 miles over land and sea.
+:::
 
 ### Almost Home
 
@@ -146,7 +151,11 @@ The Muon g-2 ring sits in its detector hall amidst electronics racks, the muon b
 
 ### Arrival
 
+::: {#fig-arrival}
 ![](https://mod.fnal.gov/mod/stillphotos/2013/0200/13-0244-11D.hr.jpg){width="80%" fig-align="center"}
+
+ Thousands of people followed the move of the ring, and thousands were on hand to greet it upon its arrival at Fermilab.
+:::
 
 :::
 
@@ -160,7 +169,7 @@ The Muon g-2 ring sits in its detector hall amidst electronics racks, the muon b
 
 ::: {#fig-tension}
 
-![](assets/tension.png){fig-align="center" width="66%"}
+![](assets/tension.png){fig-align="center" width="50%"}
 
 [Full cartoon](https://github.com/saforem2/lqcd-pasc23/blob/main/assets/mu2cartoon.png)
 :::
@@ -395,11 +404,11 @@ HMC Demo
 HMC Samples generated with varying step sizes $\varepsilon$
 :::
 
-# Can we do better? {.centeredslide}
+# Can we do better[^l2hmc]? {.centeredslide}
 
 ::: {.callout-tip title="L2HMC"}
 
-- Generalize HMC[^l2hmc] by introducing 6 functions:  
+- Generalize HMC by introducing 6 functions:  
     - $x$-update: 
       $$\psi_{\theta}: (x, v) \longrightarrow \left(s_{x},\, t_{x},\, q_{x}\right)$$
     - $v$-update:
@@ -687,7 +696,7 @@ sectors.
 
 :::: {.columns}
 
-::: {#fig-deviation .column width="55%"}
+::: {.column width="55%"}
 
 [Deviation from $V\rightarrow\infty$ limit,  $x_{P}^{\ast}$]{.dim-text style="text-align:center; font-size:0.9em;"}
 :::
@@ -765,49 +774,6 @@ trained model [@fig-eval] vs. HMC [@fig-hmc]
 
 ::::
 
-# 4D $SU(3)$ Model {.centeredslide}
-
-:::: {.columns}
-
-::: {.column width="45%"}
-- link variables: 
-    - $U_{\mu}(x) \in SU(3)$,
-- \+ conjugate momenta:
-    - $P_{\mu}(x) \in \mathfrak{su}(3)$
-- We maintain a batch of `Nb` lattices, all updated in parallel
-    - `lattice.shape`:
-        - [`[4, Nt, Nx, Ny, Nz, 3, 3]`]{style="font-size: 0.9em;"}
-    - `batch.shape`:
-        - [`[Nb, *lattice.shape]`]{style="font-size: 0.9em;"}
-:::
-
-::: {.column width="45%"}
-![](./assets/leapfrog-layer-default/leapfrog-layer-dark.svg)
-:::
-
-::::
-
-
-# {background-color="white"}
-
-::: {#fig-notebook}
-
-<iframe data-src="https://nbviewer.org/github/saforem2/l2hmc-qcd/blob/SU3/src/l2hmc/notebooks/l2hmc-2dU1.ipynb" width="100%" height="650" title="l2hmc-qcd"></iframe>
-
-Jupyter Notebook
-:::
-
-
-# Links + References
-
-- This talk: [{{< fa brands github >}} `saforem2/lqcd-pasc23`](https://github.com/saforem2/lqcd-pasc23)
-- Code repo [{{< fa brands github >}} `saforem2/l2hmc-qcd`](https://github.com/saforem2/l2hmc-qcd)
-- Slides [{{< fa solid presentation-screen >}} saforem2.github.io/lqcd-pasc23](https://saforem2.github.io/lqcd-pasc23)
-- [Animated background (g - 2)](https://www.quantamagazine.org/last-hope-experiment-finds-evidence-for-unknown-particles-20210407/)
-- [Title Slide Background (worms) animation](https://saforem2.github.io/grid-worms-animation/)
-
-- [Fermilab Muon g-2](https://muon-g-2.fnal.gov/index.html)
-
 # Thank you!
 
 ::: {style="text-align:left;"}
@@ -821,54 +787,69 @@ This research used resources of the Argonne Leadership Computing Facility,
 which is a DOE Office of Science User Facility supported under Contract DE-AC02-06CH11357.
 :::
 
-# Acknowledgements
+## Acknowledgements
 
 :::: {.columns}
 
 
 ::: {.column width="50%"}
 
-- Collaborators:
-   - Xiao-Yong Jin
-   - James C. Osborn
+- **Links**:
+   - [{{< fa brands github >}} Link to github](https://github.com/saforem2/l2hmc-qcd)
+   - [{{< fa solid paper-plane >}} reach out!](mailto:foremans@anl.gov)
 
-- References:
+- **References**:
    - [Link to HMC demo](https://chi-feng.github.io/mcmc-demo/app.html)
     - [Link to slides](https://saforem2.github.io/lqcd-pasc23/)
         - [{{< fa brands github >}} link to github with slides](https://github.com/saforem2/lqcd-pasc23)
-   - [{{< fa brands github >}} Link to github](https://github.com/saforem2/l2hmc-qcd)
-   - [{{< fa solid paper-plane >}} reach out!](mailto:foremans@anl.gov)
-   - {{< fa solid book >}} [@Foreman:2021ljl]
-   - {{< fa solid book >}} [@Foreman:2021rhs]
-   - {{< fa solid book >}} [@Boyda:2022nmh]
-   - {{< fa solid book >}} [@Shanahan:2022ifi]
+   - {{< fa solid book >}} [@Foreman:2021ljl; @Foreman:2021rhs; @Foreman:2021ixr]
+   - {{< fa solid book >}} [@Boyda:2022nmh; @Shanahan:2022ifi]
 
 :::
 
 ::: {.column width="50%"}
 
 - Huge thank you to:
-   - Yannick Meurice
-   - Norman Christ
-   - Akio Tomiya
-   - Luchang Jin
-   - Chulwoo Jung
-   - Peter Boyle
-   - Taku Izubuchi
-   - ECP-CSD group
-   - ALCF Staff + Datascience Group
+  - Yannick Meurice
+  - Norman Christ
+  - Akio Tomiya
+  - Luchang Jin
+  - Chulwoo Jung
+  - Peter Boyle
+  - Taku Izubuchi
+  - ECP-CSD group
+  - [**ALCF Staff + Datascience Group**]{.red-text}
 
 :::
 
 ::::
 
+## Links + References
 
-# References {style="line-height:1.2em;"}
+- This talk: [{{< fa brands github >}} `saforem2/lqcd-pasc23`](https://github.com/saforem2/lqcd-pasc23)
+- Code repo [{{< fa brands github >}} `saforem2/l2hmc-qcd`](https://github.com/saforem2/l2hmc-qcd)
+- Slides [{{< fa solid presentation-screen >}} saforem2.github.io/lqcd-pasc23](https://saforem2.github.io/lqcd-pasc23)
+- [Animated background (g - 2)](https://www.quantamagazine.org/last-hope-experiment-finds-evidence-for-unknown-particles-20210407/)
+- [Title Slide Background (worms) animation](https://saforem2.github.io/grid-worms-animation/)
+
+- [Fermilab Muon g-2](https://muon-g-2.fnal.gov/index.html)
+
+## References {style="line-height:1.2em;"}
 
 ::: {#refs}
 :::
 
 # Extras
+
+## {background-color="white"}
+
+::: {#fig-notebook}
+
+<iframe data-src="https://nbviewer.org/github/saforem2/l2hmc-qcd/blob/SU3/src/l2hmc/notebooks/l2hmc-2dU1.ipynb" width="100%" height="650" title="l2hmc-qcd"></iframe>
+
+Jupyter Notebook
+:::
+
 
 ## Networks 2D $U(1)$
 

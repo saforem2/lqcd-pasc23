@@ -11,7 +11,7 @@
     "href": "index.html#fermilab-muon-g-2",
     "title": "",
     "section": "Fermilab: Muon g-2",
-    "text": "Fermilab: Muon g-2\n\nThe RingIn transitAlmost HomeArrival\n\n\n\n\n\n\n\n\n\nFigure 2: The Muon g-2 ring sits in its detector hall amidst electronics racks, the muon beamline, and other equipment. This impressive experiment operates at negative 450 degrees Fahrenheit and studies the precession (or wobble) of muons as they travel through the magnetic field."
+    "text": "Fermilab: Muon g-2\n\nThe RingIn transitAlmost HomeArrival\n\n\n\n\n\n\n\n\n\nFigure 2: The Muon g-2 ring sits in its detector hall amidst electronics racks, the muon beamline, and other equipment. This impressive experiment operates at negative 450 degrees Fahrenheit and studies the precession (or wobble) of muons as they travel through the magnetic field.\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: In the summer of 2013, the Muon g-2 team successfully transported a 50-foot-wide electromagnet from Long Island to the Chicago suburbs in one piece. The move took 35 days and traversed 3,200 miles over land and sea.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: Thousands of people followed the move of the ring, and thousands were on hand to greet it upon its arrival at Fermilab."
   },
   {
     "objectID": "index.html#python",
@@ -186,7 +186,7 @@
     "href": "index.html#tension",
     "title": "",
     "section": "Tension",
-    "text": "Tension\n\n\nObviously, an independent cross-check of the BMW lattice result for a_{\\mu}^{\\mathrm{hvp, LO}} with sub-percent precision is badly needed. \n— (Wittig 2023)\n\n\n\nFigure 3: Full cartoon"
+    "text": "Tension\n\n\nObviously, an independent cross-check of the BMW lattice result for a_{\\mu}^{\\mathrm{hvp, LO}} with sub-percent precision is badly needed. \n— (Wittig 2023)\n\n\n\nFigure 5: Full cartoon"
   },
   {
     "objectID": "index.html#networks-2d-u1",
@@ -271,5 +271,33 @@
     "title": "",
     "section": "Annealing Schedule",
     "text": "Annealing Schedule\n\nIntroduce an annealing schedule during the training phase:\n\\left\\{ \\gamma_{t}  \\right\\}_{t=0}^{N} = \\left\\{\\gamma_{0}, \\gamma_{1},\n\\ldots, \\gamma_{N-1}, \\gamma_{N} \\right\\}\nwhere \\gamma_{0} &lt; \\gamma_{1} &lt; \\cdots &lt; \\gamma_{N} \\equiv 1, and \\left|\\gamma_{t+1} - \\gamma_{t}\\right| \\ll 1\nNote:\n\nfor \\left|\\gamma_{t}\\right| &lt; 1, this rescaling helps to reduce the height of the energy barriers \\Longrightarrow\neasier for our sampler to explore previously inaccessible regions of the phase space"
+  },
+  {
+    "objectID": "index.html#section-3",
+    "href": "index.html#section-3",
+    "title": "",
+    "section": "",
+    "text": "Figure 15: Jupyter Notebook"
+  },
+  {
+    "objectID": "index.html#acknowledgements",
+    "href": "index.html#acknowledgements",
+    "title": "",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\n\n\n\nLinks:\n\n Link to github\n reach out!\n\nReferences:\n\nLink to HMC demo\nLink to slides\n\n link to github with slides\n\n (Foreman et al. 2022; Foreman, Jin, and Osborn 2022, 2021)\n (Boyda et al. 2022; Shanahan et al. 2022)\n\n\n\n\nHuge thank you to:\n\nYannick Meurice\nNorman Christ\nAkio Tomiya\nLuchang Jin\nChulwoo Jung\nPeter Boyle\nTaku Izubuchi\nECP-CSD group\nALCF Staff + Datascience Group"
+  },
+  {
+    "objectID": "index.html#links-references",
+    "href": "index.html#links-references",
+    "title": "",
+    "section": "Links + References",
+    "text": "Links + References\n\nThis talk:  saforem2/lqcd-pasc23\nCode repo  saforem2/l2hmc-qcd\nSlides  saforem2.github.io/lqcd-pasc23\nAnimated background (g - 2)\nTitle Slide Background (worms) animation\nFermilab Muon g-2"
+  },
+  {
+    "objectID": "index.html#references",
+    "href": "index.html#references",
+    "title": "",
+    "section": "References",
+    "text": "References\n\n\nBoyda, Denis et al. 2022. “Applications of Machine Learning to Lattice Quantum Field Theory.” In Snowmass 2021. https://arxiv.org/abs/2202.05838.\n\n\nDuane, S., A. D. Kennedy, B. J. Pendleton, and D. Roweth. 1987. “Hybrid Monte Carlo.” Phys. Lett. B 195: 216–22. https://doi.org/10.1016/0370-2693(87)91197-X.\n\n\nForeman, Sam, Taku Izubuchi, Luchang Jin, Xiao-Yong Jin, James C. Osborn, and Akio Tomiya. 2022. “HMC with Normalizing Flows.” PoS LATTICE2021: 073. https://doi.org/10.22323/1.396.0073.\n\n\nForeman, Sam, Xiao-Yong Jin, and James C. Osborn. 2021. “Deep Learning Hamiltonian Monte Carlo.” In 9th International Conference on Learning Representations. https://arxiv.org/abs/2105.03418.\n\n\n———. 2022. “LeapfrogLayers: A Trainable Framework for Effective Topological Sampling.” PoS LATTICE2021: 508. https://doi.org/10.22323/1.396.0508.\n\n\nShanahan, Phiala et al. 2022. “Snowmass 2021 Computational Frontier CompF03 Topical Group Report: Machine Learning,” September. https://arxiv.org/abs/2209.07559.\n\n\nWittig, Hartmut. 2023. “Progress on (g-2)_\\mu from Lattice QCD.” https://arxiv.org/abs/2306.04165."
   }
 ]

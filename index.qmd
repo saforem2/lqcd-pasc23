@@ -197,9 +197,8 @@ where $S(x)$ is the _action_ (or potential energy)
 
 ::::
 
-- If these were <span style="color:#00CCFF;">independent</span>, we could approximate:
+If these were <span style="color:#00CCFF;">independent</span>, we could approximate:
   $\left\langle\mathcal{O}\right\rangle \simeq \frac{1}{N}\sum^{N}_{n=1}\mathcal{O}(x_{n})$  
-  and the variance on this estimator is then
   $$\sigma_{\mathcal{O}}^{2} = \frac{1}{N}\mathrm{Var}{\left[\mathcal{O} (x)
   \right]}\Longrightarrow \sigma_{\mathcal{O}} \propto \frac{1}{\sqrt{N}}$$
 

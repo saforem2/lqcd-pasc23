@@ -610,7 +610,7 @@ Accept / Reject)
 [^jacobian]: And $\left|\frac{\partial \xi^{\ast}}{\partial \xi^{T}}\right|$ is the
 Jacobian of the transformation from $\xi \rightarrow \xi^{\ast}$
 
-# Integrated Autocorrelation time: $\tau_{\mathrm{int}}$ {.centeredslide}
+# Integrated Autocorrelation time: $\tau_{\mathrm{int}}$ {.centeredslide auto-animate="true"}
 
 :::: {.columns}
 
@@ -635,7 +635,7 @@ We can measure the performance by comparing $\tau_{\mathrm{int}}$ for the
 ![](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/charge_histories.svg){.absolute top=400 left=0 width="100%" style="margin-bottom: 1em;margin-top: 1em;"}
 
 
-# Integrated Autocorrelation Time {.centeredslide}
+# Integrated Autocorrelation Time {.centeredslide auto-animate="true"}
 
 ::: {#fig-iat}
 ![](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/tint1.svg){width="100%"}
@@ -644,7 +644,7 @@ Plot of the integrated autocorrelation time for both the trained model
 (colored) and HMC (greyscale).
 :::
 
-# Interpretation {.centeredslide}
+# Interpretation {.centeredslide auto-animate="true"}
 
 :::: {.columns style="margin-left:1pt;"}
 
@@ -677,8 +677,7 @@ trajectory.
 :::
 
 
-# Interpretation {.centeredslide}
-
+# Interpretation {.centeredslide auto-animate="true"}
 
 ::: {#fig-energy-ridgeplot layout-ncol=2 layout-valign="top"}
 

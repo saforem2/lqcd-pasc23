@@ -1,10 +1,12 @@
 ---
-title: "LQCD @ PASC23"
+# title: "Generative Modeling and Efficient Sampling (for LQCD)"
+# affiliation: "Argonne National Laboratory"
 author: "Sam Foreman"
-date: "2023-06-05"
+date: "2023-06-26"
 bibliography: references.bib
 format:
   revealjs:
+    title-block-style: none
     slide-number: true
     title-slide-style: pandoc
     chalkboard:
@@ -17,13 +19,20 @@ format:
     # classoption: fleqn
     # fig-responsive: true
     footnotes-hover: true
+    citations-hover: true
     preview-links: true
+    controls-tutorial: true
     controls: false
     logo: "https://raw.githubusercontent.com/saforem2/anl-job-talk/main/docs/assets/anl.svg"
     history: false
     # margin: 0.15
     theme: [dark, custom.scss]
+      # - light: [light, custom.scss]
     css: [css/default.css, css/callouts.css, css/code-callout.css]
+    menu: false
+    # menu:
+    #   side: right
+    #   width: wide
     self-contained: false
     embed-resources: false
     self-contained-math: false
@@ -44,19 +53,22 @@ resources:
 
 # {.title-slide .centeredslide background-iframe="https://saforem2.github.io/grid-worms-animation/" loading="lazy"}
 
-::: {style="text-shadow: 0px 0px 10px RGBA(0, 0, 0, 0.45); background-color: rgba(22,22,22,0.88); border-radius: 10px; text-align:center; box-shadow:RGBA(0, 0, 0, 0.45) 0px 5px 15px; padding-top: 1em; padding-bottom: 1em;"}
-<span style="color:#939393; font-size:1.5em; font-weight: bold; padding: 1pt 0pt;">Generative Modeling \& Efficient Sampling</span>
-
-<span style="font-size:0.8em; color:#505050; padding:0px; margin:0px; text-align:center!important;">2023-06-29</span>  
-<span style="font-size:0.8em; color:#505050; padding:0px; margin:0px; text-align:center!important;"> @ [PASC23](https://pasc23.pasc-conference.org/)</span>
-
+<!-- ::: {style="text-shadow: 0px 0px 10px RGBA(0, 0, 0, 0.45); background-color: rgba(22,22,22,0.33); border-radius: 10px; text-align:center; box-shadow:RGBA(0, 0, 0, 0.25) 0px 5px 15px; padding-top: 0.25em; padding-bottom: 0.25em;"} -->
+::: {style="text-shadow: 0px 0px 10px RGBA(0, 0, 0, 0.66); background-color: rgba(22,22,22,0.75); border-radius: 10px; text-align:center; box-shadow:RGBA(0, 0, 0, 0.25) 0px 5px 15px; padding: 0px; padding-left: 1%; padding-right: 1%; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em; line-height: 1.5em!important;"}
+<span style="color:#939393; font-size:1.5em; font-weight: bold;">Generative Modeling \& Efficient Sampling</span>  
+<span style="color:#777777; font-size:1.2em; font-weight: bold;">(for Lattice QCD)</span>  
+[<br>&nbsp;]{style="padding-bottom: 1em;"}  
 [{{< fa solid home >}}](https://samforeman.me) Sam Foreman  
-[{{< fa brands github >}} `saforem2/lqcd-pasc23`](https://github.com/saforem2/lqcd-pasc23)
+[Xiao-Yong Jin, James C. Osborn]{.dim-text style="font-size:0.8em;"}  
+[[{{< fa brands github >}} `saforem2/lqcd-pasc23`](https://github.com/saforem2/lqcd-pasc23)]{style="font-size:0.8em;"}
 :::
 
 ::: footer
-[{{< fa brands github >}} `saforem2/lqcd-pasc23`](https://github.com/saforem2/lqcd-pasc23)
+[2023-06-26]{.dim-text}
+[@ [PASC23](https://pasc23.pasc-conference.org/)]{.dim-text}
+<!-- [{{< fa brands github >}} `saforem2/l2hmc-qcd`](https://github.com/saforem2/l2hmc-qcd) -->
 :::
+
 
 # Standard Model {auto-animate="true"}
 
@@ -94,9 +106,8 @@ $$e^{+} + e^{-} \rightarrow 2\gamma$$
 [^progress]: Completely stalled ?
 
 ::: footer
-[{{< fa brands github >}} `saforem2/l2hmc-qcd`](https://github.com/saforem2/l2hmc-qcd)
+[{{< fa brands github >}} `saforem2/lqcd-pasc23`](https://github.com/saforem2/lqcd-pasc23)
 :::
-
 
 ## {.centeredslide background-video="https://d2r55xnwy6nx47.cloudfront.net/uploads/2021/04/Muon_2560_Lede.mp4" background-video-loop="true" background-video-muted="true"}
 
@@ -154,7 +165,7 @@ The Muon g-2 ring sits in its detector hall amidst electronics racks, the muon b
 [Full cartoon](https://github.com/saforem2/lqcd-pasc23/blob/main/assets/mu2cartoon.png)
 :::
 
-# Markov Chain Monte Carlo (MCMC) {auto-animate="true"}
+# Markov Chain Monte Carlo (MCMC) {.centeredslide auto-animate="true"}
 
 :::: {.columns}
 
@@ -185,7 +196,7 @@ where $S(x)$ is the _action_ (or potential energy)
 
 [^notation]: Here, $\sim$ means "is distributed according to"
 
-# Markov Chain Monte Carlo (MCMC) {auto-animate="true"}
+# Markov Chain Monte Carlo (MCMC) {.centeredslide auto-animate="true"}
 
 :::: {.columns}
 
@@ -208,10 +219,11 @@ where $S(x)$ is the _action_ (or potential energy)
 
 ::::
 
-Instead, we have:
-  $$
-  \sigma_{\mathcal{O}}^{2} = \frac{\textcolor{#FF5252}{\tau_{\mathrm{int}}}}{N}\mathrm{Var}{\left[\mathcal{O} (x) \right]}%
-  $$
+Instead, nearby configs are [correlated]{.red-text}, and we incur a factor of
+$\textcolor{#FF5252}{\tau^{\mathcal{O}}_{\mathrm{int}}}$:
+  $$\sigma_{\mathcal{O}}^{2} =
+  \frac{\textcolor{#FF5252}{\tau^{\mathcal{O}}_{\mathrm{int}}}}{N}\mathrm{Var}{\left[\mathcal{O}
+  (x) \right]}$$
 <!-- - If these were <span style="color:#00CCFF;">independent</span>, we could approximate: -->
 <!--   $\left\langle\mathcal{O}\right\rangle \simeq \frac{1}{N}\sum^{N}_{n=1}\mathcal{O}(x_{n})$   -->
 <!--   and the variance on this estimator is then -->
@@ -285,7 +297,7 @@ Overview of HMC algorithm
 
 :::: {.columns style="text-align:center;"}
 
-::: {.column width="50%"}
+::: {.column width="48%"}
 
 ::: {.callout-tip title="Hamiltonian Dynamics" style="font-size:1.1em;"}
 $\left(\dot{x}, \dot{v}\right) = \left(\partial_{v} H, -\partial_{x} H\right)$
@@ -313,7 +325,7 @@ v' &:= \textcolor{#F06292}{\Gamma}(x'; \tilde{v}) = \tilde{v} - \frac{\varepsilo
 
 :::
 
-::: {.column width="49%" style="text-align:left;"}
+::: {.column width="49%" style="text-align:left; margin-left:2%;"}
 ![](./assets/hmc/hmc-update-light.svg){width=60%}
 :::
 ::::
@@ -382,6 +394,27 @@ HMC Demo
 
 HMC Samples generated with varying step sizes $\varepsilon$
 :::
+
+# Can we do better? {.centeredslide}
+
+::: {.callout-tip title="L2HMC"}
+
+- Generalize HMC[^l2hmc] by introducing 6 functions:  
+    - $x$-update: 
+      $$\psi_{\theta}: (x, v) \longrightarrow \left(s_{x},\, t_{x},\, q_{x}\right)$$
+    - $v$-update:
+      $$\varphi_{\theta}: (x, v) \longrightarrow \left(s_{v},\, t_{v},\, q_{v}\right)$$
+      where $\psi_{\theta}, \varphi_{\theta}$ are NNs, parameterized by weights
+    $\theta$  
+
+  <!-- which are used in a (modified) HMC update to update $(x, v) \rightarrow (x', v')$ -->
+- These functions, $$\left(s_{k}, t_{k}, q_{k}\right) \quad \text{ with } \quad
+k \in \{x, v\}$$ are then used in a generalized leapfrog update to generate
+$(x, v) \longrightarrow (x', v')$
+
+:::
+
+[^l2hmc]: {{< fa solid book >}}[@Foreman:2021ixr; @Foreman:2021rhs]
 
 # L2HMC: Leapfrog Layer {.centeredslide}
 
@@ -564,9 +597,9 @@ $\beta$](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets
       \xi^{T}}\right|\right)
       \end{equation*}$$
 
-[^charge-diff]: Here, $\xi^{\ast}$ is the _proposed_ configuration (prior to
+[^charge-diff]: Where $\xi^{\ast}$ is the _proposed_ configuration (prior to
 Accept / Reject)
-[^jacobian]: $\left|\frac{\partial \xi^{\ast}}{\partial \xi^{T}}\right|$ is the
+[^jacobian]: And $\left|\frac{\partial \xi^{\ast}}{\partial \xi^{T}}\right|$ is the
 Jacobian of the transformation from $\xi \rightarrow \xi^{\ast}$
 
 # Integrated Autocorrelation time: $\tau_{\mathrm{int}}$ {.centeredslide}
@@ -770,8 +803,8 @@ Jupyter Notebook
 - This talk: [{{< fa brands github >}} `saforem2/lqcd-pasc23`](https://github.com/saforem2/lqcd-pasc23)
 - Code repo [{{< fa brands github >}} `saforem2/l2hmc-qcd`](https://github.com/saforem2/l2hmc-qcd)
 - Slides [{{< fa solid presentation-screen >}} saforem2.github.io/lqcd-pasc23](https://saforem2.github.io/lqcd-pasc23)
-
-- [Animated background](https://www.quantamagazine.org/last-hope-experiment-finds-evidence-for-unknown-particles-20210407/)
+- [Animated background (g - 2)](https://www.quantamagazine.org/last-hope-experiment-finds-evidence-for-unknown-particles-20210407/)
+- [Title Slide Background (worms) animation](https://saforem2.github.io/grid-worms-animation/)
 
 - [Fermilab Muon g-2](https://muon-g-2.fnal.gov/index.html)
 
@@ -887,6 +920,20 @@ which is a DOE Office of Science User Facility supported under Contract DE-AC02-
 [^constants]: $\lambda_{s},\, \lambda_{q} \in \mathbb{R}$ are trainable parameters
 [^inverse]: Note that $\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}$, i.e. $\Gamma^{+}\left[\Gamma^{-}(x, v)\right] = \Gamma^{-}\left[\Gamma^{+}(x, v)\right] = (x, v)$
 
+## Annealing Schedule
+
+- Introduce an _annealing schedule_ during the training phase:
+
+  $$\left\{ \gamma_{t}  \right\}_{t=0}^{N} = \left\{\gamma_{0}, \gamma_{1},
+  \ldots, \gamma_{N-1}, \gamma_{N} \right\}$$
+
+  where $\gamma_{0} < \gamma_{1} < \cdots < \gamma_{N} \equiv 1$, and $\left|\gamma_{t+1} - \gamma_{t}\right| \ll 1$  
+
+- [**Note**]{.green-text}: 
+    - for $\left|\gamma_{t}\right| < 1$, this rescaling helps to reduce the
+      height of the energy barriers $\Longrightarrow$
+    - easier for our sampler to explore previously inaccessible regions of the phase space
+
 ## LQCD @ ALCF (2008)
 
 > The Blue Gene/P at the ALCF has tremendously accelerated the generation of the gauge configurations—in many cases, by a factor of 5 to 10 over what has been possible with other machines. Significant progress has been made in simulations with two different implementations of the quarks—domain wall and staggered[^lqcd2008]  
@@ -919,86 +966,6 @@ flowchart LR
   style G1 color:#ec407a
   style G2 color:#ec407a
   classDef default fill:#1c1c1c
-```
-
-## Python
-
-```{python}
-#| code-fold: true
-#| echo: true
-import numpy as np
-x = np.random.rand()
-print(x)
-```
-
-::: {.notes}
-Speaker notes go here.
-:::
-
-## Python {.scrollable}
-
-For a demonstration of a line plot on a polar axis, see @fig-polar
-
-```{python}
-#| label: fig-polar
-#| fig-cap: "A line plot on a polar axis"
-#| echo: true
-#| code-fold: false
-#| output-location: slide
-import numpy as np
-import matplotlib.pyplot as plt
-
-plt.rcParams.update({
-    'axes.facecolor': 'none',
-    'figure.facecolor': 'none',
-    'savefig.facecolor': 'none',
-    'savefig.format': 'svg',
-    'axes.edgecolor': 'none',
-    'axes.grid': True,
-    'axes.labelcolor': '#666',
-    'axes.titlecolor': '#666',
-    'grid.color': '#666',
-    'text.color': '#666',
-    'grid.linestyle': '--',
-    'grid.linewidth': 0.5,
-    'grid.alpha': 0.4,
-    'xtick.color': 'none',
-    'ytick.color': 'none',
-    'xtick.labelcolor': '#666',
-    'legend.edgecolor': 'none',
-    'ytick.labelcolor': '#666',
-    'savefig.transparent': True,
-})
-
-r = np.arange(0, 2, 0.01)
-theta = 2 * np.pi * r
-fix, ax = plt.subplots(
-    subplot_kw = {'projection': 'polar'}
-)
-assert isinstance(ax, plt.PolarAxes)
-ax.plot(theta, r)
-ax.set_rticks([0.5, 1., 1.5, 2.])
-ax.grid(True)
-plt.show()
-```
-
-## Figures with Subcaptions
-
-```{python}
-#| label: fig-charts
-#| echo: true
-#| fig-cap: "Charts"
-#| fig-subcap: 
-#|   - "First"
-#|   - "Second"
-#| layout-ncol: 2
-
-import matplotlib.pyplot as plt
-plt.plot([1,23,2,4])
-plt.show()
-
-plt.plot([8,65,23,90])
-plt.show()
 ```
 
 ## Testing Callouts

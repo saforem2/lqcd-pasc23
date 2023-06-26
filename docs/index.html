@@ -450,6 +450,9 @@
 <p><a href="https://samforeman.me"><i class="fa-solid fa-home" aria-label="home"></i></a> Sam Foreman<br>
 <a href="https://github.com/saforem2/lqcd-pasc23"><i class="fa-brands fa-github" aria-label="github"></i> <code>saforem2/lqcd-pasc23</code></a></p>
 </div>
+<div class="footer">
+<p><a href="https://github.com/saforem2/lqcd-pasc23"><i class="fa-brands fa-github" aria-label="github"></i> <code>saforem2/lqcd-pasc23</code></a></p>
+</div>
 </section>
 
 <section>
@@ -485,12 +488,10 @@
 <figcaption>Figure&nbsp;1: Feynman diagram for <span class="math display">e^{+} + e^{-} \rightarrow 2\gamma</span></figcaption>
 </figure>
 </div>
-<!-- ::: {style="font-size:0.8em"} -->
-<!-- > Obviously, an independent cross-check of the BMW lattice result for -->
-<!-- > $a_{\mu}^{\mathrm{hvp, LO}}$ with sub-percent precision is badly needed   -->
-<!-- > --- [@wittig2023progress] -->
-<!-- ::: -->
 </div>
+</div>
+<div class="footer">
+<p><a href="https://github.com/saforem2/l2hmc-qcd"><i class="fa-brands fa-github" aria-label="github"></i> <code>saforem2/l2hmc-qcd</code></a></p>
 </div>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>Completely stalled ?</p></li></ol></aside></section>
 <section id="section-1" class="slide level2 centeredslide center" data-background-video="https://d2r55xnwy6nx47.cloudfront.net/uploads/2021/04/Muon_2560_Lede.mp4" data-background-video-loop="true" data-background-video-muted="true">
@@ -556,8 +557,8 @@
 </div>
 
 <img data-src="assets/tension.png" style="width:66.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;3: <a href="https://github.com/saforem2/lqcd-pasc23/blob/main/assets/mu2cartoon.png">Full cartoon</a></p></section></section>
-<section id="markov-chain-monte-carlo-mcmc" class="title-slide slide level1 center">
-<h1>Markov Chain Monte Carlo (MCMC)</h1>
+<section id="markov-chain-monte-carlo-mcmc" class="title-slide slide level1 center" data-auto-animate="true">
+<h1 data-id="quarto-animate-title">Markov Chain Monte Carlo (MCMC)</h1>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="callout callout-note callout-titled callout-style-default">
@@ -569,23 +570,58 @@
 <p><strong>Goal</strong></p>
 </div>
 <div class="callout-content">
-<p>Generate <strong>independent</strong> samples <span class="math inline">\{x_{i}\}</span>, s.t.<sup>1</sup> <span class="math display">\{x_{i}\} \sim p(x) \propto e^{-S(x)}</span></p>
+<p>Generate <strong>independent</strong> samples <span class="math inline">\{x_{i}\}</span>, such that<sup>1</sup> <span class="math display">\{x_{i}\} \sim p(x) \propto e^{-S(x)}</span> where <span class="math inline">S(x)</span> is the <em>action</em> (or potential energy)</p>
 </div>
 </div>
 </div>
 <ul>
 <li>Want to calculate observables <span class="math inline">\mathcal{O}</span>:<br>
-<span class="math inline">\left\langle \mathcal{O}\right\rangle \propto \int \left[\mathcal{D}x\right]\hspace{4pt} {\mathcal{O}(x) e^{-S[x]}}</span></li>
+<span class="math inline">\left\langle \mathcal{O}\right\rangle \propto \int \left[\mathcal{D}x\right]\hspace{4pt} {\mathcal{O}(x)\, p(x)}</span></li>
 </ul>
 </div><div class="column" style="width:49%;">
 <p><img data-src="https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/normal_distribution.dark.svg"></p>
 </div>
 </div>
-<p>If configurations were <span style="color:#00CCFF;">independent</span>, we could approximate<sup>2</sup> <span class="math display">
-  \left\langle\mathcal{O}\right\rangle \textcolor{#00CCFF}{\simeq} \frac{1}{N}\sum^{N}_{n=1}\mathcal{O}(x_{n})%
-  \quad \textcolor{#00CCFF}{\Longrightarrow} \quad \sigma_{\mathcal{O}}^{2} = \frac{1}{N}\mathrm{Var}{\left[\mathcal{O} (x) \right]}%
-  </span></p>
-<aside><ol class="aside-footnotes"><li id="fn2"><p>Here, <span class="math inline">\sim</span> means “is distributed according to”</p></li><li id="fn3"><p>Our variance on this estimator is then <span class="math inline">\sigma_{\mathcal{O}}^{2}</span></p></li></ol></aside></section>
+<ul>
+<li>If these were <span style="color:#00CCFF;">independent</span>, we could approximate: <span class="math inline">\left\langle\mathcal{O}\right\rangle \simeq \frac{1}{N}\sum^{N}_{n=1}\mathcal{O}(x_{n})</span><br>
+and the variance on this estimator is then <span class="math display">\sigma_{\mathcal{O}}^{2} = \frac{1}{N}\mathrm{Var}{\left[\mathcal{O} (x)
+\right]}\Longrightarrow \sigma_{\mathcal{O}} \propto \frac{1}{\sqrt{N}}</span></li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>Here, <span class="math inline">\sim</span> means “is distributed according to”</p></li></ol></aside></section>
+
+
+<section id="markov-chain-monte-carlo-mcmc-1" class="title-slide slide level1 center" data-auto-animate="true">
+<h1 data-id="quarto-animate-title">Markov Chain Monte Carlo (MCMC)</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Goal</strong></p>
+</div>
+<div class="callout-content">
+<p>Generate <strong>independent</strong> samples <span class="math inline">\{x_{i}\}</span>, such that<sup>1</sup> <span class="math display">\{x_{i}\} \sim p(x) \propto e^{-S(x)}</span> where <span class="math inline">S(x)</span> is the <em>action</em> (or potential energy)</p>
+</div>
+</div>
+</div>
+<ul>
+<li>Want to calculate observables <span class="math inline">\mathcal{O}</span>:<br>
+<span class="math inline">\left\langle \mathcal{O}\right\rangle \propto \int \left[\mathcal{D}x\right]\hspace{4pt} {\mathcal{O}(x)\, p(x)}</span></li>
+</ul>
+</div><div class="column" style="width:49%;">
+<p><img data-src="https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/normal_distribution.dark.svg"></p>
+</div>
+</div>
+<p>Instead, we have: <span class="math display">
+  \sigma_{\mathcal{O}}^{2} = \frac{\textcolor{#FF5252}{\tau_{\mathrm{int}}}}{N}\mathrm{Var}{\left[\mathcal{O} (x) \right]}%
+  </span> <!-- - If these were <span style="color:#00CCFF;">independent</span>, we could approximate: --> <!--   $\left\langle\mathcal{O}\right\rangle \simeq \frac{1}{N}\sum^{N}_{n=1}\mathcal{O}(x_{n})$   --> <!--   and the variance on this estimator is then --> <!--   $$\sigma_{\mathcal{O}}^{2} = \frac{1}{N}\mathrm{Var}{\left[\mathcal{O} (x) --> <!--   \right]}\Longrightarrow \sigma_{\mathcal{O}} \propto \frac{1}{\sqrt{N}}$$ --></p>
+<!-- ::: {aside} -->
+<!-- [Autocorrelation time estimation](https://dfm.io/posts/autocorr/) -->
+<!-- ::: -->
+<aside><ol class="aside-footnotes"><li id="fn3"><p>Here, <span class="math inline">\sim</span> means “is distributed according to”</p></li></ol></aside></section>
 
 
 <section id="hamiltonian-monte-carlo-hmchmc" class="title-slide slide level1 centeredslide center">
@@ -648,7 +684,7 @@ p(x, v) \propto e^{-S[x]} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}
 </div>
 </div>
 
-<img data-src="https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/hmc1.svg" class="r-stretch"></section>
+<img data-src="https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/hmc1.svg" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;4: Overview of HMC algorithm</p></section>
 
 <section id="leapfrog-integrator-hmc" class="title-slide slide level1 centeredslide center">
 <h1>Leapfrog Integrator (HMC)</h1>
@@ -741,7 +777,7 @@ v' &amp;:= \textcolor{#F06292}{\Gamma}(x'; \tilde{v}) = \tilde{v} - \frac{\varep
 <figure>
 <iframe data-src="https://chi-feng.github.io/mcmc-demo/app.html" width="90%" height="500" title="l2hmc-qcd">
 </iframe>
-<figcaption>Figure&nbsp;4: HMC Demo</figcaption>
+<figcaption>Figure&nbsp;5: HMC Demo</figcaption>
 </figure>
 </div>
 </section>
@@ -780,7 +816,7 @@ v' &amp;:= \textcolor{#F06292}{\Gamma}(x'; \tilde{v}) = \tilde{v} - \frac{\varep
 </div>
 </div>
 </div>
-<p></p><figcaption>Figure&nbsp;5: HMC Samples generated with varying step sizes <span class="math inline">\varepsilon</span></figcaption><p></p>
+<p></p><figcaption>Figure&nbsp;6: HMC Samples generated with varying step sizes <span class="math inline">\varepsilon</span></figcaption><p></p>
 </figure>
 </div>
 </section>
@@ -914,7 +950,7 @@ A({\textcolor{#AE81FF}{\xi^{\ast}}}|{\textcolor{#00CCFF}{\xi}})=
 </ul></li>
 </ul>
 
-<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/static/continuum.svg" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;6: Increasing the physical resolution (<span class="math inline">a \rightarrow 0</span>) allows us to make predictions about numerical values of physical quantities in the continuum limit.</p></section>
+<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/static/continuum.svg" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;7: Increasing the physical resolution (<span class="math inline">a \rightarrow 0</span>) allows us to make predictions about numerical values of physical quantities in the continuum limit.</p></section>
 
 <section id="topological-freezing" class="title-slide slide level1 centeredslide center">
 <h1>Topological Freezing</h1>
@@ -1011,7 +1047,7 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1,
 <section id="integrated-autocorrelation-time" class="title-slide slide level1 centeredslide center">
 <h1>Integrated Autocorrelation Time</h1>
 
-<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/tint1.svg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;7: Plot of the integrated autocorrelation time for both the trained model (colored) and HMC (greyscale).</p></section>
+<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/tint1.svg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;8: Plot of the integrated autocorrelation time for both the trained model (colored) and HMC (greyscale).</p></section>
 
 <section id="interpretation" class="title-slide slide level1 centeredslide center">
 <h1>Interpretation</h1>
@@ -1025,7 +1061,7 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1,
 </div>
 </div>
 
-<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/ridgeplots.svg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;8: Illustration of how different observables evolve over a single L2HMC trajectory.</p></section>
+<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/ridgeplots.svg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;9: Illustration of how different observables evolve over a single L2HMC trajectory.</p></section>
 
 <section id="interpretation-1" class="title-slide slide level1 centeredslide center">
 <h1>Interpretation</h1>
@@ -1049,7 +1085,7 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1,
 </div>
 </div>
 </div>
-<p></p><figcaption>Figure&nbsp;9: The trained model artifically increases the energy towards the middle of the trajectory, allowing the sampler to tunnel between isolated sectors.</figcaption><p></p>
+<p></p><figcaption>Figure&nbsp;10: The trained model artifically increases the energy towards the middle of the trajectory, allowing the sampler to tunnel between isolated sectors.</figcaption><p></p>
 </figure>
 </div>
 </section>
@@ -1064,10 +1100,10 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1,
 <div id="fig-avg-plaq" class="quarto-figure quarto-figure-center">
 <figure>
 
-<figcaption>Figure&nbsp;11: Plot showing how <strong>average plaquette</strong>, <span class="math inline">\left\langle x_{P}\right\rangle</span> varies over a single trajectory for models trained at different <span class="math inline">\beta</span>, with varying trajectory lengths <span class="math inline">N_{\mathrm{LF}}</span></figcaption>
+<figcaption>Figure&nbsp;12: Plot showing how <strong>average plaquette</strong>, <span class="math inline">\left\langle x_{P}\right\rangle</span> varies over a single trajectory for models trained at different <span class="math inline">\beta</span>, with varying trajectory lengths <span class="math inline">N_{\mathrm{LF}}</span></figcaption>
 </figure>
 </div>
-<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/plaqsf_vs_lf_step1.svg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;11: Plot showing how <strong>average plaquette</strong>, <span class="math inline">\left\langle x_{P}\right\rangle</span> varies over a single trajectory for models trained at different <span class="math inline">\beta</span>, with varying trajectory lengths <span class="math inline">N_{\mathrm{LF}}</span></p></section>
+<img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/plaqsf_vs_lf_step1.svg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;12: Plot showing how <strong>average plaquette</strong>, <span class="math inline">\left\langle x_{P}\right\rangle</span> varies over a single trajectory for models trained at different <span class="math inline">\beta</span>, with varying trajectory lengths <span class="math inline">N_{\mathrm{LF}}</span></p></section>
 
 <section id="comparison" class="title-slide slide level1 center">
 <h1>Comparison</h1>
@@ -1091,7 +1127,7 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1,
 </div>
 </div>
 </div>
-<p></p><figcaption>Figure&nbsp;12: Comparison of <span class="math inline">\langle \delta Q\rangle = \frac{1}{N}\sum_{i=k}^{N} \delta Q_{i}</span> for the trained model <a href="#/comparison">Figure&nbsp;12 (a)</a> vs.&nbsp;HMC <a href="#/comparison">Figure&nbsp;12 (b)</a></figcaption><p></p>
+<p></p><figcaption>Figure&nbsp;13: Comparison of <span class="math inline">\langle \delta Q\rangle = \frac{1}{N}\sum_{i=k}^{N} \delta Q_{i}</span> for the trained model <a href="#/comparison">Figure&nbsp;13 (a)</a> vs.&nbsp;HMC <a href="#/comparison">Figure&nbsp;13 (b)</a></figcaption><p></p>
 </figure>
 </div>
 </section>
@@ -1187,9 +1223,9 @@ updated in parallel
 <h1></h1>
 <div id="fig-notebook" class="quarto-figure quarto-figure-center">
 <figure>
-<iframe data-src="https://nbviewer.org/github/saforem2/l2hmc-qcd/blob/dev/src/l2hmc/notebooks/l2hmc-2dU1.ipynb" width="100%" height="650" title="l2hmc-qcd">
+<iframe data-src="https://nbviewer.org/github/saforem2/l2hmc-qcd/blob/SU3/src/l2hmc/notebooks/l2hmc-2dU1.ipynb" width="100%" height="650" title="l2hmc-qcd">
 </iframe>
-<figcaption>Figure&nbsp;13: Jupyter Notebook</figcaption>
+<figcaption>Figure&nbsp;14: Jupyter Notebook</figcaption>
 </figure>
 </div>
 </section>
@@ -1394,7 +1430,7 @@ q_{v} = \lambda_{q}\tanh\left(w_{q} h_{n} + b_{q}\right)</span></p></li>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.5188124755961172</code></pre>
+<pre><code>0.40182684458479234</code></pre>
 </div>
 </div>
 <aside class="notes">
@@ -1413,7 +1449,7 @@ q_{v} = \lambda_{q}\tanh\left(w_{q} h_{n} + b_{q}\right)</span></p></li>
 </section>
 <section id="python-1" class="slide level2 scrollable center">
 <h2>Python</h2>
-<p>For a demonstration of a line plot on a polar axis, see <a href="#/python-1-output">Figure&nbsp;14</a></p>
+<p>For a demonstration of a line plot on a polar axis, see <a href="#/python-1-output">Figure&nbsp;15</a></p>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1458,7 +1494,7 @@ q_{v} = \lambda_{q}\tanh\left(w_{q} h_{n} + b_{q}\right)</span></p></li>
 <div id="fig-polar" class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="index_files/figure-revealjs/fig-polar-output-1.png" width="450" height="439"></p>
-<figcaption>Figure&nbsp;14: A line plot on a polar axis</figcaption>
+<figcaption>Figure&nbsp;15: A line plot on a polar axis</figcaption>
 </figure>
 </div>
 </div>
@@ -1491,7 +1527,7 @@ q_{v} = \lambda_{q}\tanh\left(w_{q} h_{n} + b_{q}\right)</span></p></li>
 </div>
 </div>
 </div>
-<p></p><figcaption>Figure&nbsp;15: Charts</figcaption><p></p>
+<p></p><figcaption>Figure&nbsp;16: Charts</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1601,7 +1637,7 @@ q_{v} = \lambda_{q}\tanh\left(w_{q} h_{n} + b_{q}\right)</span></p></li>
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'chalkboard': {"buttons":true},
+'chalkboard': {"buttons":false},
 'smaller': false,
  
         // Display controls in the bottom right corner

@@ -775,9 +775,10 @@ trained model [@fig-eval] vs. HMC [@fig-hmc]
 # Thank you!
 
 ::: {style="text-align:left;"}
-[{{< fa solid home >}} `samforeman.me`](https://samforeman.me)
-$\hspace{15pt}$[{{< fa brands twitter >}} `@saforem2`](https://www.twitter.com/saforem2)
-$\hspace{15pt}$[{{< fa regular paper-plane >}} `foremans@anl.gov`](mailto:///foremans@anl.gov)
+[{{< fa solid home >}} `samforeman.me`](https://samforeman.me)  
+[{{< fa brands github >}} `saforem2`](https://github.com/saforem2)  
+[{{< fa brands twitter >}} `@saforem2`](https://www.twitter.com/saforem2)  
+[{{< fa regular paper-plane >}} `foremans@anl.gov`](mailto:///foremans@anl.gov)
 :::
 
 ::: {.callout-note title="Acknowledgements"}

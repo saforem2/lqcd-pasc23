@@ -7,7 +7,7 @@ bibliography: references.bib
 format:
   revealjs:
     title-block-style: none
-    slide-number: c
+    slide-number: c/t
     title-slide-style: pandoc
     chalkboard:
       buttons: false
@@ -164,7 +164,7 @@ In the summer of 2013, the Muon g-2 team successfully transported a 50-foot-wide
 ::: {style="font-size:0.75em; text-align: inherit; margin-left: inherit;"}
 > Obviously, an independent cross-check of the BMW lattice result for
 > $a_{\mu}^{\mathrm{hvp, LO}}$ with sub-percent precision is badly needed.&nbsp;  
-> --- [@wittig2023progress]
+> --- {{< fa solid book >}} [@wittig2023progress]
 :::
 
 ::: {#fig-tension}
@@ -750,7 +750,7 @@ trained model [@fig-eval] vs. HMC [@fig-hmc]
 
 ::::
 
-# 4D $SU(3)$ Model {.centeredslide auto-animate="true"}
+# 4D $SU(3)$ Model[^wip] {.centeredslide auto-animate="true"}
 
 :::: {.columns}
 
@@ -771,6 +771,8 @@ trained model [@fig-eval] vs. HMC [@fig-hmc]
 :::
 
 ::::
+
+[^wip]: WIP
 
 # Thank you!
 

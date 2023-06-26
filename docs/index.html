@@ -495,7 +495,7 @@
 <div style="font-size:0.75em; text-align: inherit; margin-left: inherit;">
 <blockquote>
 <p>Obviously, an independent cross-check of the BMW lattice result for <span class="math inline">a_{\mu}^{\mathrm{hvp, LO}}</span> with sub-percent precision is badly needed.&nbsp;<br>
-— <span class="citation" data-cites="wittig2023progress">(<a href="#/references" role="doc-biblioref" onclick="">Wittig 2023</a>)</span></p>
+— <i class="fa-solid fa-book" aria-label="book"></i> <span class="citation" data-cites="wittig2023progress">(<a href="#/references" role="doc-biblioref" onclick="">Wittig 2023</a>)</span></p>
 </blockquote>
 </div>
 
@@ -1122,8 +1122,8 @@ updated in parallel
 </div>
 </section>
 
-<section id="d-su3-model" class="title-slide slide level1 centeredslide center" data-auto-animate="true">
-<h1 data-id="quarto-animate-title">4D <span class="math inline">SU(3)</span> Model</h1>
+<section id="d-su3-modelwip" class="title-slide slide level1 centeredslide center" data-auto-animate="true">
+<h1 data-id="quarto-animate-title">4D <span class="math inline">SU(3)</span> Model<sup>1</sup></h1>
 <div class="columns">
 <div class="column" style="font-size:0.9em;">
 <ul>
@@ -1151,7 +1151,8 @@ updated in parallel
 <p><img data-src="./assets/leapfrog-layer-minimal/leapfrog-layer-dark.svg"></p>
 </div>
 </div>
-</section>
+<aside><ol class="aside-footnotes"><li id="fn10"><p>WIP</p></li></ol></aside></section>
+
 
 <section>
 <section id="thank-you" class="title-slide slide level1 center">
@@ -1296,7 +1297,7 @@ h_{n} &amp;= \sigma\left(w_{n} h_{n-1} + b_{n}\right) \longrightarrow \\
 t_{v} = w_{t} z + b_{t}, \quad
 q_{v} = \lambda_{q}w_{q} z + b_{q}</span></li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn10"><p><span class="math inline">\sigma(\cdot)</span> denotes an activation function</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn11"><p><span class="math inline">\sigma(\cdot)</span> denotes an activation function</p></li></ol></aside></section>
 
 <section id="v-update-pt.-2" class="slide level2 center" style="font-size:0.9em;">
 <h2><span class="math inline">v</span>-update (pt.&nbsp;2)</h2>
@@ -1310,7 +1311,7 @@ q_{v} = \lambda_{q}\tanh\left(w_{q} h_{n} + b_{q}\right)</span></p></li>
 <li><p><span style="color:#1A8FFF;">backward</span> <span class="math inline">(d = \textcolor{#1A8FFF}{-})</span>: <span class="math display">\Gamma^{\textcolor{#1A8FFF}{-}}(x, v) \coloneqq v_{\textcolor{#1A8FFF}{-}} = e^{-\frac{\varepsilon}{2} s_{v}} \left\{v + \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{v}} + t_{v} \right]\right\}</span></p></li>
 </ul></li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn11"><p><span class="math inline">\lambda_{s},\, \lambda_{q} \in \mathbb{R}</span> are trainable parameters</p></li><li id="fn12"><p>Note that <span class="math inline">\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}</span>, i.e.&nbsp;<span class="math inline">\Gamma^{+}\left[\Gamma^{-}(x, v)\right] = \Gamma^{-}\left[\Gamma^{+}(x, v)\right] = (x, v)</span></p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn12"><p><span class="math inline">\lambda_{s},\, \lambda_{q} \in \mathbb{R}</span> are trainable parameters</p></li><li id="fn13"><p>Note that <span class="math inline">\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}</span>, i.e.&nbsp;<span class="math inline">\Gamma^{+}\left[\Gamma^{-}(x, v)\right] = \Gamma^{-}\left[\Gamma^{+}(x, v)\right] = (x, v)</span></p></li></ol></aside></section>
 
 <section id="annealing-schedule" class="slide level2 center">
 <h2>Annealing Schedule</h2>
@@ -1332,7 +1333,7 @@ q_{v} = \lambda_{q}\tanh\left(w_{q} h_{n} + b_{q}\right)</span></p></li>
 <p>The Blue Gene/P at the ALCF has tremendously accelerated the generation of the gauge configurations—in many cases, by a factor of 5 to 10 over what has been possible with other machines. Significant progress has been made in simulations with two different implementations of the quarks—domain wall and staggered<sup>1</sup><br>
 <br> &nbsp; — <span class="green-text">Mike Papka</span>, 2008</p>
 </blockquote>
-<aside><ol class="aside-footnotes"><li id="fn13"><p><a href="https://publications.anl.gov/anlpubs/2009/12/65724.pdf">Argonne Leadership Computing Facility • 2008 Annual Report</a></p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn14"><p><a href="https://publications.anl.gov/anlpubs/2009/12/65724.pdf">Argonne Leadership Computing Facility • 2008 Annual Report</a></p></li></ol></aside></section>
 
 <section id="section-4" class="slide level2 centeredslide center" data-background-color="white">
 <h2></h2>
@@ -1493,7 +1494,7 @@ q_{v} = \lambda_{q}\tanh\left(w_{q} h_{n} + b_{q}\right)</span></p></li>
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: 'c',
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',

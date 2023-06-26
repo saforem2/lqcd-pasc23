@@ -245,7 +245,7 @@ $\textcolor{#FF5252}{\tau^{\mathcal{O}}_{\mathrm{int}}}$:
 <!-- ::: -->
 
 
-# Hamiltonian Monte Carlo (HMC)[^hmc] {.centeredslide}
+# Hamiltonian Monte Carlo (HMC)[^hmc] {.centeredslide auto-animate="true"}
 
 - Want to (sequentially) construct a chain of states:
   $$x_{0} \rightarrow x_{1} \rightarrow x_{i} \rightarrow \cdots \rightarrow x_{N}\hspace{10pt}$$
@@ -268,7 +268,7 @@ $\textcolor{#FF5252}{\tau^{\mathcal{O}}_{\mathrm{int}}}$:
 <!-- [Hybrid Monte Carlo, Duane et. al Phys.Lett.B 195 (1987)](https://www.sciencedirect.com/science/article/pii/037026938791197X?via=ihub) -->
 
 
-# Hamiltonian Monte Carlo (HMC) {.centeredslide}
+# Hamiltonian Monte Carlo (HMC) {.centeredslide auto-animate="true"}
 
 :::: {.columns}
 
@@ -301,7 +301,7 @@ $$\dot{x} = +\partial_{v} H,
 Overview of HMC algorithm
 :::
 
-# Leapfrog Integrator (HMC) {.centeredslide}
+# Leapfrog Integrator (HMC) {.centeredslide auto-animate="true"}
 
 :::: {.columns style="text-align:center;"}
 
@@ -338,7 +338,7 @@ v' &:= \textcolor{#F06292}{\Gamma}(x'; \tilde{v}) = \tilde{v} - \frac{\varepsilo
 :::
 ::::
 
-# HMC Update
+# HMC Update {auto-animate="true"}
 
 :::: {.columns}
 

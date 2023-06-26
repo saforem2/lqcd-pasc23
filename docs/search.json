@@ -2,23 +2,23 @@
   {
     "objectID": "index.html#section-1",
     "href": "index.html#section-1",
-    "title": "LQCD @ PASC23",
+    "title": "",
     "section": "",
     "text": "Magnetic Moment of the Muon\n\na_{\\mu} = \\frac{(g_{\\mu} - 2)}{2}\n\na_{\\mu}^{\\mathrm{exp}} - a_{\\mu}^{\\mathrm{SM}} = \\left(25.1 \\pm 5.9\\right)\\cdot 10^{-10}\ncan Lattice QCD resolve this?"
   },
   {
     "objectID": "index.html#fermilab-muon-g-2",
     "href": "index.html#fermilab-muon-g-2",
-    "title": "LQCD @ PASC23",
+    "title": "",
     "section": "Fermilab: Muon g-2",
     "text": "Fermilab: Muon g-2\n\nThe RingIn transitAlmost HomeArrival\n\n\n\n\n\n\n\n\n\nFigure 2: The Muon g-2 ring sits in its detector hall amidst electronics racks, the muon beamline, and other equipment. This impressive experiment operates at negative 450 degrees Fahrenheit and studies the precession (or wobble) of muons as they travel through the magnetic field."
   },
   {
     "objectID": "index.html#python",
     "href": "index.html#python",
-    "title": "LQCD @ PASC23",
+    "title": "Generative Modeling and Efficient Sampling (for LQCD)",
     "section": "Python",
-    "text": "Python\n\n\nCode\nimport numpy as np\nx = np.random.rand()\nprint(x)\n\n\n0.40182684458479234\n\n\n\nSpeaker notes go here."
+    "text": "Python\n\n\nCode\nimport numpy as np\nx = np.random.rand()\nprint(x)\n\n\n0.9068936339437604\n\n\n\nSpeaker notes go here."
   },
   {
     "objectID": "index.html#columns",
@@ -30,21 +30,21 @@
   {
     "objectID": "index.html#python-1",
     "href": "index.html#python-1",
-    "title": "LQCD @ PASC23",
+    "title": "Generative Modeling and Efficient Sampling (for LQCD)",
     "section": "Python",
     "text": "Python\nFor a demonstration of a line plot on a polar axis, see Figure 15\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nplt.rcParams.update({\n    'axes.facecolor': 'none',\n    'figure.facecolor': 'none',\n    'savefig.facecolor': 'none',\n    'savefig.format': 'svg',\n    'axes.edgecolor': 'none',\n    'axes.grid': True,\n    'axes.labelcolor': '#666',\n    'axes.titlecolor': '#666',\n    'grid.color': '#666',\n    'text.color': '#666',\n    'grid.linestyle': '--',\n    'grid.linewidth': 0.5,\n    'grid.alpha': 0.4,\n    'xtick.color': 'none',\n    'ytick.color': 'none',\n    'xtick.labelcolor': '#666',\n    'legend.edgecolor': 'none',\n    'ytick.labelcolor': '#666',\n    'savefig.transparent': True,\n})\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfix, ax = plt.subplots(\n    subplot_kw = {'projection': 'polar'}\n)\nassert isinstance(ax, plt.PolarAxes)\nax.plot(theta, r)\nax.set_rticks([0.5, 1., 1.5, 2.])\nax.grid(True)\nplt.show()"
   },
   {
     "objectID": "index.html#python-1-output",
     "href": "index.html#python-1-output",
-    "title": "LQCD @ PASC23",
+    "title": "Generative Modeling and Efficient Sampling (for LQCD)",
     "section": "Python",
     "text": "Python\n\n\n\n\nFigure 15: A line plot on a polar axis"
   },
   {
     "objectID": "index.html#figures-with-subcaptions",
     "href": "index.html#figures-with-subcaptions",
-    "title": "LQCD @ PASC23",
+    "title": "Generative Modeling and Efficient Sampling (for LQCD)",
     "section": "Figures with Subcaptions",
     "text": "Figures with Subcaptions\n\nimport matplotlib.pyplot as plt\nplt.plot([1,23,2,4])\nplt.show()\n\nplt.plot([8,65,23,90])\nplt.show()\n\n\n\n\n\n\n\n(a) First\n\n\n\n\n\n\n\n(b) Second\n\n\n\n\nFigure 16: Charts"
   },
@@ -93,7 +93,7 @@
   {
     "objectID": "index.html#testing-callouts",
     "href": "index.html#testing-callouts",
-    "title": "LQCD @ PASC23",
+    "title": "",
     "section": "Testing Callouts",
     "text": "Testing Callouts\n\n\n\n\n\n\nNote\n\n\nTesting note callouts with default appearance\n\n\n\n\n\n\n\n\n\nTip\n\n\nTesting tip callout with default appearance\n\n\n\n\n\n\n\n\n\nCaution\n\n\nTesting tip callout with default appearance\n\n\n\n\n\n\n\n\n\nWarning\n\n\nTesting warning callout with default appearance\n\n\n\n\n\n\n\n\n\nImportant\n\n\nTesting important callout with default appearance"
   },
@@ -170,28 +170,28 @@
   {
     "objectID": "index.html#hmc",
     "href": "index.html#hmc",
-    "title": "LQCD @ PASC23",
+    "title": "",
     "section": "HMC",
     "text": "HMC\n\n\n\n\nflowchart LR\n  v(\"v\") --&gt; G1{\"Γ\"}\n  x0(\"x\") -. \"∂𝑆 / ∂𝒙\" -.-&gt; G1{\"Γ\"}\n  G1 -.-&gt; L{\"Λ\"}\n  x0 --&gt; L{\"Λ\"}\n  G1 --&gt; G2{\"Γ\"}\n  L -.-&gt; G2\n  L ---&gt; x'(\"x*\")\n  G2 --&gt; v'(\"v*\")\n  style x0  color:#805AC1\n  style x' color:#805AC1\n  style v' color:#308E40\n  style v color:#308E40\n  style L color:#FD971F\n  style G1 color:#ec407a\n  style G2 color:#ec407a\n  classDef default fill:#1c1c1c"
   },
   {
     "objectID": "index.html#lqcd-alcf-2008",
     "href": "index.html#lqcd-alcf-2008",
-    "title": "LQCD @ PASC23",
+    "title": "",
     "section": "LQCD @ ALCF (2008)",
     "text": "LQCD @ ALCF (2008)\n\nThe Blue Gene/P at the ALCF has tremendously accelerated the generation of the gauge configurations—in many cases, by a factor of 5 to 10 over what has been possible with other machines. Significant progress has been made in simulations with two different implementations of the quarks—domain wall and staggered1\n   — Mike Papka, 2008\n\nArgonne Leadership Computing Facility • 2008 Annual Report"
   },
   {
     "objectID": "index.html#tension",
     "href": "index.html#tension",
-    "title": "LQCD @ PASC23",
+    "title": "",
     "section": "Tension",
     "text": "Tension\n\n\nObviously, an independent cross-check of the BMW lattice result for a_{\\mu}^{\\mathrm{hvp, LO}} with sub-percent precision is badly needed. \n— (Wittig 2023)\n\n\n\nFigure 3: Full cartoon"
   },
   {
     "objectID": "index.html#networks-2d-u1",
     "href": "index.html#networks-2d-u1",
-    "title": "LQCD @ PASC23",
+    "title": "",
     "section": "Networks 2D U(1)",
     "text": "Networks 2D U(1)\n\nStack gauge links as shape\\left(U_{\\mu}\\right)=[Nb, 2, Nt, Nx] \\in \\mathbb{C}\n x_{\\mu}(n) ≔ \\left[\\cos(x), \\sin(x)\\right]\nwith shape\\left(x_{\\mu}\\right)= [Nb, 2, Nt, Nx, 2] \\in \\mathbb{R}\nx-Network:\n\n\\Lambda^{\\pm}_{k}(x, v) \\rightarrow \\left[s^{k}_{x}, t^{k}_{x}, q^{k}_{x}\\right]\n\nv-Network:\n\n\\Gamma_{k}^{\\pm}(x, v) \\rightarrow \\left[s^{k}_{v}, t^{k}_{v}, q^{k}_{v}\\right]"
   },
@@ -254,15 +254,22 @@
   {
     "objectID": "index.html#v-update-pt.-1",
     "href": "index.html#v-update-pt.-1",
-    "title": "LQCD @ PASC23",
+    "title": "",
     "section": "v-update (pt. 1)",
     "text": "v-update (pt. 1)\n\nnetwork1: \\left(x, \\partial_{x} S(x)\\right) \\coloneqq \\left(x, F \\right)\\rightarrow (s_{v}, t_{v}, q_{v}), where \\begin{align*}\nh_{0} &= \\sigma\\left( w_{x} x + w_{F} F + b \\right) \\\\\nh_{1} &= \\sigma\\left( w_{1} h_{0} + b_{1} \\right) \\\\\n&\\vdots \\\\\nh_{n} &= \\sigma\\left(w_{n} h_{n-1} + b_{n}\\right) \\longrightarrow \\\\\n\\end{align*} s_{v} = \\lambda_{s} \\tanh\\left(w_{s} h_{n} + b_{s}\\right), \\quad\nt_{v} = w_{t} z + b_{t}, \\quad\nq_{v} = \\lambda_{q}w_{q} z + b_{q}\n\n\\sigma(\\cdot) denotes an activation function"
   },
   {
     "objectID": "index.html#v-update-pt.-2",
     "href": "index.html#v-update-pt.-2",
-    "title": "LQCD @ PASC23",
+    "title": "",
     "section": "v-update (pt. 2)",
     "text": "v-update (pt. 2)\n\nNetwork outputs1: s_{v} = \\lambda_{s} \\tanh\\left(w_{s}\\, h_{n} + b_{s}\\right), \\quad\nt_{v} = w_{t} h_{n} + b_{t}, \\quad\nq_{v} = \\lambda_{q}\\tanh\\left(w_{q} h_{n} + b_{q}\\right)\nUse these to update \\Gamma^{\\pm}: (x, v) \\rightarrow \\left(x, v_{\\pm}\\right)2:\n\nforward (d = \\textcolor{#FF5252}{+}): \\Gamma^{\\textcolor{#FF5252}{+}}(x, v) \\coloneqq v_{\\textcolor{#FF5252}{+}} = v \\cdot e^{\\frac{\\varepsilon}{2} s_{v}} - \\frac{\\varepsilon}{2}\\left[ F \\cdot e^{\\varepsilon q_{v}} + t_{v} \\right]\nbackward (d = \\textcolor{#1A8FFF}{-}): \\Gamma^{\\textcolor{#1A8FFF}{-}}(x, v) \\coloneqq v_{\\textcolor{#1A8FFF}{-}} = e^{-\\frac{\\varepsilon}{2} s_{v}} \\left\\{v + \\frac{\\varepsilon}{2}\\left[ F \\cdot e^{\\varepsilon q_{v}} + t_{v} \\right]\\right\\}\n\n\n\\lambda_{s},\\, \\lambda_{q} \\in \\mathbb{R} are trainable parametersNote that \\left(\\Gamma^{+}\\right)^{-1} = \\Gamma^{-}, i.e. \\Gamma^{+}\\left[\\Gamma^{-}(x, v)\\right] = \\Gamma^{-}\\left[\\Gamma^{+}(x, v)\\right] = (x, v)"
+  },
+  {
+    "objectID": "index.html#annealing-schedule",
+    "href": "index.html#annealing-schedule",
+    "title": "",
+    "section": "Annealing Schedule",
+    "text": "Annealing Schedule\n\nIntroduce an annealing schedule during the training phase:\n\\left\\{ \\gamma_{t}  \\right\\}_{t=0}^{N} = \\left\\{\\gamma_{0}, \\gamma_{1},\n\\ldots, \\gamma_{N-1}, \\gamma_{N} \\right\\}\nwhere \\gamma_{0} &lt; \\gamma_{1} &lt; \\cdots &lt; \\gamma_{N} \\equiv 1, and \\left|\\gamma_{t+1} - \\gamma_{t}\\right| \\ll 1\nNote:\n\nfor \\left|\\gamma_{t}\\right| &lt; 1, this rescaling helps to reduce the height of the energy barriers \\Longrightarrow\neasier for our sampler to explore previously inaccessible regions of the phase space"
   }
 ]

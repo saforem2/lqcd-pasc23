@@ -1,8 +1,8 @@
 ---
 # title: "Generative Modeling and Efficient Sampling (for LQCD)"
 # affiliation: "Argonne National Laboratory"
-author: "Sam Foreman"
-date: "2023-06-26"
+# author: "Sam Foreman"
+# date: "2023-06-26"
 bibliography: references.bib
 format:
   revealjs:

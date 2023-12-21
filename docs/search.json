@@ -2,7 +2,7 @@
   {
     "objectID": "index.html#section-1",
     "href": "index.html#section-1",
-    "title": "",
+    "title": "Generative Modeling & Efficient Sampling for LQCD",
     "section": "",
     "text": "Magnetic Moment of the Muon\n\na_{\\mu} = \\frac{(g_{\\mu} - 2)}{2}\n\na_{\\mu}^{\\mathrm{exp}} - a_{\\mu}^{\\mathrm{SM}} = \\left(25.1 \\pm 5.9\\right)\\cdot 10^{-10}\ncan Lattice QCD resolve this?"
   },
@@ -170,14 +170,14 @@
   {
     "objectID": "index.html#hmc",
     "href": "index.html#hmc",
-    "title": "",
+    "title": "Generative Modeling & Efficient Sampling for LQCD",
     "section": "HMC",
     "text": "HMC\n\n\n\n\nflowchart LR\n  v(\"v\") --&gt; G1{\"Γ\"}\n  x0(\"x\") -. \"∂𝑆 / ∂𝒙\" -.-&gt; G1{\"Γ\"}\n  G1 -.-&gt; L{\"Λ\"}\n  x0 --&gt; L{\"Λ\"}\n  G1 --&gt; G2{\"Γ\"}\n  L -.-&gt; G2\n  L ---&gt; x'(\"x*\")\n  G2 --&gt; v'(\"v*\")\n  style x0  color:#805AC1\n  style x' color:#805AC1\n  style v' color:#308E40\n  style v color:#308E40\n  style L color:#FD971F\n  style G1 color:#ec407a\n  style G2 color:#ec407a\n  classDef default fill:#1c1c1c"
   },
   {
     "objectID": "index.html#lqcd-alcf-2008",
     "href": "index.html#lqcd-alcf-2008",
-    "title": "",
+    "title": "Generative Modeling & Efficient Sampling for LQCD",
     "section": "LQCD @ ALCF (2008)",
     "text": "LQCD @ ALCF (2008)\n\nThe Blue Gene/P at the ALCF has tremendously accelerated the generation of the gauge configurations—in many cases, by a factor of 5 to 10 over what has been possible with other machines. Significant progress has been made in simulations with two different implementations of the quarks—domain wall and staggered1\n   — Mike Papka, 2008\n\nArgonne Leadership Computing Facility • 2008 Annual Report"
   },
@@ -191,7 +191,7 @@
   {
     "objectID": "index.html#networks-2d-u1",
     "href": "index.html#networks-2d-u1",
-    "title": "",
+    "title": "Generative Modeling & Efficient Sampling for LQCD",
     "section": "Networks 2D U(1)",
     "text": "Networks 2D U(1)\n\nStack gauge links as shape\\left(U_{\\mu}\\right)=[Nb, 2, Nt, Nx] \\in \\mathbb{C}\n x_{\\mu}(n) ≔ \\left[\\cos(x), \\sin(x)\\right]\nwith shape\\left(x_{\\mu}\\right)= [Nb, 2, Nt, Nx, 2] \\in \\mathbb{R}\nx-Network:\n\n\\Lambda^{\\pm}_{k}(x, v) \\rightarrow \\left[s^{k}_{x}, t^{k}_{x}, q^{k}_{x}\\right]\n\nv-Network:\n\n\\Gamma_{k}^{\\pm}(x, v) \\rightarrow \\left[s^{k}_{v}, t^{k}_{v}, q^{k}_{v}\\right]"
   },
@@ -254,50 +254,64 @@
   {
     "objectID": "index.html#v-update-pt.-1",
     "href": "index.html#v-update-pt.-1",
-    "title": "",
+    "title": "Generative Modeling & Efficient Sampling for LQCD",
     "section": "v-update (pt. 1)",
     "text": "v-update (pt. 1)\n\nnetwork1: \\left(x, \\partial_{x} S(x)\\right) \\coloneqq \\left(x, F \\right)\\rightarrow (s_{v}, t_{v}, q_{v}), where \\begin{align*}\nh_{0} &= \\sigma\\left( w_{x} x + w_{F} F + b \\right) \\\\\nh_{1} &= \\sigma\\left( w_{1} h_{0} + b_{1} \\right) \\\\\n&\\vdots \\\\\nh_{n} &= \\sigma\\left(w_{n} h_{n-1} + b_{n}\\right) \\longrightarrow \\\\\n\\end{align*} s_{v} = \\lambda_{s} \\tanh\\left(w_{s} h_{n} + b_{s}\\right), \\quad\nt_{v} = w_{t} z + b_{t}, \\quad\nq_{v} = \\lambda_{q}w_{q} z + b_{q}\n\n\\sigma(\\cdot) denotes an activation function"
   },
   {
     "objectID": "index.html#v-update-pt.-2",
     "href": "index.html#v-update-pt.-2",
-    "title": "",
+    "title": "Generative Modeling & Efficient Sampling for LQCD",
     "section": "v-update (pt. 2)",
     "text": "v-update (pt. 2)\n\nNetwork outputs1: s_{v} = \\lambda_{s} \\tanh\\left(w_{s}\\, h_{n} + b_{s}\\right), \\quad\nt_{v} = w_{t} h_{n} + b_{t}, \\quad\nq_{v} = \\lambda_{q}\\tanh\\left(w_{q} h_{n} + b_{q}\\right)\nUse these to update \\Gamma^{\\pm}: (x, v) \\rightarrow \\left(x, v_{\\pm}\\right)2:\n\nforward (d = \\textcolor{#FF5252}{+}): \\Gamma^{\\textcolor{#FF5252}{+}}(x, v) \\coloneqq v_{\\textcolor{#FF5252}{+}} = v \\cdot e^{\\frac{\\varepsilon}{2} s_{v}} - \\frac{\\varepsilon}{2}\\left[ F \\cdot e^{\\varepsilon q_{v}} + t_{v} \\right]\nbackward (d = \\textcolor{#1A8FFF}{-}): \\Gamma^{\\textcolor{#1A8FFF}{-}}(x, v) \\coloneqq v_{\\textcolor{#1A8FFF}{-}} = e^{-\\frac{\\varepsilon}{2} s_{v}} \\left\\{v + \\frac{\\varepsilon}{2}\\left[ F \\cdot e^{\\varepsilon q_{v}} + t_{v} \\right]\\right\\}\n\n\n\\lambda_{s},\\, \\lambda_{q} \\in \\mathbb{R} are trainable parametersNote that \\left(\\Gamma^{+}\\right)^{-1} = \\Gamma^{-}, i.e. \\Gamma^{+}\\left[\\Gamma^{-}(x, v)\\right] = \\Gamma^{-}\\left[\\Gamma^{+}(x, v)\\right] = (x, v)"
   },
   {
     "objectID": "index.html#annealing-schedule",
     "href": "index.html#annealing-schedule",
-    "title": "",
+    "title": "Generative Modeling & Efficient Sampling for LQCD",
     "section": "Annealing Schedule",
     "text": "Annealing Schedule\n\nIntroduce an annealing schedule during the training phase:\n\\left\\{ \\gamma_{t}  \\right\\}_{t=0}^{N} = \\left\\{\\gamma_{0}, \\gamma_{1},\n\\ldots, \\gamma_{N-1}, \\gamma_{N} \\right\\}\nwhere \\gamma_{0} &lt; \\gamma_{1} &lt; \\cdots &lt; \\gamma_{N} \\equiv 1, and \\left|\\gamma_{t+1} - \\gamma_{t}\\right| \\ll 1\nNote:\n\nfor \\left|\\gamma_{t}\\right| &lt; 1, this rescaling helps to reduce the height of the energy barriers \\Longrightarrow\neasier for our sampler to explore previously inaccessible regions of the phase space"
   },
   {
     "objectID": "index.html#section-3",
     "href": "index.html#section-3",
-    "title": "",
+    "title": "Generative Modeling & Efficient Sampling for LQCD",
     "section": "",
     "text": "Figure 11: Jupyter Notebook"
   },
   {
     "objectID": "index.html#acknowledgements",
     "href": "index.html#acknowledgements",
-    "title": "",
+    "title": "Generative Modeling & Efficient Sampling for LQCD",
     "section": "Acknowledgements",
     "text": "Acknowledgements\n\n\n\nLinks:\n\n Link to github\n reach out!\n\nReferences:\n\nLink to HMC demo\nLink to slides\n\n link to github with slides\n\n (Foreman et al. 2022; Foreman, Jin, and Osborn 2022, 2021)\n (Boyda et al. 2022; Shanahan et al. 2022)\n\n\n\n\nHuge thank you to:\n\nYannick Meurice\nNorman Christ\nAkio Tomiya\nLuchang Jin\nChulwoo Jung\nPeter Boyle\nTaku Izubuchi\nECP-CSD group\nALCF Staff + Datascience Group"
   },
   {
     "objectID": "index.html#links-references",
     "href": "index.html#links-references",
-    "title": "",
+    "title": "Generative Modeling & Efficient Sampling for LQCD",
     "section": "Links + References",
     "text": "Links + References\n\nThis talk:  saforem2/lqcd-pasc23\nCode repo  saforem2/l2hmc-qcd\nSlides  saforem2.github.io/lqcd-pasc23\nAnimated background (g - 2)\nTitle Slide Background (worms) animation\nFermilab Muon g-2"
   },
   {
     "objectID": "index.html#references",
     "href": "index.html#references",
-    "title": "",
+    "title": "Generative Modeling & Efficient Sampling for LQCD",
     "section": "References",
     "text": "References\n\n\nBoyda, Denis et al. 2022. “Applications of Machine Learning to Lattice Quantum Field Theory.” In Snowmass 2021. https://arxiv.org/abs/2202.05838.\n\n\nDuane, S., A. D. Kennedy, B. J. Pendleton, and D. Roweth. 1987. “Hybrid Monte Carlo.” Phys. Lett. B 195: 216–22. https://doi.org/10.1016/0370-2693(87)91197-X.\n\n\nForeman, Sam, Taku Izubuchi, Luchang Jin, Xiao-Yong Jin, James C. Osborn, and Akio Tomiya. 2022. “HMC with Normalizing Flows.” PoS LATTICE2021: 073. https://doi.org/10.22323/1.396.0073.\n\n\nForeman, Sam, Xiao-Yong Jin, and James C. Osborn. 2021. “Deep Learning Hamiltonian Monte Carlo.” In 9th International Conference on Learning Representations. https://arxiv.org/abs/2105.03418.\n\n\n———. 2022. “LeapfrogLayers: A Trainable Framework for Effective Topological Sampling.” PoS LATTICE2021: 508. https://doi.org/10.22323/1.396.0508.\n\n\nShanahan, Phiala et al. 2022. “Snowmass 2021 Computational Frontier CompF03 Topical Group Report: Machine Learning,” September. https://arxiv.org/abs/2209.07559."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "",
+    "section": "",
+    "text": "Generative Modeling & Efficient Sampling\n(for Lattice QCD)\n \n Sam Foreman\nXiao-Yong Jin, James C. Osborn\n saforem2/lqcd-pasc23\n\n\n2023-06-26 @ PASC23"
+  },
+  {
+    "objectID": "index.html#footnotes",
+    "href": "index.html#footnotes",
+    "title": "",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nCompletely stalled ?↩︎\nHere, \\(\\sim\\) means “is distributed according to”↩︎\nHere, \\(\\sim\\) means “is distributed according to”↩︎\nFun fact: HMC was originally invented for LQCD! [@Duane:1987de] ↩︎\nWe always start by resampling the momentum, \\(v_{0} \\sim \\mathcal{N}(0, \\mathbb{1})\\)↩︎\n[@Foreman:2021ixr; @Foreman:2021rhs]↩︎\nFor simple \\(\\mathbf{x} \\in \\mathbb{R}^{2}\\) example, \\(\\mathcal{L}_{\\theta} = A(\\xi^{\\ast}|\\xi)\\cdot \\left(\\mathbf{x}^{\\ast} - \\mathbf{x}\\right)^{2}\\)↩︎\nWhere \\(\\xi^{\\ast}\\) is the proposed configuration (prior to Accept / Reject)↩︎\nAnd \\(\\left|\\frac{\\partial \\xi^{\\ast}}{\\partial \\xi^{T}}\\right|\\) is the Jacobian of the transformation from \\(\\xi \\rightarrow \\xi^{\\ast}\\)↩︎\nWIP↩︎\n\\(\\sigma(\\cdot)\\) denotes an activation function↩︎\n\\(\\lambda_{s},\\, \\lambda_{q} \\in \\mathbb{R}\\) are trainable parameters↩︎\nNote that \\(\\left(\\Gamma^{+}\\right)^{-1} = \\Gamma^{-}\\), i.e. \\(\\Gamma^{+}\\left[\\Gamma^{-}(x, v)\\right] = \\Gamma^{-}\\left[\\Gamma^{+}(x, v)\\right] = (x, v)\\)↩︎\nArgonne Leadership Computing Facility • 2008 Annual Report↩︎"
   }
 ]

@@ -2,4 +2,99 @@ project:
   type: website
   output-dir: docs
   preview:
-    port: 4200
+    port: 4204
+
+title: "Generative Modeling & Efficient Sampling for LQCD"
+date: today
+date-modified: last-modified
+favicon: "./favicon.svg"
+author-title: ""
+affiliation-title: ""
+published-title: ""
+modified-title: ""
+title-block-categories: false
+number-sections: false
+bibliography: references.bib
+appendix-cite-as: display
+google-scholar: true
+google-analytics: G-XVM2Y822Y1
+author:
+  # name: Sam Foreman
+  name: "Sam Foreman [[{{< ai orcid >}}]{.orcid-green}](https://orcid.org/0000-0002-9981-0876)"
+  url: https://samforeman.me
+  # orcid: 0000-0002-9981-0876
+  email: foremans@anl.gov
+  affiliation: Argonne National Laboratory
+  affiliation-url: https://alcf.anl.gov/about/people/sam-foreman
+  # affiliation: Argonne National Laboratory
+  # affiliation-url: https://alcf.anl.gov/about/people/sam-foreman
+citation:
+   author: Sam Foreman
+   type: speech
+   title: "Generative Modeling & Efficient Sampling for LQCD"
+   url: https://saforem2.github.io/lqcd-pasc23
+# favicon: "./assets/favicon.svg"
+# format:
+#   html:
+#     syntax-definitions:
+#       - ./docs/python.xml
+#
+website:
+  favicon: favicon.svg
+  twitter-card:
+    image: "thumbnail.png"
+    creator: "@saforem2"
+    site: "@saforem2"
+  open-graph:
+    image: "thumbnail.png"
+  # favicon: "./favicon.svg"
+  description: "Generative Modeling & Efficient Sampling for LQCD"
+  page-navigation: true
+  title: "Generative Modeling"
+  site-url: "https://saforem2.github.io/lqcd-pasc23"
+  # favicon: "./favicon.svg"
+  back-to-top-navigation: true
+  # reader-mode: true
+  # open-graph: true
+  repo-url: https://github.com/saforem2/llm-lunch-talk
+  repo-actions: [source, edit, issue]
+  google-analytics: G-XVM2Y822Y1
+  sidebar: false
+  navbar:
+    logo: "./favicon.svg"
+    background: "#222222"
+    foregound: "#777777"
+    right:
+      - icon: github
+        href: https://github.com/saforem2/llm-lunch-talk
+        aria-label: GitHub
+  page-footer:
+    left: "[samforeman.me](https://samforeman.me)"
+    right: "Copyright 2023, Sam Foreman" 
+    center:
+      - href: https://samforeman.me
+        text: "{{< fa solid home >}}"
+      - icon: github
+        href: https://github.com/saforem2
+      - icon: twitter
+        href: https://twitter.com/saforem2
+      - href: "mailto:///foremans@anl.gov"
+        text: "{{< fa regular paper-plane >}}"
+      - href: https://www.twitter.com/saforem2
+        text: "{{< fa brands twitter >}}"
+      - href: https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en
+        text: "{{< ai google-scholar >}}"
+      - href: https://orcid.org/0000-0002-9981-0876
+        text: "{{< ai orcid >}}"
+      - href: https://www.last.fm/user/saforem2
+        text: "{{< fa brands lastfm >}}"
+      - href: https://open.spotify.com/user/saforem2
+        text: "{{< fa brands spotify >}}"
+      - href: https://www.instagram.com/saforem2
+        text: "{{< fa brands instagram >}}"
+      - href: https://linkedin.com/in/saforem2
+        text: "{{< fa brands linkedin >}}"
+  # twitter-card:
+  #   image: "https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/thumbnail.png?raw=true"
+  #   site: "@saforem2"
+  #   creator: "@saforem2"

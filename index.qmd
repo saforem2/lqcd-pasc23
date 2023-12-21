@@ -55,7 +55,7 @@ resources:
 # {.title-slide .centeredslide background-iframe="https://saforem2.github.io/grid-worms-animation/" loading="lazy"}
 
 <!-- ::: {style="text-shadow: 0px 0px 10px RGBA(0, 0, 0, 0.45); background-color: rgba(22,22,22,0.33); border-radius: 10px; text-align:center; box-shadow:RGBA(0, 0, 0, 0.25) 0px 5px 15px; padding-top: 0.25em; padding-bottom: 0.25em;"} -->
-::: {style="text-shadow: 0px 0px 10px RGBA(0, 0, 0, 0.66); background-color: rgba(22,22,22,0.75); border-radius: 10px; text-align:center; box-shadow:RGBA(0, 0, 0, 0.25) 0px 5px 15px; padding: 0px; padding-left: 1%; padding-right: 1%; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em; line-height: 1.5em!important;"}
+::: {style="background-color: rgba(22,22,22,0.75); border-radius: 10px; text-align:center; padding: 0px; padding-left: 1%; padding-right: 1%; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em; line-height: 1.5em!important;"}
 <span style="color:#939393; font-size:1.5em; font-weight: bold;">Generative Modeling \& Efficient Sampling</span>  
 <span style="color:#777777; font-size:1.2em; font-weight: bold;">(for Lattice QCD)</span>  
 [<br>&nbsp;]{style="padding-bottom: 1em;"}  
@@ -112,7 +112,7 @@ $$e^{+} + e^{-} \rightarrow 2\gamma$$
 
 ## {.centeredslide background-video="https://d2r55xnwy6nx47.cloudfront.net/uploads/2021/04/Muon_2560_Lede.mp4" background-video-loop="true" background-video-muted="true"}
 
-::: {style="text-shadow: 0px 0px 10px black; background-color: rgba(22,22,22,0.33); border-radius: 10px; text-align:center; box-shadow:RGBA(0, 0, 0, 0.7) 0px 5px 15px; padding: 0px; padding-left: 1%; padding-right: 1%; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em;"}
+::: {style="background-color: rgba(22,22,22,0.33); border-radius: 10px; text-align:center; padding: 0px; padding-left: 1%; padding-right: 1%; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em;"}
 [Magnetic Moment of the Muon]{style="font-size: 1.75em; font-weight: bold;"}
 
 ::: {style="font-size: 1.5em; margin-top: 0pt; margin-bottom: 0pt; border:2px solid #00CCFF; border-radius:8px; margin-left:auto; margin-right:auto; min-width: max-content; max-width: min-content; padding-left: 1%; padding-right: 1%; background-color: rgba(22,22,22,0.75); "}
@@ -125,54 +125,54 @@ $a_{\mu}^{\mathrm{exp}} - a_{\mu}^{\mathrm{SM}} = \left(25.1 \pm 5.9\right)\cdot
 
 :::
 
-## [Fermilab: Muon g-2](https://vms.fnal.gov/gallery/view?id=41) {style="top:0; font-size:0.75em;"}
-
-::: {.panel-tabset}
-
-### The Ring
-
-::: {#fig-ring}
-![](https://mod.fnal.gov/mod/stillphotos/2017/0100/17-0188-17.hr.jpg){width="75%" fig-align="center"}
-
-The Muon g-2 ring sits in its detector hall amidst electronics racks, the muon beamline, and other equipment. This impressive experiment operates at negative 450 degrees Fahrenheit and studies the precession (or wobble) of muons as they travel through the magnetic field.
-:::
-
-### In transit
-
-::: {#fig-in-transit}
-![](https://mod.fnal.gov/mod/stillphotos/2013/0200/13-0222-15D.hr.jpg){width="75%" fig-align="center"}
-
-In the summer of 2013, the Muon g-2 team successfully transported a 50-foot-wide electromagnet from Long Island to the Chicago suburbs in one piece. The move took 35 days and traversed 3,200 miles over land and sea.
-:::
-
-### Almost Home
-
-![](https://mod.fnal.gov/mod/stillphotos/2013/0200/13-0235-18D.hr.jpg){width="80%" fig-align="center"}
-
-### Arrival
-
-::: {#fig-arrival}
-![](https://mod.fnal.gov/mod/stillphotos/2013/0200/13-0244-11D.hr.jpg){width="80%" fig-align="center"}
-
- Thousands of people followed the move of the ring, and thousands were on hand to greet it upon its arrival at Fermilab.
-:::
-
-:::
-
-## Tension
-
-::: {style="font-size:0.75em; text-align: inherit; margin-left: inherit;"}
-> Obviously, an independent cross-check of the BMW lattice result for
-> $a_{\mu}^{\mathrm{hvp, LO}}$ with sub-percent precision is badly needed.&nbsp;  
-> --- {{< fa solid book >}} [@wittig2023progress]
-:::
-
-::: {#fig-tension}
-
-![](assets/tension.png){fig-align="center" width="50%"}
-
-[Full cartoon](https://github.com/saforem2/lqcd-pasc23/blob/main/assets/mu2cartoon.png)
-:::
+<!-- ## [Fermilab: Muon g-2](https://vms.fnal.gov/gallery/view?id=41) {style="top:0; font-size:0.75em;"} -->
+<!---->
+<!-- ::: {.panel-tabset} -->
+<!---->
+<!-- ### The Ring -->
+<!---->
+<!-- ::: {#fig-ring} -->
+<!-- ![](https://mod.fnal.gov/mod/stillphotos/2017/0100/17-0188-17.hr.jpg){width="75%" fig-align="center"} -->
+<!---->
+<!-- The Muon g-2 ring sits in its detector hall amidst electronics racks, the muon beamline, and other equipment. This impressive experiment operates at negative 450 degrees Fahrenheit and studies the precession (or wobble) of muons as they travel through the magnetic field. -->
+<!-- ::: -->
+<!---->
+<!-- ### In transit -->
+<!---->
+<!-- ::: {#fig-in-transit} -->
+<!-- ![](https://mod.fnal.gov/mod/stillphotos/2013/0200/13-0222-15D.hr.jpg){width="75%" fig-align="center"} -->
+<!---->
+<!-- In the summer of 2013, the Muon g-2 team successfully transported a 50-foot-wide electromagnet from Long Island to the Chicago suburbs in one piece. The move took 35 days and traversed 3,200 miles over land and sea. -->
+<!-- ::: -->
+<!---->
+<!-- ### Almost Home -->
+<!---->
+<!-- ![](https://mod.fnal.gov/mod/stillphotos/2013/0200/13-0235-18D.hr.jpg){width="80%" fig-align="center"} -->
+<!---->
+<!-- ### Arrival -->
+<!---->
+<!-- ::: {#fig-arrival} -->
+<!-- ![](https://mod.fnal.gov/mod/stillphotos/2013/0200/13-0244-11D.hr.jpg){width="80%" fig-align="center"} -->
+<!---->
+<!--  Thousands of people followed the move of the ring, and thousands were on hand to greet it upon its arrival at Fermilab. -->
+<!-- ::: -->
+<!---->
+<!-- ::: -->
+<!---->
+<!-- ## Tension -->
+<!---->
+<!-- ::: {style="font-size:0.75em; text-align: inherit; margin-left: inherit;"} -->
+<!-- > Obviously, an independent cross-check of the BMW lattice result for -->
+<!-- > $a_{\mu}^{\mathrm{hvp, LO}}$ with sub-percent precision is badly needed.&nbsp;   -->
+<!-- > --- {{< fa solid book >}} [@wittig2023progress] -->
+<!-- ::: -->
+<!---->
+<!-- ::: {#fig-tension} -->
+<!---->
+<!-- ![](assets/tension.png){fig-align="center" width="50%"} -->
+<!---->
+<!-- [Full cartoon](https://github.com/saforem2/lqcd-pasc23/blob/main/assets/mu2cartoon.png) -->
+<!-- ::: -->
 
 # Markov Chain Monte Carlo (MCMC) {.centeredslide auto-animate="true"}
 

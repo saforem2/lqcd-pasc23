@@ -39,3 +39,7 @@ docs/* linguist-documentation
 #
 # # Samples folders
 # - ^[Ss]amples?/
+css/* linguist-vendored
+**/**/*.css linguist-vendored
+**/**/*.scss linguist-vendored
+**/**/*.html linguist-vendored
